@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Planets+SpaceObjects/Moon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Planets+SpaceObjects/Earth.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 29.5 )
@@ -24,3 +26,9 @@ shape = SubResource( 1 )
 position = Vector2( 32, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Earth" parent="Player/Camera2D" instance=ExtResource( 4 )]
+position = Vector2( -382, -162 )
+
+[node name="Earth2" parent="Player/Camera2D" instance=ExtResource( 3 )]
+position = Vector2( 446, 239 )
