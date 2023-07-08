@@ -19,8 +19,9 @@ animations = [ {
 modulate = Color( 0.580392, 0.0666667, 0.0666667, 1 )
 self_modulate = Color( 0.823529, 0.482353, 0.0823529, 1 )
 frames = SubResource( 1 )
-frame = 5
+frame = 1
 speed_scale = 2.0
+playing = true
 script = ExtResource( 1 )
 
 [connection signal="animation_finished" from="." to="." method="_on_Explosion_animation_finished"]
