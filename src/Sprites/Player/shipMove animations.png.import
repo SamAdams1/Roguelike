@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ship.png-b246dcaf9a7b29bfff61a6fe2655ee6a.stex"
+path="res://.import/shipMove animations.png-d26bd571cb31659f160d1a33ce639c14.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/ship.png"
-dest_files=[ "res://.import/ship.png-b246dcaf9a7b29bfff61a6fe2655ee6a.stex" ]
+source_file="res://Sprites/Player/shipMove animations.png"
+dest_files=[ "res://.import/shipMove animations.png-d26bd571cb31659f160d1a33ce639c14.stex" ]
 
 [params]
 

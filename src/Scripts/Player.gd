@@ -4,6 +4,9 @@ var velocity = Vector2.ZERO
 var playerSpeed = 500
 onready var animationTree = $AnimationTree
 
+#Stats
+var playerHealth = 50
+
 #attacking
 var bullet = preload('res://Scenes/bullet.tscn')
 var waitToFire = false
@@ -48,3 +51,8 @@ func handle_input():
 #		rotation_degrees = -50
 #	if Input.is_action_pressed("left") and Input.is_action_pressed("down") and velocity.x < -1:
 #		rotation_degrees = 50
+
+
+func _on_HurtBox_hurt(damage):
+	playerHealth -= damage
+	print(playerHealth)
