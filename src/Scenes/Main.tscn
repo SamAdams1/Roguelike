@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Enemies/AsteroidEnemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Planets+SpaceObjects/Earth.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Planets+SpaceObjects/Moon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=5]
@@ -18,3 +19,6 @@ position = Vector2( -490, 409 )
 scale = Vector2( 6.6994, 6.30444 )
 
 [node name="Background" parent="." instance=ExtResource( 5 )]
+
+[node name="AsteroidEnemy" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1284, 115 )

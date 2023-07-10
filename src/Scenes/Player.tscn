@@ -1,13 +1,13 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/turret.gd" type="Script" id=2]
-[ext_resource path="res://Sprites/shipMove animations.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/gunBarrel.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Player/shipMove animations.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Player/gunBarrel.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Utility/HurtBox.tscn" type="PackedScene" id=5]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 24.1241
-height = 30.8342
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 25.6321, 29.6559 )
 
 [sub_resource type="AnimationNodeAnimation" id=3]
 animation = "MoveLeft"
@@ -195,6 +195,9 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 13.27, 22.355 )
+
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 position = Vector2( 814, 497 )
 scale = Vector2( 1.35645, 1.52091 )
@@ -209,9 +212,9 @@ vframes = 2
 frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.47443, -11.8351 )
+position = Vector2( 0.737244, -17.7525 )
 scale = Vector2( 0.488949, 0.731644 )
-shape = SubResource( 1 )
+shape = SubResource( 24 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -247,3 +250,15 @@ anims/MoveUp = SubResource( 18 )
 anims/MoveUpLeft = SubResource( 19 )
 anims/MoveUpRight = SubResource( 20 )
 anims/RESET = SubResource( 21 )
+
+[node name="HurtBox" parent="." instance=ExtResource( 5 )]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2( 0.737122, -17.7525 )
+shape = SubResource( 25 )
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_HurtBox_hurt"]
+
+[editable path="HurtBox"]

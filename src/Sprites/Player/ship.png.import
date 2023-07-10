@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gunBarrel.png-1612df17c7ba76297ec1d5ee85fc86e3.stex"
+path="res://.import/ship.png-47c6cd7b0d18a0fa9eb226eddefcb320.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/gunBarrel.png"
-dest_files=[ "res://.import/gunBarrel.png-1612df17c7ba76297ec1d5ee85fc86e3.stex" ]
+source_file="res://Sprites/Player/ship.png"
+dest_files=[ "res://.import/ship.png-47c6cd7b0d18a0fa9eb226eddefcb320.stex" ]
 
 [params]
 
