@@ -1,7 +1,8 @@
 extends KinematicBody2D
 
 export var movementSpeed = 100.0
-export var health = 10
+export var health = 2
+
 var velocity = Vector2.ZERO
 
 onready var player = get_tree().current_scene.get_node('Player')
