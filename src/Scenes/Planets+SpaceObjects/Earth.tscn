@@ -4,8 +4,6 @@
 
 [node name="Earth" type="StaticBody2D"]
 scale = Vector2( 1.11, 1.08416 )
-collision_layer = 2
-collision_mask = 2
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
