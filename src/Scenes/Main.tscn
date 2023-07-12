@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Enemies/AsteroidEnemy.tscn" type="PackedScene" id=2]
@@ -9,15 +9,15 @@
 [ext_resource path="res://OpenSans-ExtraBold.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Scenes/Score.gd" type="Script" id=8]
 
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -520.043, 235.935, 0, 0, 0, 0, -520.043, -256.461, 0, 0, 0, 0, -520.043, -254.657, 0, 0, 0, 0, 477.357, -251.651, 0, 0, 0, 0, 480.845, -248.645, 0, 0, 0, 0, 486.425, 235.333, 0, 0, 0, 0, 486.425, 235.333, 0, 0, 0, 0, -520.741, 235.333 )
+}
+
 [sub_resource type="DynamicFont" id=1]
 size = 128
 use_filter = true
 font_data = ExtResource( 7 )
-
-[sub_resource type="Curve2D" id=1]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -527.017, -278.666, 0, 0, 0, 0, 495.86, -271.614, 0, 0, 0, 0, 517.81, 252.167, 0, 0, 0, 0, -526.285, 250.885, 0, 0, 0, 0, -526.285, -279.307 )
-}
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 6 )
@@ -25,14 +25,14 @@ script = ExtResource( 6 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
 [node name="Path2D" type="Path2D" parent="Player"]
-position = Vector2( 21.8217, 9.58009 )
-scale = Vector2( 1.05697, 1.09362 )
-curve = SubResource( 1 )
+position = Vector2( 21.3312, 29.0456 )
+scale = Vector2( 1.09284, 1.22849 )
+curve = SubResource( 2 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
-position = Vector2( -527.015, -278.666 )
-rotation = 0.00689795
-offset = 0.00366211
+position = Vector2( -520.043, -178.456 )
+rotation = -1.5708
+offset = 414.8
 
 [node name="Position2D" type="Position2D" parent="Player/Path2D/PathFollow2D"]
 
