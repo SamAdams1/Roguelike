@@ -16,7 +16,6 @@ func _physics_process(_delta):
 func _on_HurtBox_hurt(damage):
 	health -= damage
 	if health <= 0:
-		
 		Global.points += 10
 		queue_free()
 	print("enemy", health)

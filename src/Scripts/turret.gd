@@ -4,7 +4,7 @@ var bullet = preload('res://Scenes/bullet.tscn')
 #var bulletSpawnPoint = load("")
 var waitToFire = false
 var toggleFire = false
-var fireRate = .2
+var fireRate = 0.1
 var bulletSpeed = 800
 
 
