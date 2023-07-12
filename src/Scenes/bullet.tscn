@@ -5,7 +5,7 @@
 [ext_resource path="res://Sprites/bullet.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 20.5, 11 )
+extents = Vector2( 19, 11 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 19, 11 )
@@ -29,7 +29,7 @@ scale = Vector2( 0.3525, 0.12 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 19.5, 0 )
+position = Vector2( 19, 0 )
 shape = SubResource( 3 )
 
 [node name="HitBox" parent="." instance=ExtResource( 2 )]
