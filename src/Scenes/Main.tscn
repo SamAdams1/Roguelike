@@ -14,17 +14,11 @@ size = 128
 use_filter = true
 font_data = ExtResource( 7 )
 
-[sub_resource type="Curve2D" id=1]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -527.017, -278.666, 0, 0, 0, 0, 495.86, -271.614, 0, 0, 0, 0, 517.81, 252.167, 0, 0, 0, 0, -526.285, 250.885, 0, 0, 0, 0, -526.285, -279.307 )
-}
-
 [node name="Main" type="Node2D"]
 script = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
-<<<<<<< HEAD
 [node name="UI" type="Node2D" parent="Player"]
 position = Vector2( -600.096, -326.778 )
 scale = Vector2( 0.737218, 0.657501 )
@@ -44,19 +38,6 @@ text = "100"
 align = 1
 valign = 1
 script = ExtResource( 8 )
-=======
-[node name="Path2D" type="Path2D" parent="Player"]
-position = Vector2( 21.8217, 9.58009 )
-scale = Vector2( 1.05697, 1.09362 )
-curve = SubResource( 1 )
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
-position = Vector2( -527.015, -278.666 )
-rotation = 0.00689795
-offset = 0.00366211
-
-[node name="Position2D" type="Position2D" parent="Player/Path2D/PathFollow2D"]
->>>>>>> 5317254468e245629dab1429cbd68824759041a8
 
 [node name="Earth" parent="." groups=["objects"] instance=ExtResource( 3 )]
 position = Vector2( 1779, 1149 )
