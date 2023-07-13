@@ -11,8 +11,10 @@ config_version=4
 [application]
 
 config/name="TechWise Project"
-run/main_scene="res://Scenes/Main.tscn"
+run/main_scene="res://Scenes/MainMenu.tscn"
 config/icon="res://icon.png"
+<<<<<<<Updatedupstreamrun/main_scene="res://Scenes/Main.tscn"
+Updatedupstreamrun/main_scene="res://Scenes/MainMenu.tscn"
 
 [autoload]
 
