@@ -1,14 +1,19 @@
 extends KinematicBody2D
 #player movement
 var velocity = Vector2.ZERO
+
 var speed = 500
 var friction = 0.001
 var acceleration = 0.1
 onready var sprite = $ship
 #onready var animationTree = $AnimationTree
 
+var playerSpeed = 450
+
+
+
 #Stats
-var playerHealth = 50
+var playerHealth = 15
 
 #attacking
 var bullet = preload('res://Scenes/bullet.tscn')
@@ -37,9 +42,11 @@ func _physics_process(delta):
 		velocity = velocity.linear_interpolate(Vector2.ZERO, friction)
 	velocity = move_and_slide(velocity)
 	
+
 #func _physics_process(_delta):
 #	handle_input()
 #	
+
 #	if velocity != Vector2.ZERO:
 #		animationTree.set("parameters/Move/blend_position", velocity)
 	
@@ -57,6 +64,7 @@ func _physics_process(delta):
 	
 	#makes player look where moving
 	#MIGHT NEED IN THE FUTURE
+
 	if Input.is_action_pressed("up"):
 		sprite.rotation_degrees = -90
 	if Input.is_action_pressed("down"):
@@ -74,6 +82,26 @@ func _physics_process(delta):
 	if Input.is_action_pressed("right") and Input.is_action_pressed("down") and velocity.x > 1:
 		sprite.rotation_degrees = 50
 	#print(velocity.y, "||", velocity.x)
+
+	if Input.is_action_pressed("up"):
+		sprite.rotation_degrees = -90
+	if Input.is_action_pressed("down"):
+		sprite.rotation_degrees = 90
+	if Input.is_action_pressed("left"):
+		sprite.rotation_degrees = 180
+	if Input.is_action_pressed("right"):
+		sprite.rotation_degrees = 0
+	if Input.is_action_pressed("left") and Input.is_action_pressed("up") and velocity.x < -1:
+		sprite.rotation_degrees = -125
+	if Input.is_action_pressed("left") and Input.is_action_pressed("down") and velocity.x < -1:
+		sprite.rotation_degrees = 125
+	if Input.is_action_pressed("right") and Input.is_action_pressed("up") and velocity.x > 1:
+		sprite.rotation_degrees = -50
+	if Input.is_action_pressed("right") and Input.is_action_pressed("down") and velocity.x > 1:
+		sprite.rotation_degrees = 50
+	#print(velocity.y, "||", velocity.x)
+
+
 
 func _on_HurtBox_hurt(damage):
 	playerHealth -= damage
