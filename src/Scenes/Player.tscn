@@ -7,7 +7,7 @@
 [ext_resource path="res://Scenes/Utility/HurtBox.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=24]
-extents = Vector2( 25.6321, 29.6559 )
+extents = Vector2( 28.6473, 31.4532 )
 
 [sub_resource type="AnimationNodeAnimation" id=3]
 animation = "MoveLeft"
@@ -196,7 +196,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=25]
-extents = Vector2( 13.27, 22.355 )
+extents = Vector2( 14.7444, 23.6701 )
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 position = Vector2( 814, 497 )

@@ -13,8 +13,6 @@ var playerHealth = 50
 var bullet = preload('res://Scenes/bullet.tscn')
 var waitToFire = false
 var toggleFire = false
-var fireRate = 1
-var bulletSpeed = 500
 
 #movement
 func _physics_process(delta):
