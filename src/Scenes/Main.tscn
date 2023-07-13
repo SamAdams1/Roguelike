@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Enemies/AsteroidEnemy.tscn" type="PackedScene" id=2]
@@ -13,6 +13,11 @@
 size = 128
 use_filter = true
 font_data = ExtResource( 7 )
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -521.214, -288.643, 0, 0, 0, 0, -520.476, 286.013, 0, 0, 0, 0, -524.9, 286.013, 0, 0, 0, 0, 576.505, 299.163, 0, 0, 0, 0, 576.505, 299.163, 0, 0, 0, 0, 581.665, -289.3, 0, 0, 0, 0, 581.665, -289.3, 0, 0, 0, 0, -519.739, -285.355 )
+}
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 6 )
@@ -38,6 +43,16 @@ text = "100"
 align = 1
 valign = 1
 script = ExtResource( 8 )
+
+[node name="Path2D" type="Path2D" parent="Player"]
+curve = SubResource( 2 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+position = Vector2( -364.225, -285.912 )
+rotation = 3.13802
+offset = 3207.43
+
+[node name="Position2D" type="Position2D" parent="Player/Path2D/PathFollow2D"]
 
 [node name="Earth" parent="." groups=["objects"] instance=ExtResource( 3 )]
 position = Vector2( 1779, 1149 )
