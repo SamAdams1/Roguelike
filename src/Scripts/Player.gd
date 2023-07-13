@@ -2,8 +2,9 @@ extends KinematicBody2D
 #player movement
 var velocity = Vector2.ZERO
 var speed = 500
-var friction = 0.01
+var friction = 0.001
 var acceleration = 0.1
+onready var sprite = $ship
 #onready var animationTree = $AnimationTree
 
 #Stats
@@ -56,23 +57,23 @@ func _physics_process(delta):
 	
 	#makes player look where moving
 	#MIGHT NEED IN THE FUTURE
-#	if Input.is_action_pressed("right"):
-#		rotation_degrees = -90
-#	if Input.is_action_pressed("left"):
-#		rotation_degrees = 90
-#	if Input.is_action_pressed("up"):
-#		rotation_degrees = 180
-#	if Input.is_action_pressed("down"):
-#		rotation_degrees = 0
-#	if Input.is_action_pressed("right") and Input.is_action_pressed("up") and velocity.x > 1:
-#		rotation_degrees = -125
-#	if Input.is_action_pressed("left") and Input.is_action_pressed("up") and velocity.x < -1:
-#		rotation_degrees = 125
-#	if Input.is_action_pressed("right") and Input.is_action_pressed("down") and velocity.x > 1:
-#		rotation_degrees = -50
-#	if Input.is_action_pressed("left") and Input.is_action_pressed("down") and velocity.x < -1:
-#		rotation_degrees = 50
-
+	if Input.is_action_pressed("up"):
+		sprite.rotation_degrees = -90
+	if Input.is_action_pressed("down"):
+		sprite.rotation_degrees = 90
+	if Input.is_action_pressed("left"):
+		sprite.rotation_degrees = 180
+	if Input.is_action_pressed("right"):
+		sprite.rotation_degrees = 0
+	if Input.is_action_pressed("left") and Input.is_action_pressed("up") and velocity.x < -1:
+		sprite.rotation_degrees = -125
+	if Input.is_action_pressed("left") and Input.is_action_pressed("down") and velocity.x < -1:
+		sprite.rotation_degrees = 125
+	if Input.is_action_pressed("right") and Input.is_action_pressed("up") and velocity.x > 1:
+		sprite.rotation_degrees = -50
+	if Input.is_action_pressed("right") and Input.is_action_pressed("down") and velocity.x > 1:
+		sprite.rotation_degrees = 50
+	#print(velocity.y, "||", velocity.x)
 
 func _on_HurtBox_hurt(damage):
 	playerHealth -= damage
