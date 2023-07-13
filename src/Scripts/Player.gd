@@ -16,10 +16,10 @@ var toggleFire = false
 var fireRate = 1
 var bulletSpeed = 500
 
-
+#movement
 func _physics_process(delta):
 	var input_velocity = Vector2.ZERO
-	# Check input for "desired" velocity
+	
 	if Input.is_action_pressed("right"):
 		input_velocity.x += 1
 	if Input.is_action_pressed("left"):
@@ -30,11 +30,11 @@ func _physics_process(delta):
 		input_velocity.y -= 1
 	input_velocity = input_velocity.normalized() * speed
 
-	# If there's input, accelerate to the input velocity
+	#acceleration
 	if input_velocity.length() > 0:
 		velocity = velocity.linear_interpolate(input_velocity, acceleration)
 	else:
-		# If there's no input, slow down to (0, 0)
+	#deceleration
 		velocity = velocity.linear_interpolate(Vector2.ZERO, friction)
 	velocity = move_and_slide(velocity)
 	
