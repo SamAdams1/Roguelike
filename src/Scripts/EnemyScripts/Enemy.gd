@@ -18,4 +18,4 @@ func _on_HurtBox_hurt(damage):
 	if health <= 0:
 		Global.points += 10
 		queue_free()
-	print("enemy", health)
+	#print("enemy", health)
