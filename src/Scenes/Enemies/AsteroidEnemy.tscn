@@ -9,7 +9,7 @@
 extents = Vector2( 32, 48 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 71, 69 )
+extents = Vector2( 72, 70 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 32, 48 )
@@ -45,11 +45,11 @@ collision_mask = 2
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource( 3 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["enemy"]]
+[node name="BulletCollision" type="StaticBody2D" parent="." groups=["enemy"]]
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletCollision"]
 shape = SubResource( 5 )
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_HurtBox_hurt"]

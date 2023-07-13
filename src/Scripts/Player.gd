@@ -1,7 +1,7 @@
 extends KinematicBody2D
 #player movement
 var velocity = Vector2.ZERO
-var playerSpeed = 500
+var playerSpeed = 450
 onready var animationTree = $AnimationTree
 
 #Stats
@@ -11,8 +11,6 @@ var playerHealth = 50
 var bullet = preload('res://Scenes/bullet.tscn')
 var waitToFire = false
 var toggleFire = false
-var fireRate = 1
-var bulletSpeed = 500
 
 
 func _physics_process(_delta):
