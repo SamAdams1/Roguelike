@@ -106,3 +106,7 @@ func _physics_process(delta):
 func _on_HurtBox_hurt(damage):
 	playerHealth -= damage
 	print(playerHealth)
+	
+	if playerHealth <= 0:
+		yield(get_tree().create_timer(1.0), "timeout")
+		get_tree().reload_current_scene()

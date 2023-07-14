@@ -1,19 +1,22 @@
 extends KinematicBody2D
 
 var damageNumbers = preload("res://Scenes/Enemies/DamageNumbers.tscn")
-export var movementSpeed = 100.0
+
 export var health = 2
 
 var velocity = Vector2.ZERO
+export var movementSpeed = 100.0
 
-onready var player = get_tree().current_scene.get_node('Player')
+
+
 var explosion = preload("res://Scenes/Explosion.tscn")
 
-func _physics_process(_delta):
+onready var player = get_tree().current_scene.get_node('Player')
+
+func basic_movement_towards_player(_delta):
 	var direction = global_position.direction_to(player.global_position)
 	velocity = direction * movementSpeed
 	move_and_slide(velocity)
-
 
 func _on_HurtBox_hurt(damage):
 	health -= damage
@@ -29,5 +32,3 @@ func _on_HurtBox_hurt(damage):
 		queue_free()
 		
 	print("enemy", health)
-	
-

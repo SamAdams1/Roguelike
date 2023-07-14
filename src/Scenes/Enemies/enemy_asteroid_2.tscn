@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Enemies/enemy_asteroid.tscn" type="PackedScene" id=1]
+
+[node name="enemy_asteroid_2" instance=ExtResource( 1 )]
+modulate = Color( 1, 0, 0, 1 )
+health = 1
+movementSpeed = 300.0
+
+[editable path="HurtBox"]
+[editable path="HitBox"]
