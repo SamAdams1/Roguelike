@@ -12,9 +12,6 @@ var experienceLevel = 1
 var collectedExperience = 0
 
 
-var bullet = preload('res://Scenes/bullet.tscn')
-var waitToFire = false
-var toggleFire = false
 
 #movement
 func _physics_process(delta):
@@ -60,7 +57,6 @@ func _physics_process(delta):
 	
 	#makes player look where moving
 	#MIGHT NEED IN THE FUTURE
-
 	if Input.is_action_pressed("up"):
 		sprite.rotation_degrees = -90
 	if Input.is_action_pressed("down"):

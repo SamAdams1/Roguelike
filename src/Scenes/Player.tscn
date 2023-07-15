@@ -1,10 +1,11 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/turret.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/Player/shipMove animations.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Player/gunBarrel.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Utility/HurtBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Audio/quick-jump-arcade.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 25.6321, 29.6559 )
@@ -234,6 +235,11 @@ __meta__ = {
 
 [node name="BulletSpawnPoint" type="Node2D" parent="turret"]
 position = Vector2( 104.445, -0.000976563 )
+
+[node name="turretShootSound" type="AudioStreamPlayer2D" parent="turret"]
+stream = ExtResource( 6 )
+volume_db = -15.0
+pitch_scale = 0.7
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 12 )

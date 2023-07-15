@@ -1,13 +1,10 @@
 extends Sprite
 #attacking
 var bullet = preload('res://Scenes/bullet.tscn')
-#var bulletSpawnPoint = load("")
+onready var sound = $turretShootSound
 var waitToFire = false
 var toggleFire = false
-
 var fireRate = 0.3
-
-
 var bulletSpeed = 800
 
 
@@ -21,12 +18,13 @@ func _input(event): #shooting has to be in here so only one input is taken per m
 		
 	while toggleFire and !waitToFire:
 		waitToFire = true
+		sound.play()
 		fire()
 		yield(get_tree().create_timer(fireRate), "timeout")
 		waitToFire = false
 
 
-func fire():
+func fire(): #creates bullet
 	var bullet_instance = bullet.instance()
 	bullet_instance.position = $BulletSpawnPoint.get_global_position()
 	bullet_instance.rotation_degrees = rotation_degrees
