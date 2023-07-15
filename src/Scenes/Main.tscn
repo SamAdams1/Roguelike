@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Enemies/enemy_asteroid.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Planets+SpaceObjects/Earth.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Planets+SpaceObjects/Moon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Objects/Earth.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Objects/Moon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/arena.gd" type="Script" id=6]
 [ext_resource path="res://Fonts/ArcadeFont.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Scripts/Score.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Enemies/enemy_asteroid_2.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Objects/experienceGem.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -77,6 +78,10 @@ autostart = true
 
 [node name="difficulty_timer" type="Timer" parent="."]
 autostart = true
+
+[node name="experienceGem" parent="." instance=ExtResource( 10 )]
+position = Vector2( 665, 342 )
+experience = 100
 
 [connection signal="timeout" from="enemy_spawn_timer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="difficulty_timer" to="." method="_on_difficulty_timer_timeout"]
