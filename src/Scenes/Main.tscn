@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Enemies/enemy_asteroid.tscn" type="PackedScene" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://Fonts/ArcadeFont.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Scripts/Score.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Enemies/enemy_asteroid_2.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/Objects/experienceGem.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -18,7 +17,7 @@ font_data = ExtResource( 7 )
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -521.214, -288.643, 0, 0, 0, 0, -520.476, 286.013, 0, 0, 0, 0, -524.9, 286.013, 0, 0, 0, 0, 576.505, 299.163, 0, 0, 0, 0, 576.505, 299.163, 0, 0, 0, 0, 581.665, -289.3, 0, 0, 0, 0, 581.665, -289.3, 0, 0, 0, 0, -519.739, -285.355 )
+"points": PoolVector2Array( 0, 0, 0, 0, -547.657, -337.956, 0, 0, 0, 0, -546.946, 3.28751, 0, 0, 0, 0, -548.368, 297.848, 0, 0, 0, 0, -524.189, 314.286, 0, 0, 0, 0, 583.088, 310.341, 0, 0, 0, 0, 576.505, 299.163, 0, 0, 0, 0, 585.221, -326.121, 0, 0, 0, 0, 583.799, -341.901, 0, 0, 0, 0, -197.154, -342.465, 0, 0, 0, 0, -546.235, -333.353 )
 }
 
 [node name="Main" type="Node2D"]
@@ -26,23 +25,24 @@ script = ExtResource( 6 )
 enemies = [ ExtResource( 2 ), ExtResource( 9 ) ]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1152, 761 )
 
 [node name="UI" type="Node2D" parent="Player"]
-position = Vector2( -600.096, -326.778 )
+position = Vector2( 6.10352e-05, 0 )
 scale = Vector2( 0.737218, 0.657501 )
 z_index = 20
 
 [node name="Control" type="Control" parent="Player/UI"]
-margin_left = 103.0
-margin_top = 57.0
-margin_right = 1607.0
-margin_bottom = 951.0
+margin_left = 10.0
+margin_top = -10.0
+margin_right = 1625.0
+margin_bottom = 1011.0
 
 [node name="Score" type="Label" parent="Player/UI/Control"]
-margin_left = 78.0003
-margin_top = 7.99998
-margin_right = 1407.0
-margin_bottom = 183.0
+margin_left = -678.001
+margin_top = -564.0
+margin_right = 650.999
+margin_bottom = -389.0
 custom_fonts/font = SubResource( 1 )
 text = "100"
 align = 1
@@ -50,14 +50,17 @@ valign = 1
 script = ExtResource( 8 )
 
 [node name="Path2D" type="Path2D" parent="Player"]
+position = Vector2( -28.9108, 6.10578 )
+scale = Vector2( 1.44896, 1.43664 )
 curve = SubResource( 2 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
-position = Vector2( -364.225, -285.912 )
-rotation = 3.13802
+position = Vector2( -203.609, -342.298 )
+rotation = 3.11509
 offset = 3207.43
 
 [node name="Position2D" type="Position2D" parent="Player/Path2D/PathFollow2D"]
+position = Vector2( -0.0217285, -0.00547791 )
 
 [node name="Earth" parent="." groups=["objects"] instance=ExtResource( 3 )]
 position = Vector2( 1779, 1149 )
@@ -70,7 +73,7 @@ scale = Vector2( 6.6994, 6.30444 )
 [node name="Background" parent="." instance=ExtResource( 5 )]
 
 [node name="AsteroidEnemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1284, 115 )
+position = Vector2( 1182, -201 )
 
 [node name="enemy_spawn_timer" type="Timer" parent="."]
 wait_time = 3.0
@@ -79,9 +82,7 @@ autostart = true
 [node name="difficulty_timer" type="Timer" parent="."]
 autostart = true
 
-[node name="experienceGem" parent="." instance=ExtResource( 10 )]
-position = Vector2( 665, 342 )
-experience = 100
+[node name="lootBase" type="Node2D" parent="." groups=["loot"]]
 
 [connection signal="timeout" from="enemy_spawn_timer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="difficulty_timer" to="." method="_on_difficulty_timer_timeout"]

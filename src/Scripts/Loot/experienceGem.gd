@@ -5,15 +5,16 @@ export var experience = 1
 var spriteRed = preload("res://Sprites/Loot/red gem2.png")
 var spriteOrange = preload("res://Sprites/Loot/orange gem.png")
 var spriteGreen = preload("res://Sprites/Loot/green gem.png")
+onready var player = get_tree().current_scene.get_node('Player')
 
 var target = null
-var speed = 0
+var speed = -5
 
 onready var sprite = $Sprite
 onready var collision = $CollisionShape2D
 onready var sound = $collectedSound
 
-func _ready():
+func _ready(): #sets color of xp gem
 	if experience < 5:
 		return
 	elif experience < 25:
@@ -21,3 +22,15 @@ func _ready():
 	else:
 		sprite.texture = spriteRed
 
+func _physics_process(delta):
+	global_position = global_position.move_toward(player.global_position, speed)
+	speed += 10 * delta
+
+func collect():
+	sound.play()
+	collision.call_deferred("set", "disabled", true)
+	sprite.visible = false
+	return experience
+
+func _on_collectedSound_finished():
+	queue_free()
