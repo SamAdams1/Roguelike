@@ -4,7 +4,7 @@
 [ext_resource path="res://Scenes/Enemies/enemy_asteroid.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Objects/Earth.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Objects/Moon.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Utility/Background.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/arena.gd" type="Script" id=6]
 [ext_resource path="res://Fonts/ArcadeFont.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Scripts/Score.gd" type="Script" id=8]
@@ -56,7 +56,7 @@ curve = SubResource( 2 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
 position = Vector2( -203.609, -342.298 )
-rotation = 3.11509
+rotation = 3.11508
 offset = 3207.43
 
 [node name="Position2D" type="Position2D" parent="Player/Path2D/PathFollow2D"]

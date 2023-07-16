@@ -5,8 +5,13 @@ var velocity = Vector2.ZERO
 var speed = 500
 var friction = 0.001
 var acceleration = 0.1
-var playerHealth = 15
 onready var sprite = $ship
+
+#Health
+var playerHealth = 15
+onready var healthBar = get_node('%healthBar')
+onready var healthBarUnder = get_node('%healthBarUnder')
+onready var updateTween = $GUILayer/GUI/healthBarUnder/Tween
 
 #Levels
 var experience = 0 
@@ -15,8 +20,13 @@ var collectedExperience = 0
 onready var expBar = get_node('%ExperienceBar')
 onready var labelLevel = get_node('%labelLevel')
 
+
 func _ready():
 	setExpBar(experience, calculateExperienceCap())
+	healthBar.max_value = playerHealth
+	healthBar.value = playerHealth
+	healthBarUnder.max_value = playerHealth
+	healthBarUnder.value = playerHealth
 
 #movement
 func _physics_process(delta):
@@ -62,17 +72,26 @@ func _physics_process(delta):
 
 func _on_HurtBox_hurt(damage):
 	playerHealth -= damage
-	print(playerHealth)
-	
+	healthBar.value = playerHealth
+#	healthBarUnder.value = playerHealth
+	updateTween.interpolate_property(healthBarUnder, 'value', healthBarUnder.value, playerHealth, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT, 0.3)
+	updateTween.start()
+	spriteDamageFlicker()
 	if playerHealth <= 0:
-		yield(get_tree().create_timer(1.0), "timeout")
-		get_tree().reload_current_scene()
+#		yield(get_tree().create_timer(1.0), "timeout")
+		get_tree().change_scene("res://Scenes/Utility/GameOverScreen.tscn")
+
+func spriteDamageFlicker():
+	sprite.visible = false
+	yield(get_tree().create_timer(.2), "timeout")
+	sprite.visible = true
+	
 
 
+#Experience/Leveling
 func _on_GrabArea_area_entered(area):
 	if area.is_in_group('loot'):
 		area.target = self
-
 
 func _on_CollectArea_area_entered(area):
 	if area.is_in_group('loot'):
