@@ -1,17 +1,18 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/turret.gd" type="Script" id=2]
-[ext_resource path="res://Sprites/Player/shipMove animations.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Player/gunBarrel.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Player/newShip.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Player/turretSprite.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Utility/HurtBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Audio/quick-jump-arcade.wav" type="AudioStream" id=6]
-[ext_resource path="res://Sprites/xpBarBackGround.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/xpBar.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Utility/xpBarBackGround.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Utility/xpBar.png" type="Texture" id=8]
 [ext_resource path="res://Fonts/ArcadeFont.ttf" type="DynamicFontData" id=9]
-[ext_resource path="res://Sprites/healthBar.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/healthBarBackground.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/pixil-frame-0 (34).png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Utility/healthBar.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Utility/healthBarBackground.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Utility/pixil-frame-0 (34).png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Player/newShipMoving.png" type="Texture" id=13]
 
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 25.6321, 29.6559 )
@@ -34,15 +35,43 @@ collision_layer = 3
 collision_mask = 0
 script = ExtResource( 1 )
 
+[node name="turret" type="Sprite" parent="."]
+position = Vector2( -3.68609, 3.91901e-08 )
+rotation = -3.14159
+scale = Vector2( 0.324716, 0.29066 )
+texture = ExtResource( 4 )
+offset = Vector2( 230, 40 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BulletSpawnPoint" type="Node2D" parent="turret"]
+position = Vector2( 154.384, -2.26209 )
+
+[node name="turretShootSound" type="AudioStreamPlayer2D" parent="turret"]
+position = Vector2( 154.384, 1.52588e-05 )
+stream = ExtResource( 6 )
+volume_db = -15.0
+pitch_scale = 0.6
+
 [node name="ship" type="Sprite" parent="."]
-position = Vector2( -4.05312e-05, -1.90735e-06 )
-rotation = 3.14159
+position = Vector2( 7.62939e-06, -1.90735e-06 )
+scale = Vector2( 0.209936, 0.191052 )
 texture = ExtResource( 3 )
-hframes = 4
-vframes = 2
-frame = 1
+offset = Vector2( -50, -180 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="shipMovingFlames" type="Sprite" parent="ship"]
+position = Vector2( 0, -3.44147 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 13 )
+offset = Vector2( -50, -180 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 5.96046e-08 )
 scale = Vector2( 0.488949, 0.731644 )
 shape = SubResource( 24 )
@@ -50,24 +79,6 @@ shape = SubResource( 24 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 2, 2 )
-
-[node name="turret" type="Sprite" parent="."]
-position = Vector2( -2.38419e-07, -3.8147e-06 )
-scale = Vector2( 0.727017, 0.0657531 )
-texture = ExtResource( 4 )
-offset = Vector2( 50, 0 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="BulletSpawnPoint" type="Node2D" parent="turret"]
-position = Vector2( 104.445, -0.000976563 )
-
-[node name="turretShootSound" type="AudioStreamPlayer2D" parent="turret"]
-stream = ExtResource( 6 )
-volume_db = -15.0
-pitch_scale = 0.6
 
 [node name="HurtBox" parent="." instance=ExtResource( 5 )]
 visible = false
@@ -95,6 +106,7 @@ collision_mask = 8
 shape = SubResource( 27 )
 
 [node name="GUILayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="GUI" type="Control" parent="GUILayer"]
 margin_left = 4.0
@@ -150,6 +162,10 @@ text = "Level: 1"
 align = 1
 valign = 1
 uppercase = true
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 3.8147e-06, -7.62939e-06 )
+scale = Vector2( 0.209936, 0.191052 )
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_HurtBox_hurt"]
 [connection signal="area_entered" from="GrabArea" to="." method="_on_GrabArea_area_entered"]

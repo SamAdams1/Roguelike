@@ -5,13 +5,16 @@ var velocity = Vector2.ZERO
 var speed = 500
 var friction = 0.001
 var acceleration = 0.1
-onready var sprite = $ship
+onready var shipSprite = $ship
+onready var shipMovingSprite = $ship/shipMovingFlames
+onready var turretSprite = $turret
 
 #Health
 var playerHealth = 15
 onready var healthBar = get_node('%healthBar')
 onready var healthBarUnder = get_node('%healthBarUnder')
 onready var updateTween = $GUILayer/GUI/healthBarUnder/Tween
+var takingDamage = false
 
 #Levels
 var experience = 0 
@@ -52,22 +55,31 @@ func _physics_process(delta):
 	
 
 	if Input.is_action_pressed("up"):
-		sprite.rotation_degrees = -90
+		shipSprite.rotation_degrees = -90
 	if Input.is_action_pressed("down"):
-		sprite.rotation_degrees = 90
+		shipSprite.rotation_degrees = 90
 	if Input.is_action_pressed("left"):
-		sprite.rotation_degrees = 180
+		shipSprite.rotation_degrees = 180
 	if Input.is_action_pressed("right"):
-		sprite.rotation_degrees = 0
+		shipSprite.rotation_degrees = 0
 	if Input.is_action_pressed("left") and Input.is_action_pressed("up") and velocity.x < -1:
-		sprite.rotation_degrees = -125
+		shipSprite.rotation_degrees = -125
 	if Input.is_action_pressed("left") and Input.is_action_pressed("down") and velocity.x < -1:
-		sprite.rotation_degrees = 125
+		shipSprite.rotation_degrees = 125
 	if Input.is_action_pressed("right") and Input.is_action_pressed("up") and velocity.x > 1:
-		sprite.rotation_degrees = -50
+		shipSprite.rotation_degrees = -50
 	if Input.is_action_pressed("right") and Input.is_action_pressed("down") and velocity.x > 1:
-		sprite.rotation_degrees = 50
+		shipSprite.rotation_degrees = 50
+		
+	if !takingDamage:
+		shipMovingSprite.visible = isShipMoving()
 	#print(velocity.y, "||", velocity.x)
+	
+func isShipMoving():
+	if Input.is_action_pressed("right") or Input.is_action_pressed("down") or Input.is_action_pressed("left") or Input.is_action_pressed("up"):
+		return true
+	else:
+		return false
 
 
 func _on_HurtBox_hurt(damage):
@@ -82,10 +94,13 @@ func _on_HurtBox_hurt(damage):
 		get_tree().change_scene("res://Scenes/Utility/GameOverScreen.tscn")
 
 func spriteDamageFlicker():
-	sprite.visible = false
+	takingDamage = true
+	shipSprite.visible = false
+	turretSprite.visible = false
 	yield(get_tree().create_timer(.2), "timeout")
-	sprite.visible = true
-	
+	turretSprite.visible = true
+	shipSprite.visible = true
+	takingDamage = false
 
 
 #Experience/Leveling

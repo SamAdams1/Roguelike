@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/xpBarBackGround.png-72a953c31ab41a5407350e1e40be0672.stex"
+path="res://.import/spaceBackground.jpeg-3a00df61cabc424a4342f42a82ae32dc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/xpBarBackGround.png"
-dest_files=[ "res://.import/xpBarBackGround.png-72a953c31ab41a5407350e1e40be0672.stex" ]
+source_file="res://Sprites/spaceBackground.jpeg"
+dest_files=[ "res://.import/spaceBackground.jpeg-3a00df61cabc424a4342f42a82ae32dc.stex" ]
 
 [params]
 
