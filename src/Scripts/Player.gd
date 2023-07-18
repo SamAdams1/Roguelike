@@ -23,16 +23,36 @@ var collectedExperience = 0
 onready var expBar = get_node('%ExperienceBar')
 onready var labelLevel = get_node('%labelLevel')
 
+#shipShooting
+var fireRate = 0.5
+var bullet = preload('res://Scenes/bullet.tscn')
+var bulletSpeed = 1200
+var waitToFire = false
+
 
 func _ready():
+	$GUILayer.visible = true
 	setExpBar(experience, calculateExperienceCap())
 	healthBar.max_value = playerHealth
 	healthBar.value = playerHealth
 	healthBarUnder.max_value = playerHealth
 	healthBarUnder.value = playerHealth
 
-#movement
+
 func _physics_process(delta):
+	movement(delta)
+	shipLookDirectionMoving()
+	while !waitToFire:
+		waitToFire = true
+#		sound.play()
+		fire($ship/shipBulletPoint1)
+		fire($ship/shipBulletPoint2)
+		fire($ship/shipBulletPoint3)
+		yield(get_tree().create_timer(fireRate), "timeout")
+		waitToFire = false
+
+
+func movement(delta):
 	var input_velocity = Vector2.ZERO
 	
 	if Input.is_action_pressed("right"):
@@ -52,8 +72,9 @@ func _physics_process(delta):
 	#deceleration
 		velocity = velocity.linear_interpolate(Vector2.ZERO, friction)
 	velocity = move_and_slide(velocity)
-	
+#	print(velocity.y, "  ||  ", velocity.x, "  ||  ", input_velocity)
 
+func shipLookDirectionMoving():
 	if Input.is_action_pressed("up"):
 		shipSprite.rotation_degrees = -90
 	if Input.is_action_pressed("down"):
@@ -62,19 +83,19 @@ func _physics_process(delta):
 		shipSprite.rotation_degrees = 180
 	if Input.is_action_pressed("right"):
 		shipSprite.rotation_degrees = 0
-	if Input.is_action_pressed("left") and Input.is_action_pressed("up") and velocity.x < -1:
-		shipSprite.rotation_degrees = -125
-	if Input.is_action_pressed("left") and Input.is_action_pressed("down") and velocity.x < -1:
-		shipSprite.rotation_degrees = 125
-	if Input.is_action_pressed("right") and Input.is_action_pressed("up") and velocity.x > 1:
-		shipSprite.rotation_degrees = -50
-	if Input.is_action_pressed("right") and Input.is_action_pressed("down") and velocity.x > 1:
-		shipSprite.rotation_degrees = 50
+	if Input.is_action_pressed("left") and Input.is_action_pressed("up"):# and velocity.x < -1:
+		shipSprite.rotation_degrees = -135
+	if Input.is_action_pressed("left") and Input.is_action_pressed("down"):# and velocity.x < -1:
+		shipSprite.rotation_degrees = 135
+	if Input.is_action_pressed("right") and Input.is_action_pressed("up"):# and velocity.x > 1:
+		shipSprite.rotation_degrees = -45
+	if Input.is_action_pressed("right") and Input.is_action_pressed("down"):# and velocity.x > 1:
+		shipSprite.rotation_degrees = 45
 		
 	if !takingDamage:
 		shipMovingSprite.visible = isShipMoving()
-	#print(velocity.y, "||", velocity.x)
-	
+
+
 func isShipMoving():
 	if Input.is_action_pressed("right") or Input.is_action_pressed("down") or Input.is_action_pressed("left") or Input.is_action_pressed("up"):
 		return true
@@ -85,7 +106,6 @@ func isShipMoving():
 func _on_HurtBox_hurt(damage):
 	playerHealth -= damage
 	healthBar.value = playerHealth
-#	healthBarUnder.value = playerHealth
 	updateTween.interpolate_property(healthBarUnder, 'value', healthBarUnder.value, playerHealth, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT, 0.3)
 	updateTween.start()
 	spriteDamageFlicker()
@@ -143,6 +163,17 @@ func calculateExperienceCap():
 func setExpBar(setValue = 1, setMaxValue = 100):
 	expBar.value = setValue
 	expBar.max_value = setMaxValue
+	
+#ShipShooting
+func fire(spawnPoint): #creates bullet
+	var bullet_instance = bullet.instance()
+	bullet_instance.position = spawnPoint.get_global_position()
+	bullet_instance.rotation_degrees = shipSprite.rotation_degrees
+	bullet_instance.apply_impulse(Vector2(), Vector2(bulletSpeed, 0).rotated(shipSprite.rotation))
+	get_tree().get_root().call_deferred("add_child", bullet_instance)
+	
+#	print($ship/shipBulletPoint1.rotation, shipSprite.rotation)
+
 
 
 

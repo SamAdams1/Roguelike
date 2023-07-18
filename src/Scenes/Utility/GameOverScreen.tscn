@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Fonts/ArcadeFont.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/Utility/GameOverScreen.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Main.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Main.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Utility/MainMenu.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -36,6 +37,7 @@ corner_radius_bottom_left = 10
 [node name="GameOverScreen" type="Node2D"]
 script = ExtResource( 2 )
 mainGameScene = ExtResource( 3 )
+mainMenu = ExtResource( 4 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1024.0
@@ -76,13 +78,13 @@ custom_constants/separation = 8
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 margin_right = 924.0
-margin_bottom = 140.0
+margin_bottom = 90.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="NewGameButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer"]
 margin_right = 924.0
-margin_bottom = 140.0
+margin_bottom = 90.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -93,21 +95,41 @@ custom_styles/normal = SubResource( 5 )
 text = "New Game"
 
 [node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-margin_top = 148.0
+margin_top = 98.0
 margin_right = 924.0
-margin_bottom = 288.0
+margin_bottom = 189.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3"]
+[node name="mainMenuButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3"]
 margin_right = 924.0
-margin_bottom = 140.0
+margin_bottom = 91.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
 custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
-text = "Options"
+text = "Main Menu"
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 197.0
+margin_right = 924.0
+margin_bottom = 288.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="quitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer4"]
+margin_right = 924.0
+margin_bottom = 91.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+text = "Quit"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/mainMenuButton" to="." method="_on_mainMenuButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer4/quitButton" to="." method="_on_quitButton_pressed"]

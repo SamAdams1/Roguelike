@@ -63,20 +63,17 @@ offset = 3207.43
 position = Vector2( -0.0217285, -0.00547791 )
 
 [node name="Earth" parent="." groups=["objects"] instance=ExtResource( 3 )]
-position = Vector2( 1779, 1149 )
+position = Vector2( 2235, 1343 )
 scale = Vector2( 10.955, 10.6051 )
 
 [node name="Moon" parent="." groups=["objects"] instance=ExtResource( 4 )]
-position = Vector2( -490, 409 )
+position = Vector2( -100, 106 )
 scale = Vector2( 6.6994, 6.30444 )
 
 [node name="Background" parent="." instance=ExtResource( 5 )]
 
-[node name="AsteroidEnemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1182, -201 )
-
 [node name="enemy_spawn_timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 autostart = true
 
 [node name="difficulty_timer" type="Timer" parent="."]
