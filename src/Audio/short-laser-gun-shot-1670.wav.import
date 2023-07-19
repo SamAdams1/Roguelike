@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/audiomass-output.wav-1f0c7eb4f31b30851a4b5de31db4e250.sample"
+path="res://.import/short-laser-gun-shot-1670.wav-d5cfec91f82530695a587a44cf5cfb88.sample"
 
 [deps]
 
-source_file="res://Audio/audiomass-output.wav"
-dest_files=[ "res://.import/audiomass-output.wav-1f0c7eb4f31b30851a4b5de31db4e250.sample" ]
+source_file="res://Audio/short-laser-gun-shot-1670.wav"
+dest_files=[ "res://.import/short-laser-gun-shot-1670.wav-d5cfec91f82530695a587a44cf5cfb88.sample" ]
 
 [params]
 

@@ -1,18 +1,24 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=28 format=2]
 
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/turret.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Player/turret.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/Player/newShip.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Player/turretSprite.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Utility/HurtBox.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Audio/mixkit-short-laser-gun-shot-1670.wav" type="AudioStream" id=6]
-[ext_resource path="res://Sprites/Utility/xpBarBackGround.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Utility/xpBar.png" type="Texture" id=8]
+[ext_resource path="res://Audio/short-laser-gun-shot-1670.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sprites/Utility/barBorder.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Utility/greenBar.png" type="Texture" id=8]
 [ext_resource path="res://Fonts/ArcadeFont.ttf" type="DynamicFontData" id=9]
-[ext_resource path="res://Sprites/Utility/healthBar.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Utility/healthBarBackground.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/Utility/pixil-frame-0 (34).png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Utility/redBar.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Utility/grayBar.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Utility/blueBar.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/Player/newShipMoving.png" type="Texture" id=13]
+[ext_resource path="res://Audio/game-whip-shot-1512.wav" type="AudioStream" id=14]
+[ext_resource path="res://Sprites/Loot/coin pixel art.png" type="Texture" id=15]
+[ext_resource path="res://Scripts/Score.gd" type="Script" id=16]
+[ext_resource path="res://Sprites/skull.png" type="Texture" id=17]
+[ext_resource path="res://Audio/deathSound.mp3" type="AudioStream" id=18]
+[ext_resource path="res://Scripts/Player/timerLabel.gd" type="Script" id=19]
 
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 25.6321, 29.6559 )
@@ -27,6 +33,18 @@ radius = 95.8407
 radius = 15.0
 
 [sub_resource type="DynamicFont" id=28]
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=30]
+size = 24
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=31]
+size = 24
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=32]
+size = 24
 font_data = ExtResource( 9 )
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
@@ -69,16 +87,22 @@ texture = ExtResource( 13 )
 offset = Vector2( -50, -180 )
 
 [node name="shipBulletPoint1" type="Node2D" parent="ship"]
-position = Vector2( 3.51164, -123.893 )
+position = Vector2( 3.51163, -168.632 )
 scale = Vector2( 4.76336, 5.23418 )
 
 [node name="shipBulletPoint2" type="Node2D" parent="ship"]
-position = Vector2( 3.51165, 120.452 )
+position = Vector2( 3.51163, 172.074 )
 scale = Vector2( 4.76336, 5.23418 )
 
 [node name="shipBulletPoint3" type="Node2D" parent="ship"]
 position = Vector2( 228.256, 9.98341e-06 )
 scale = Vector2( 4.76336, 5.23418 )
+
+[node name="lockOnMisslePoint" type="Position2D" parent="ship"]
+
+[node name="directionalShootSound" type="AudioStreamPlayer" parent="ship"]
+stream = ExtResource( 14 )
+volume_db = -15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -116,7 +140,6 @@ collision_mask = 8
 shape = SubResource( 27 )
 
 [node name="GUILayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="GUI" type="Control" parent="GUILayer"]
 margin_left = 4.0
@@ -135,7 +158,7 @@ margin_bottom = 55.0
 rect_scale = Vector2( 1.46512, 0.687169 )
 value = 35.0
 texture_under = ExtResource( 11 )
-texture_progress = ExtResource( 12 )
+texture_progress = ExtResource( 10 )
 
 [node name="Tween" type="Tween" parent="GUILayer/GUI/healthBarUnder"]
 
@@ -147,7 +170,8 @@ margin_right = 696.0
 margin_bottom = 55.0
 rect_scale = Vector2( 1.46577, 0.686723 )
 value = 25.0
-texture_progress = ExtResource( 10 )
+texture_over = ExtResource( 7 )
+texture_progress = ExtResource( 8 )
 
 [node name="ExperienceBar" type="TextureProgress" parent="GUILayer/GUI"]
 unique_name_in_owner = true
@@ -159,8 +183,9 @@ rect_scale = Vector2( 1.46426, 0.826829 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 value = 75.0
-texture_under = ExtResource( 7 )
-texture_progress = ExtResource( 8 )
+texture_under = ExtResource( 11 )
+texture_over = ExtResource( 7 )
+texture_progress = ExtResource( 12 )
 
 [node name="labelLevel" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
@@ -173,8 +198,49 @@ align = 1
 valign = 1
 uppercase = true
 
+[node name="moneyLabel" type="Label" parent="GUILayer/GUI"]
+margin_left = 37.0
+margin_top = 64.0
+margin_right = 69.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 30 )
+text = "0"
+
+[node name="coin" type="Sprite" parent="GUILayer/GUI/moneyLabel"]
+position = Vector2( -22, 13 )
+scale = Vector2( 0.0653061, 0.0453752 )
+texture = ExtResource( 15 )
+
+[node name="Score" type="Label" parent="GUILayer/GUI"]
+margin_left = 37.0
+margin_top = 35.0
+margin_right = 77.0
+margin_bottom = 59.0
+custom_fonts/font = SubResource( 31 )
+text = "0"
+script = ExtResource( 16 )
+
+[node name="skull" type="Sprite" parent="GUILayer/GUI/Score"]
+position = Vector2( -22, 12 )
+scale = Vector2( 0.0664062, 0.0625 )
+texture = ExtResource( 17 )
+
+[node name="timerLabel" type="Label" parent="GUILayer/GUI"]
+margin_left = 439.0
+margin_top = 36.0
+margin_right = 503.0
+margin_bottom = 68.0
+custom_fonts/font = SubResource( 32 )
+text = "30"
+script = ExtResource( 19 )
+
+[node name="deathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+volume_db = -10.0
+
 [connection signal="hurt" from="HurtBox" to="." method="_on_HurtBox_hurt"]
 [connection signal="area_entered" from="GrabArea" to="." method="_on_GrabArea_area_entered"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_CollectArea_area_entered"]
+[connection signal="finished" from="deathSound" to="." method="_on_deathSound_finished"]
 
 [editable path="HurtBox"]

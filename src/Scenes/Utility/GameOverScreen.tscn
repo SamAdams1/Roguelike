@@ -57,14 +57,14 @@ margin_left = 50.0
 margin_right = 974.0
 margin_bottom = 580.0
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="game over" type="Label" parent="MarginContainer/VBoxContainer"]
 margin_top = 108.0
 margin_right = 924.0
 margin_bottom = 180.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 custom_fonts/font = SubResource( 1 )
-text = "GAME OVER"
+text = "YOU DIED"
 align = 1
 valign = 1
 

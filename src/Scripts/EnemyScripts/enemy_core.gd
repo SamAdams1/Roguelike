@@ -3,6 +3,8 @@ extends KinematicBody2D
 var damageNumbers = preload("res://Scenes/Enemies/DamageNumbers.tscn")
 var explosion = preload("res://Scenes/Explosion.tscn")
 var xpGem = preload("res://Scenes/Objects/experienceGem.tscn")
+var coin = preload("res://Scenes/Objects/coin.tscn")
+var healthDropped = preload("res://Scenes/Objects/healthDropped.tscn")
 
 onready var player = get_tree().current_scene.get_node('Player')
 onready var playerCollision = $PlayerCollision
@@ -19,6 +21,7 @@ var velocity = Vector2.ZERO
 export var movementSpeed = 100.0
 export var health = 2
 export var experience = 1
+export var coinValue = 1
 
 
 func basic_movement_towards_player(_delta):
@@ -35,22 +38,49 @@ func _on_HurtBox_hurt(damage):
 		
 		if health <= 0:
 			notDead = false
-			Global.points += 10
-			#disables everything and plays explosion anim
-			playerCollision.call_deferred("set", "disabled", true)
-			bulletCollision.call_deferred("set", "disabled", true)
-			hitBox.call_deferred("set", "disabled", true)
-			hurtBox.call_deferred("set", "disabled", true)
-			movementSpeed = 0
-			sprite.visible = false
+			disableEnemyOnDead()
 			sound.play()
+			
+			Global.points += 1
+			#explosion animation
 			var explosion_instance = explosion.instance()
 			explosion_instance.position = get_global_position()
 			get_tree().get_root().add_child(explosion_instance)
 			
-			#creates xp gem
-			var newXPGem = xpGem.instance()
-			newXPGem.global_position = global_position
-			lootBase.call_deferred("add_child", newXPGem)
-		
-#	print("enemy", health)
+			createLoot()
+
+
+func disableEnemyOnDead():
+	playerCollision.call_deferred("set", "disabled", true)
+	bulletCollision.call_deferred("set", "disabled", true)
+	hitBox.call_deferred("set", "disabled", true)
+	hurtBox.call_deferred("set", "disabled", true)
+	movementSpeed = 0
+	sprite.visible = false
+
+
+func createLoot():
+	var spawnChance = round(rand_range(0, 10))
+	print(spawnChance)
+	if int(spawnChance) == 0 and player.playerHealth < player.healthBar.max_value / 2:
+		var healing = healthDropped.instance()
+		healing.global_position = global_position
+		lootBase.call_deferred("add_child", healing)
+		print('hjilafhdlfhlsdahflsdhfldh')
+		return 
+	if spawnChance > 5:
+		var newXPGem = xpGem.instance()
+		newXPGem.global_position = global_position
+		lootBase.call_deferred("add_child", newXPGem)
+		return 
+	if int(spawnChance) % 2 == 0:
+		var newCoin = coin.instance()
+		newCoin.global_position = global_position
+		lootBase.call_deferred("add_child", newCoin)
+		return 
+	
+
+
+
+
+

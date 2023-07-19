@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/mixkit-game-whip-shot-1512.wav-861b82e25a32ae9df443e4d5ef9cc8bf.sample"
+path="res://.import/hit.wav-2ae55e09f9e621bf8e89b61defe741e4.sample"
 
 [deps]
 
-source_file="res://Audio/mixkit-game-whip-shot-1512.wav"
-dest_files=[ "res://.import/mixkit-game-whip-shot-1512.wav-861b82e25a32ae9df443e4d5ef9cc8bf.sample" ]
+source_file="res://Audio/hit.wav"
+dest_files=[ "res://.import/hit.wav-2ae55e09f9e621bf8e89b61defe741e4.sample" ]
 
 [params]
 

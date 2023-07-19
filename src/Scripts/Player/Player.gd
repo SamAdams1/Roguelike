@@ -7,7 +7,7 @@ var friction = 0.001
 var acceleration = 0.1
 onready var shipSprite = $ship
 onready var shipMovingSprite = $ship/shipMovingFlames
-onready var turretSprite = $turret
+
 
 #Health
 var playerHealth = 15
@@ -15,20 +15,32 @@ onready var healthBar = get_node('%healthBar')
 onready var healthBarUnder = get_node('%healthBarUnder')
 onready var updateTween = $GUILayer/GUI/healthBarUnder/Tween
 var takingDamage = false
+onready var deathSound = $deathSound
+onready var hurtBox = $HurtBox/CollisionShape2D
 
 #Levels
+onready var expBar = get_node('%ExperienceBar')
+onready var labelLevel = get_node('%labelLevel')
 var experience = 0 
 var experienceLevel = 1
 var collectedExperience = 0
-onready var expBar = get_node('%ExperienceBar')
-onready var labelLevel = get_node('%labelLevel')
+
 
 #shipShooting
-var fireRate = 0.5
+onready var turretSprite = $turret
+onready var directionalShootSound = $ship/directionalShootSound
 var bullet = preload('res://Scenes/bullet.tscn')
+var fireRate = 0.5
 var bulletSpeed = 1200
 var waitToFire = false
+var toggleFire = false
 
+#loot
+onready var moneyLabel = $GUILayer/GUI/moneyLabel
+var money = 0
+
+#enemy related
+var enemyClose = []
 
 func _ready():
 	$GUILayer.visible = true
@@ -42,9 +54,9 @@ func _ready():
 func _physics_process(delta):
 	movement(delta)
 	shipLookDirectionMoving()
-	while !waitToFire:
+	while toggleFire and !waitToFire:
 		waitToFire = true
-#		sound.play()
+		directionalShootSound.play()
 		fire($ship/shipBulletPoint1)
 		fire($ship/shipBulletPoint2)
 		fire($ship/shipBulletPoint3)
@@ -52,7 +64,7 @@ func _physics_process(delta):
 		waitToFire = false
 
 
-func movement(delta):
+func movement(_delta):
 	var input_velocity = Vector2.ZERO
 	
 	if Input.is_action_pressed("right"):
@@ -95,6 +107,9 @@ func shipLookDirectionMoving():
 	if !takingDamage:
 		shipMovingSprite.visible = isShipMoving()
 
+func _input(event):
+	if event.is_action_pressed("ui_select"):
+		toggleFire = !toggleFire
 
 func isShipMoving():
 	if Input.is_action_pressed("right") or Input.is_action_pressed("down") or Input.is_action_pressed("left") or Input.is_action_pressed("up"):
@@ -108,16 +123,24 @@ func _on_HurtBox_hurt(damage):
 	healthBar.value = playerHealth
 	updateTween.interpolate_property(healthBarUnder, 'value', healthBarUnder.value, playerHealth, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT, 0.3)
 	updateTween.start()
-	spriteDamageFlicker()
-	if playerHealth <= 0:
-#		yield(get_tree().create_timer(1.0), "timeout")
-		get_tree().change_scene("res://Scenes/Utility/GameOverScreen.tscn")
+	if playerHealth > 0:
+		spriteDamageFlicker(.2)
+	if playerHealth == 0:
+		hurtBox.call_deferred("set", "disabled", true)
+		shipSprite.visible = false
+		turretSprite.visible = false
+		speed = 0
+		deathSound.play()
 
-func spriteDamageFlicker():
+func _on_deathSound_finished():
+	yield(get_tree().create_timer(1), "timeout")
+	get_tree().change_scene("res://Scenes/Utility/GameOverScreen.tscn")
+
+func spriteDamageFlicker(time):
 	takingDamage = true
 	shipSprite.visible = false
 	turretSprite.visible = false
-	yield(get_tree().create_timer(.2), "timeout")
+	yield(get_tree().create_timer(time), "timeout")
 	turretSprite.visible = true
 	shipSprite.visible = true
 	takingDamage = false
@@ -129,9 +152,17 @@ func _on_GrabArea_area_entered(area):
 		area.target = self
 
 func _on_CollectArea_area_entered(area):
-	if area.is_in_group('loot'):
+	if area.is_in_group('xp'):
 		var gemExp = area.collect()
 		calculateExperience(gemExp)
+	if area.is_in_group('coins'):
+		money += area.collect()
+		moneyLabel.text = str(money)
+	if area.is_in_group('health'):
+		playerHealth += area.collect()
+		healthBar.value = playerHealth
+		if playerHealth > healthBar.max_value:
+			playerHealth = healthBarUnder.max_value
 
 func calculateExperience(gemEXP):
 	var expRequired = calculateExperienceCap()
@@ -173,6 +204,9 @@ func fire(spawnPoint): #creates bullet
 	get_tree().get_root().call_deferred("add_child", bullet_instance)
 	
 #	print($ship/shipBulletPoint1.rotation, shipSprite.rotation)
+
+
+
 
 
 
