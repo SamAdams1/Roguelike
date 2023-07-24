@@ -101,15 +101,12 @@ position = Vector2( -52.6745, -172.074 )
 scale = Vector2( 4.76336, 5.23418 )
 
 [node name="shipBulletPoint1" type="Node2D" parent="ship/bulletSpawnPoints"]
-scale = Vector2( 1, 1 )
 
 [node name="shipBulletPoint2" type="Node2D" parent="ship/bulletSpawnPoints"]
 position = Vector2( 0, 65.0925 )
-scale = Vector2( 1, 1 )
 
 [node name="shipBulletPoint3" type="Node2D" parent="ship/bulletSpawnPoints"]
 position = Vector2( 47.1819, 32.2175 )
-scale = Vector2( 1, 1 )
 
 [node name="directionalShootSound" type="AudioStreamPlayer" parent="ship"]
 stream = ExtResource( 14 )
