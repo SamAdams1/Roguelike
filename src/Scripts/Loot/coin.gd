@@ -1,6 +1,6 @@
 extends Area2D
 
-export var moneyValue = 5
+export var coinValue = 5
 
 onready var player = get_tree().current_scene.get_node('Player')
 
@@ -20,7 +20,7 @@ func collect():
 	sound.play()
 	collision.call_deferred("set", "disabled", true)
 	sprite.visible = false
-	return moneyValue
+	return coinValue
 
 func _on_collectedSound_finished():
 	queue_free()

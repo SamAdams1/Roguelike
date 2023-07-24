@@ -60,7 +60,7 @@ collision_mask = 0
 script = ExtResource( 1 )
 
 [node name="turret" type="Sprite" parent="."]
-position = Vector2( -0.737218, 1.81794e-06 )
+position = Vector2( 0, -2.35894e-07 )
 rotation = -3.14159
 scale = Vector2( 0.37071, 0.3176 )
 texture = ExtResource( 4 )
@@ -79,34 +79,37 @@ stream = ExtResource( 6 )
 volume_db = -15.0
 
 [node name="ship" type="Sprite" parent="."]
-position = Vector2( 0, -2.27374e-13 )
+position = Vector2( -1.90735e-06, 5.96046e-08 )
 scale = Vector2( 0.209936, 0.191052 )
 texture = ExtResource( 3 )
-offset = Vector2( -50, -180 )
+offset = Vector2( 90, 0 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="shipMovingFlames" type="Sprite" parent="ship"]
-position = Vector2( 0, -3.44147 )
+position = Vector2( 38.628, -3.11981e-07 )
 texture = ExtResource( 13 )
-offset = Vector2( -50, -180 )
+offset = Vector2( -50, -182.5 )
 
 [node name="shipMovingSound" type="AudioStreamPlayer" parent="ship/shipMovingFlames"]
 stream = ExtResource( 21 )
 volume_db = -20.0
 
-[node name="shipBulletPoint1" type="Node2D" parent="ship"]
-position = Vector2( 3.51163, -168.632 )
+[node name="bulletSpawnPoints" type="Node2D" parent="ship"]
+position = Vector2( -52.6745, -172.074 )
 scale = Vector2( 4.76336, 5.23418 )
 
-[node name="shipBulletPoint2" type="Node2D" parent="ship"]
-position = Vector2( 3.51163, 172.074 )
-scale = Vector2( 4.76336, 5.23418 )
+[node name="shipBulletPoint1" type="Node2D" parent="ship/bulletSpawnPoints"]
+scale = Vector2( 1, 1 )
 
-[node name="shipBulletPoint3" type="Node2D" parent="ship"]
-position = Vector2( 228.256, 9.98341e-06 )
-scale = Vector2( 4.76336, 5.23418 )
+[node name="shipBulletPoint2" type="Node2D" parent="ship/bulletSpawnPoints"]
+position = Vector2( 0, 65.0925 )
+scale = Vector2( 1, 1 )
+
+[node name="shipBulletPoint3" type="Node2D" parent="ship/bulletSpawnPoints"]
+position = Vector2( 47.1819, 32.2175 )
+scale = Vector2( 1, 1 )
 
 [node name="directionalShootSound" type="AudioStreamPlayer" parent="ship"]
 stream = ExtResource( 14 )
@@ -256,6 +259,7 @@ stream = ExtResource( 18 )
 volume_db = -10.0
 
 [node name="autoAimArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 6
 collision_mask = 6
 

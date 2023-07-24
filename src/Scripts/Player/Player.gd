@@ -1,7 +1,7 @@
 extends KinematicBody2D
-var velocity = Vector2.ZERO
 
 #Movement
+var velocity = Vector2.ZERO
 var speed = 500
 var friction = 0.001
 var acceleration = 0.1
@@ -9,9 +9,8 @@ onready var shipSprite = $ship
 onready var shipMovingSprite = $ship/shipMovingFlames
 onready var shipMovingSound = $ship/shipMovingFlames/shipMovingSound
 
-
 #Health
-var playerHealth = 15
+var playerHealth = 1
 onready var healthBar = get_node('%healthBar')
 onready var healthBarUnder = get_node('%healthBarUnder')
 onready var updateTween = $GUILayer/GUI/healthBarUnder/Tween
@@ -27,8 +26,6 @@ var experience = 0
 var experienceLevel = 1
 var collectedExperience = 0
 
-
-
 #Directional Ship Shooting
 onready var turretSprite = $turret
 onready var directionalShootSound = $ship/directionalShootSound
@@ -37,6 +34,7 @@ var fireRate = 0.5
 var bulletSpeed = 1200
 var waitToFire = false
 var toggleFire = false
+
 #Auto Bullets
 onready var autoFireSound = $ship/autoFireSound
 var autoBullet = preload("res://Scenes/autoBullets.tscn")
@@ -65,15 +63,15 @@ func _ready():
 func _physics_process(delta):
 	movement(delta)
 	shipLookDirectionMoving()
-	findNearestEnemy()
+	
 	autoAim()
 	
 	while toggleFire and !waitToFire:
 		waitToFire = true
 		directionalShootSound.play()
-		fire($ship/shipBulletPoint1)
-		fire($ship/shipBulletPoint2)
-		fire($ship/shipBulletPoint3)
+		fire($ship/bulletSpawnPoints/shipBulletPoint1)
+		fire($ship/bulletSpawnPoints/shipBulletPoint2)
+		fire($ship/bulletSpawnPoints/shipBulletPoint3)
 		yield(get_tree().create_timer(fireRate), "timeout")
 		waitToFire = false
 
@@ -98,7 +96,7 @@ func movement(_delta):
 	#deceleration
 		velocity = velocity.linear_interpolate(Vector2.ZERO, friction)
 	velocity = move_and_slide(velocity)
-#	print(velocity.y, "  ||  ", velocity.x, "  ||  ", input_velocity)
+	#print(velocity.y, "  ||  ", velocity.x, "  ||  ", input_velocity)
 
 func shipLookDirectionMoving():
 	if Input.is_action_pressed("up"):
@@ -144,14 +142,14 @@ func _on_HurtBox_hurt(damage):
 	healthBar.value = playerHealth
 	updateTween.interpolate_property(healthBarUnder, 'value', healthBarUnder.value, playerHealth, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT, 0.3)
 	updateTween.start()
-	if playerHealth > 0:
-		spriteDamageFlicker(.2)
 	if playerHealth == 0:
 		hurtBox.call_deferred("set", "disabled", true)
 		shipSprite.visible = false
 		turretSprite.visible = false
 		speed = 0
 		deathSound.play()
+	elif playerHealth > 0:
+		spriteDamageFlicker(.2)
 
 func _on_deathSound_finished():
 	yield(get_tree().create_timer(1), "timeout")
@@ -240,7 +238,8 @@ func findNearestEnemy():
 
 
 func autoAim():
-	if nearestEnemy != null and !autoBulletWaitTimer:
+	findNearestEnemy()
+	if nearestEnemy != null and !autoBulletWaitTimer and playerHealth > 0:
 		autoBulletWaitTimer = true
 		
 		if is_instance_valid(nearestEnemy):

@@ -3,7 +3,10 @@ extends Node2D
 
 export var mainGameScene : PackedScene
 export var mainMenu : PackedScene
+onready var music = $music
 
+func _ready():
+	music.play()
 
 func _on_NewGameButton_pressed():
 	get_tree().change_scene(mainGameScene.resource_path)

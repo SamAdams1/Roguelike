@@ -4,7 +4,7 @@ var damageNumbers = preload("res://Scenes/Enemies/DamageNumbers.tscn")
 var explosion = preload("res://Scenes/Explosion.tscn")
 var xpGem = preload("res://Scenes/Objects/experienceGem.tscn")
 var coin = preload("res://Scenes/Objects/coin.tscn")
-var healthDropped = preload("res://Scenes/Objects/healthDropped.tscn")
+var healthDrop = preload("res://Scenes/Objects/healthDropped.tscn")
 
 onready var player = get_tree().current_scene.get_node('Player')
 onready var playerCollision = $PlayerCollision
@@ -61,27 +61,21 @@ func disableEnemyOnDead():
 
 func createLoot():
 	var spawnChance = round(rand_range(0, 10))
-#	print(spawnChance)
+	
 	if int(spawnChance) == 0 and player.playerHealth < player.healthBar.max_value / 2:
-		var healing = healthDropped.instance()
+		var healing = healthDrop.instance()
+		healing.healthDropped = healthDroppedValue
 		healing.global_position = global_position
 		lootBase.call_deferred("add_child", healing)
-#		print('hjilafhdlfhlsdahflsdhfldh')
-		return 
-	if spawnChance > 5:
 		
+	elif spawnChance > 5:
 		var newXPGem = xpGem.instance()
+		newXPGem.experience = experienceDroppedValue
 		newXPGem.global_position = global_position
 		lootBase.call_deferred("add_child", newXPGem)
-		return 
-	if int(spawnChance) % 2 == 0:
+		
+	elif int(spawnChance) % 2 == 0:
 		var newCoin = coin.instance()
+		newCoin.coinValue = coinDroppedValue
 		newCoin.global_position = global_position
 		lootBase.call_deferred("add_child", newCoin)
-		return 
-	
-
-
-
-
-
