@@ -1,6 +1,9 @@
 extends Node
 
 var node_creation_parent = null
+var trackingMissleTarget = null
+var closeEnemies = []
+var nearestEnemy = null
 
 var points = 0
 

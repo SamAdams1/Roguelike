@@ -1,6 +1,6 @@
 extends Area2D
 
-export var healthDropped = 10
+export var healthDropped = 5
 
 onready var player = get_tree().current_scene.get_node('Player')
 

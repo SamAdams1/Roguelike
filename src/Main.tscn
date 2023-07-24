@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Enemies/enemy_asteroid.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Utility/Background.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/arena.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/Enemies/enemy_asteroid_3.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Audio/Music/let-the-games-begin-21858.wav" type="AudioStream" id=8]
 [ext_resource path="res://Scenes/Enemies/enemy_asteroid_2.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Curve2D" id=2]
@@ -52,6 +53,10 @@ autostart = true
 autostart = true
 
 [node name="lootBase" type="Node2D" parent="." groups=["loot"]]
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -10.0
 
 [connection signal="timeout" from="enemy_spawn_timer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="difficulty_timer" to="." method="_on_difficulty_timer_timeout"]

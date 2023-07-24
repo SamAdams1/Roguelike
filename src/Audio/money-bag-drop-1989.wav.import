@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/money-bag-drop-1989.wav-0dfb20d4be807dc2619be9f03defea9b.sample"
+
+[deps]
+
+source_file="res://Audio/money-bag-drop-1989.wav"
+dest_files=[ "res://.import/money-bag-drop-1989.wav-0dfb20d4be807dc2619be9f03defea9b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

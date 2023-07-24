@@ -3,6 +3,8 @@ var explosion = preload("res://Scenes/Explosion.tscn")
 onready var sound = $bulletHitSound
 onready var sprite = $Sprite
 
+var target = null
+
 func _on_bullet_body_entered(body):
 	if body.is_in_group("enemy"):
 		sound.play()

@@ -7,6 +7,7 @@ var friction = 0.001
 var acceleration = 0.1
 onready var shipSprite = $ship
 onready var shipMovingSprite = $ship/shipMovingFlames
+onready var shipMovingSound = $ship/shipMovingFlames/shipMovingSound
 
 
 #Health
@@ -21,19 +22,29 @@ onready var hurtBox = $HurtBox/CollisionShape2D
 #Levels
 onready var expBar = get_node('%ExperienceBar')
 onready var labelLevel = get_node('%labelLevel')
+onready var levelUpSound = $GUILayer/GUI/ExperienceBar/levelUpSound
 var experience = 0 
 var experienceLevel = 1
 var collectedExperience = 0
 
 
-#shipShooting
+
+#Directional Ship Shooting
 onready var turretSprite = $turret
 onready var directionalShootSound = $ship/directionalShootSound
-var bullet = preload('res://Scenes/bullet.tscn')
+var directionalBullet = preload("res://Scenes/directionalBullets.tscn")
 var fireRate = 0.5
 var bulletSpeed = 1200
 var waitToFire = false
 var toggleFire = false
+#Auto Bullets
+onready var autoFireSound = $ship/autoFireSound
+var autoBullet = preload("res://Scenes/autoBullets.tscn")
+var autoBulletFireRate = .5
+var autoBulletWaitTimer = false
+var autoBulletSpeed = 1000
+var nearestDistance = 100_000
+var nearestEnemy = null
 
 #loot
 onready var moneyLabel = $GUILayer/GUI/moneyLabel
@@ -54,6 +65,9 @@ func _ready():
 func _physics_process(delta):
 	movement(delta)
 	shipLookDirectionMoving()
+	findNearestEnemy()
+	autoAim()
+	
 	while toggleFire and !waitToFire:
 		waitToFire = true
 		directionalShootSound.play()
@@ -106,15 +120,22 @@ func shipLookDirectionMoving():
 		
 	if !takingDamage:
 		shipMovingSprite.visible = isShipMoving()
+	
+	if !Input.is_action_pressed("right") and !Input.is_action_pressed("down") and !Input.is_action_pressed("left") and !Input.is_action_pressed("up"):
+		shipMovingSound.stop()
 
+	
 func _input(event):
 	if event.is_action_pressed("ui_select"):
 		toggleFire = !toggleFire
 
 func isShipMoving():
 	if Input.is_action_pressed("right") or Input.is_action_pressed("down") or Input.is_action_pressed("left") or Input.is_action_pressed("up"):
+#		shipMovingSound.play()
 		return true
+	
 	else:
+#		shipMovingSound.stop()
 		return false
 
 
@@ -175,6 +196,7 @@ func calculateExperience(gemEXP):
 		experience = 0
 		expRequired = calculateExperienceCap()
 		calculateExperience(0)
+		levelUpSound.play()
 	else:
 		experience += collectedExperience
 		collectedExperience = 0
@@ -197,26 +219,49 @@ func setExpBar(setValue = 1, setMaxValue = 100):
 	
 #ShipShooting
 func fire(spawnPoint): #creates bullet
-	var bullet_instance = bullet.instance()
+	var bullet_instance = directionalBullet.instance()
 	bullet_instance.position = spawnPoint.get_global_position()
 	bullet_instance.rotation_degrees = shipSprite.rotation_degrees
 	bullet_instance.apply_impulse(Vector2(), Vector2(bulletSpeed, 0).rotated(shipSprite.rotation))
 	get_tree().get_root().call_deferred("add_child", bullet_instance)
+
+
+
+
+func findNearestEnemy():
+	for enemy in Global.closeEnemies:
+		var distance = self.global_position.distance_to(enemy.global_position)
+		if distance < nearestDistance:
+			nearestDistance = distance
+			nearestEnemy = enemy
+			Global.nearestEnemy = enemy
+#			print(nearestDistance, '||', nearestEnemy)
+			
+
+
+func autoAim():
+	if nearestEnemy != null and !autoBulletWaitTimer:
+		autoBulletWaitTimer = true
+		
+		if is_instance_valid(nearestEnemy):
+			autoFireSound.play()
+			var bullet_instance = autoBullet.instance()
+			bullet_instance.global_position = global_position
+			var direction = (self.global_position - nearestEnemy.global_position).normalized() * -1
+			bullet_instance.apply_impulse(Vector2(), direction * autoBulletSpeed)
+			get_parent().add_child(bullet_instance)
+#			print(nearestEnemy.global_position, '|', self.global_position, '|', direction)
+		
+		yield(get_tree().create_timer(autoBulletFireRate), "timeout")
+		autoBulletWaitTimer = false
 	
-#	print($ship/shipBulletPoint1.rotation, shipSprite.rotation)
 
+func _on_autoAimArea_body_entered(body):
+	if body.is_in_group('enemy'):
+#		print(Global.closeEnemies)
+		Global.closeEnemies.append(body)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func _on_autoAimArea_body_exited(body):
+#	print(Global.closeEnemies)
+	nearestDistance = 100_000
+	Global.closeEnemies.erase(body)

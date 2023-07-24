@@ -1,10 +1,11 @@
 extends Node
 
 export(Array, PackedScene) var enemies
+onready var music = $music
 
 func _ready():
+	music.play()
 	randomize()
-	
 	Global.points = 0
 
 func _on_enemy_spawn_timer_timeout():

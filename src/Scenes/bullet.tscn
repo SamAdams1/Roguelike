@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/Player/bullet.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Utility/HitBox.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Sprites/Utility/bullet.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Player/attacks.png" type="Texture" id=3]
 [ext_resource path="res://Audio/hit.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -23,14 +23,7 @@ script = ExtResource( 1 )
 position = Vector2( 18.5, 1.90735e-06 )
 scale = Vector2( 1.65, 0.55 )
 
-[node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.968627, 0.0313726, 0.0313726, 1 )
-position = Vector2( 18.375, -3.96729e-06 )
-scale = Vector2( 0.3525, 0.12 )
-texture = ExtResource( 3 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 19.5, 0 )
 shape = SubResource( 3 )
 
@@ -46,6 +39,12 @@ shape = SubResource( 4 )
 [node name="bulletHitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -15.0
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.968627, 0.0313726, 0.0313726, 1 )
+position = Vector2( 18.375, -3.96729e-06 )
+scale = Vector2( 0.16375, 0.05 )
+texture = ExtResource( 3 )
 
 [connection signal="body_entered" from="." to="." method="_on_bullet_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

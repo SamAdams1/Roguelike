@@ -20,8 +20,9 @@ var velocity = Vector2.ZERO
 #enemy stats you can change in inspector
 export var movementSpeed = 100.0
 export var health = 2
-export var experience = 1
-export var coinValue = 1
+export var experienceDroppedValue = 1
+export var coinDroppedValue = 1
+export var healthDroppedValue = 5
 
 
 func basic_movement_towards_player(_delta):
@@ -40,7 +41,6 @@ func _on_HurtBox_hurt(damage):
 			notDead = false
 			disableEnemyOnDead()
 			sound.play()
-			
 			Global.points += 1
 			#explosion animation
 			var explosion_instance = explosion.instance()
@@ -61,14 +61,15 @@ func disableEnemyOnDead():
 
 func createLoot():
 	var spawnChance = round(rand_range(0, 10))
-	print(spawnChance)
+#	print(spawnChance)
 	if int(spawnChance) == 0 and player.playerHealth < player.healthBar.max_value / 2:
 		var healing = healthDropped.instance()
 		healing.global_position = global_position
 		lootBase.call_deferred("add_child", healing)
-		print('hjilafhdlfhlsdahflsdhfldh')
+#		print('hjilafhdlfhlsdahflsdhfldh')
 		return 
 	if spawnChance > 5:
+		
 		var newXPGem = xpGem.instance()
 		newXPGem.global_position = global_position
 		lootBase.call_deferred("add_child", newXPGem)

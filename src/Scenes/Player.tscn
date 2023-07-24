@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Player/turret.gd" type="Script" id=2]
@@ -19,6 +19,9 @@
 [ext_resource path="res://Sprites/skull.png" type="Texture" id=17]
 [ext_resource path="res://Audio/deathSound.mp3" type="AudioStream" id=18]
 [ext_resource path="res://Scripts/Player/timerLabel.gd" type="Script" id=19]
+[ext_resource path="res://Audio/level up.wav" type="AudioStream" id=20]
+[ext_resource path="res://Audio/ship engine.wav" type="AudioStream" id=21]
+[ext_resource path="res://Audio/autoFireSound.wav" type="AudioStream" id=22]
 
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 25.6321, 29.6559 )
@@ -46,6 +49,9 @@ font_data = ExtResource( 9 )
 [sub_resource type="DynamicFont" id=32]
 size = 24
 font_data = ExtResource( 9 )
+
+[sub_resource type="RectangleShape2D" id=33]
+extents = Vector2( 342.069, 229.468 )
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 scale = Vector2( 1.35645, 1.52091 )
@@ -86,6 +92,10 @@ position = Vector2( 0, -3.44147 )
 texture = ExtResource( 13 )
 offset = Vector2( -50, -180 )
 
+[node name="shipMovingSound" type="AudioStreamPlayer" parent="ship/shipMovingFlames"]
+stream = ExtResource( 21 )
+volume_db = -20.0
+
 [node name="shipBulletPoint1" type="Node2D" parent="ship"]
 position = Vector2( 3.51163, -168.632 )
 scale = Vector2( 4.76336, 5.23418 )
@@ -98,11 +108,13 @@ scale = Vector2( 4.76336, 5.23418 )
 position = Vector2( 228.256, 9.98341e-06 )
 scale = Vector2( 4.76336, 5.23418 )
 
-[node name="lockOnMisslePoint" type="Position2D" parent="ship"]
-
 [node name="directionalShootSound" type="AudioStreamPlayer" parent="ship"]
 stream = ExtResource( 14 )
-volume_db = -15.0
+volume_db = -20.0
+
+[node name="autoFireSound" type="AudioStreamPlayer" parent="ship"]
+stream = ExtResource( 22 )
+volume_db = -10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -140,6 +152,7 @@ collision_mask = 8
 shape = SubResource( 27 )
 
 [node name="GUILayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="GUI" type="Control" parent="GUILayer"]
 margin_left = 4.0
@@ -186,6 +199,10 @@ value = 75.0
 texture_under = ExtResource( 11 )
 texture_over = ExtResource( 7 )
 texture_progress = ExtResource( 12 )
+
+[node name="levelUpSound" type="AudioStreamPlayer" parent="GUILayer/GUI/ExperienceBar"]
+stream = ExtResource( 20 )
+volume_db = -25.0
 
 [node name="labelLevel" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
@@ -238,9 +255,18 @@ script = ExtResource( 19 )
 stream = ExtResource( 18 )
 volume_db = -10.0
 
+[node name="autoAimArea" type="Area2D" parent="."]
+collision_layer = 6
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="autoAimArea"]
+shape = SubResource( 33 )
+
 [connection signal="hurt" from="HurtBox" to="." method="_on_HurtBox_hurt"]
 [connection signal="area_entered" from="GrabArea" to="." method="_on_GrabArea_area_entered"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_CollectArea_area_entered"]
 [connection signal="finished" from="deathSound" to="." method="_on_deathSound_finished"]
+[connection signal="body_entered" from="autoAimArea" to="." method="_on_autoAimArea_body_entered"]
+[connection signal="body_exited" from="autoAimArea" to="." method="_on_autoAimArea_body_exited"]
 
 [editable path="HurtBox"]
