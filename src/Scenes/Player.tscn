@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Player/turret.gd" type="Script" id=2]
@@ -20,8 +20,12 @@
 [ext_resource path="res://Audio/deathSound.mp3" type="AudioStream" id=18]
 [ext_resource path="res://Scripts/Player/timerLabel.gd" type="Script" id=19]
 [ext_resource path="res://Audio/level up.wav" type="AudioStream" id=20]
-[ext_resource path="res://Audio/ship engine.wav" type="AudioStream" id=21]
+[ext_resource path="res://Audio/pagani-huayra.wav" type="AudioStream" id=21]
 [ext_resource path="res://Audio/autoFireSound.wav" type="AudioStream" id=22]
+[ext_resource path="res://Sprites/Player/shipBoostFlames.png" type="Texture" id=23]
+[ext_resource path="res://Audio/batmobile no engine.mp3" type="AudioStream" id=24]
+[ext_resource path="res://Sprites/Utility/blackBar.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/Utility/pixil-frame-0 (40).png" type="Texture" id=26]
 
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 25.6321, 29.6559 )
@@ -50,6 +54,10 @@ font_data = ExtResource( 9 )
 size = 24
 font_data = ExtResource( 9 )
 
+[sub_resource type="DynamicFont" id=34]
+size = 10
+font_data = ExtResource( 9 )
+
 [sub_resource type="RectangleShape2D" id=33]
 extents = Vector2( 342.069, 229.468 )
 
@@ -74,7 +82,8 @@ __meta__ = {
 position = Vector2( 154.384, -2.26209 )
 
 [node name="turretShootSound" type="AudioStreamPlayer2D" parent="turret"]
-position = Vector2( 154.384, 1.52588e-05 )
+position = Vector2( 154.384, 1.52589e-05 )
+scale = Vector2( 1, 1 )
 stream = ExtResource( 6 )
 volume_db = -15.0
 
@@ -88,36 +97,26 @@ __meta__ = {
 }
 
 [node name="shipMovingFlames" type="Sprite" parent="ship"]
-position = Vector2( 38.628, -3.11981e-07 )
+position = Vector2( 42.1396, -6.88295 )
 texture = ExtResource( 13 )
-offset = Vector2( -50, -182.5 )
+offset = Vector2( -51.5, -180.5 )
 
-[node name="shipMovingSound" type="AudioStreamPlayer" parent="ship/shipMovingFlames"]
-stream = ExtResource( 21 )
-volume_db = -20.0
+[node name="shipBoostFlames" type="Sprite" parent="ship"]
+position = Vector2( -129.93, -6.88296 )
+texture = ExtResource( 23 )
+offset = Vector2( 0.5, 3 )
 
 [node name="bulletSpawnPoints" type="Node2D" parent="ship"]
 position = Vector2( -52.6745, -172.074 )
 scale = Vector2( 4.76336, 5.23418 )
 
 [node name="shipBulletPoint1" type="Node2D" parent="ship/bulletSpawnPoints"]
-scale = Vector2( 1, 1 )
 
 [node name="shipBulletPoint2" type="Node2D" parent="ship/bulletSpawnPoints"]
 position = Vector2( 0, 65.0925 )
-scale = Vector2( 1, 1 )
 
 [node name="shipBulletPoint3" type="Node2D" parent="ship/bulletSpawnPoints"]
 position = Vector2( 47.1819, 32.2175 )
-scale = Vector2( 1, 1 )
-
-[node name="directionalShootSound" type="AudioStreamPlayer" parent="ship"]
-stream = ExtResource( 14 )
-volume_db = -20.0
-
-[node name="autoFireSound" type="AudioStreamPlayer" parent="ship"]
-stream = ExtResource( 22 )
-volume_db = -10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -155,7 +154,6 @@ collision_mask = 8
 shape = SubResource( 27 )
 
 [node name="GUILayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="GUI" type="Control" parent="GUILayer"]
 margin_left = 4.0
@@ -202,10 +200,6 @@ value = 75.0
 texture_under = ExtResource( 11 )
 texture_over = ExtResource( 7 )
 texture_progress = ExtResource( 12 )
-
-[node name="levelUpSound" type="AudioStreamPlayer" parent="GUILayer/GUI/ExperienceBar"]
-stream = ExtResource( 20 )
-volume_db = -25.0
 
 [node name="labelLevel" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
@@ -254,9 +248,13 @@ custom_fonts/font = SubResource( 32 )
 text = "30"
 script = ExtResource( 19 )
 
-[node name="deathSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 18 )
-volume_db = -10.0
+[node name="controls" type="Label" parent="GUILayer/GUI"]
+margin_left = -3.0
+margin_top = 579.0
+margin_right = 189.0
+margin_bottom = 595.0
+custom_fonts/font = SubResource( 34 )
+text = "Space = Boost | F = shipfire | leftmouse = turret attack | shift + wasd/alt = ship look around"
 
 [node name="autoAimArea" type="Area2D" parent="."]
 visible = false
@@ -266,11 +264,53 @@ collision_mask = 6
 [node name="CollisionShape2D" type="CollisionShape2D" parent="autoAimArea"]
 shape = SubResource( 33 )
 
+[node name="sounds" type="Node2D" parent="."]
+position = Vector2( 0, -2.35894e-07 )
+rotation = -3.14159
+scale = Vector2( 0.37071, 0.3176 )
+
+[node name="deathSound" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 18 )
+volume_db = -10.0
+
+[node name="shipMovingSound" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 21 )
+volume_db = -10.0
+pitch_scale = 0.7
+
+[node name="directionalShootSound" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 14 )
+volume_db = -20.0
+
+[node name="autoFireSound" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 22 )
+volume_db = -10.0
+
+[node name="levelUpSound" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 20 )
+volume_db = -25.0
+
+[node name="boostSound" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource( 24 )
+volume_db = -10.0
+
+[node name="boostBar" type="TextureProgress" parent="."]
+modulate = Color( 1, 1, 1, 0.807843 )
+margin_left = -81.094
+margin_top = 64.4351
+margin_right = 618.906
+margin_bottom = 92.4351
+rect_scale = Vector2( 0.231427, 0.572325 )
+value = 50.0
+texture_under = ExtResource( 25 )
+texture_progress = ExtResource( 26 )
+tint_progress = Color( 0.0313726, 0.772549, 1, 1 )
+
 [connection signal="hurt" from="HurtBox" to="." method="_on_HurtBox_hurt"]
 [connection signal="area_entered" from="GrabArea" to="." method="_on_GrabArea_area_entered"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_CollectArea_area_entered"]
-[connection signal="finished" from="deathSound" to="." method="_on_deathSound_finished"]
 [connection signal="body_entered" from="autoAimArea" to="." method="_on_autoAimArea_body_entered"]
 [connection signal="body_exited" from="autoAimArea" to="." method="_on_autoAimArea_body_exited"]
+[connection signal="finished" from="sounds/deathSound" to="." method="_on_deathSound_finished"]
 
 [editable path="HurtBox"]

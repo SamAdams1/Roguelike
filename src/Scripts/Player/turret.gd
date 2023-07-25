@@ -3,7 +3,7 @@ extends Sprite
 var bullet = preload('res://Scenes/bullet.tscn')
 onready var sound = $turretShootSound
 var waitToFire = false
-var toggleFire = false
+var toggleFire = true
 var fireRate = 0.3
 var bulletSpeed = 800
 

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/batmobile with engine.mp3-843b19ad7916a455aea90adfa3c5ef38.mp3str"
+
+[deps]
+
+source_file="res://Audio/batmobile with engine.mp3"
+dest_files=[ "res://.import/batmobile with engine.mp3-843b19ad7916a455aea90adfa3c5ef38.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
