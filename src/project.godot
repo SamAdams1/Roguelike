@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="TechWise Project"
-run/main_scene="res://Scenes/Utility/MainMenu.tscn"
+run/main_scene="res://Scenes/Menus/MainMenu.tscn"
 config/icon="res://Sprites/Player/newShip.png"
 <<<<<<<Updatedupstreamrun/main_scene="res://Scenes/Main.tscn"
 Updatedupstreamrun/main_scene="res://Scenes/MainMenu.tscn"
@@ -19,6 +19,8 @@ Updatedupstreamrun/main_scene="res://Scenes/MainMenu.tscn"
 [autoload]
 
 Global="*res://Scripts/global.gd"
+Save="*res://Scripts/save.gd"
+GlobalSettings="*res://global_settings.gd"
 
 [debug]
 

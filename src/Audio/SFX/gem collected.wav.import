@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/short-explosion.wav-ad028d1dcd127102c58bcbfbfd380931.sample"
+path="res://.import/gem collected.wav-bfba48ba92a1a00dc65a34731091c3d2.sample"
 
 [deps]
 
-source_file="res://Audio/short-explosion.wav"
-dest_files=[ "res://.import/short-explosion.wav-ad028d1dcd127102c58bcbfbfd380931.sample" ]
+source_file="res://Audio/SFX/gem collected.wav"
+dest_files=[ "res://.import/gem collected.wav-bfba48ba92a1a00dc65a34731091c3d2.sample" ]
 
 [params]
 

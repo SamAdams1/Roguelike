@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/level up.wav-b0256fe2ff2a54a8d4a2b06596fb5ea5.sample"
+path="res://.import/money-bag-drop-1989.wav-5b3318c3a5fd6dab5eb4ec283e1946b8.sample"
 
 [deps]
 
-source_file="res://Audio/level up.wav"
-dest_files=[ "res://.import/level up.wav-b0256fe2ff2a54a8d4a2b06596fb5ea5.sample" ]
+source_file="res://Audio/SFX/money-bag-drop-1989.wav"
+dest_files=[ "res://.import/money-bag-drop-1989.wav-5b3318c3a5fd6dab5eb4ec283e1946b8.sample" ]
 
 [params]
 

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/ship engine.wav-11e119ec7803e9db10c156b950a7ad3e.sample"
+path="res://.import/ArcadeExplosion.wav-be0661d35bc3090197c2f61e1cc92df8.sample"
 
 [deps]
 
-source_file="res://Audio/ship engine.wav"
-dest_files=[ "res://.import/ship engine.wav-11e119ec7803e9db10c156b950a7ad3e.sample" ]
+source_file="res://Audio/SFX/ArcadeExplosion.wav"
+dest_files=[ "res://.import/ArcadeExplosion.wav-be0661d35bc3090197c2f61e1cc92df8.sample" ]
 
 [params]
 

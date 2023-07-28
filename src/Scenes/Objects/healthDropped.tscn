@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Sprites/wrench.png" type="Texture" id=1]
-[ext_resource path="res://Audio/achievement-completed-2068.wav" type="AudioStream" id=2]
+[ext_resource path="res://Audio/SFX/achievement-completed-2068.wav" type="AudioStream" id=2]
 [ext_resource path="res://Scripts/Loot/health.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -22,5 +22,6 @@ shape = SubResource( 1 )
 [node name="collectedSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 volume_db = -15.0
+bus = "SFX"
 
 [connection signal="finished" from="collectedSound" to="." method="_on_collectedSound_finished"]

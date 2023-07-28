@@ -58,6 +58,7 @@ autostart = true
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -10.0
+bus = "Music"
 
 [connection signal="timeout" from="enemy_spawn_timer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="difficulty_timer" to="." method="_on_difficulty_timer_timeout"]

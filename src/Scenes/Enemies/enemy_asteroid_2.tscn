@@ -9,5 +9,8 @@ health = 3
 [node name="Sprite" parent="." index="0"]
 self_modulate = Color( 0.929412, 0.0235294, 0.0235294, 1 )
 
+[node name="DeathExplosionSound" parent="." index="5"]
+bus = "SFX"
+
 [editable path="HurtBox"]
 [editable path="HitBox"]

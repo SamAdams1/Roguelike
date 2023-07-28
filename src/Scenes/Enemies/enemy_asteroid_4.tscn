@@ -35,6 +35,9 @@ visible = false
 [node name="CollisionShape2D" parent="BulletCollision" index="0"]
 visible = false
 
+[node name="DeathExplosionSound" parent="." index="5"]
+bus = "SFX"
+
 [node name="AvoidBox" type="Area2D" parent="." index="6"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AvoidBox" index="0"]

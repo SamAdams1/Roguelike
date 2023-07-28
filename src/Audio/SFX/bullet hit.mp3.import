@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/bullet hit.mp3-6eb06b749e97e521a8a2c74443f6eceb.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/bullet hit.mp3"
+dest_files=[ "res://.import/bullet hit.mp3-6eb06b749e97e521a8a2c74443f6eceb.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

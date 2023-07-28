@@ -3,8 +3,9 @@
 [ext_resource path="res://Fonts/ArcadeFont.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/Utility/GameOverScreen.gd" type="Script" id=2]
 [ext_resource path="res://Main.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Utility/MainMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Menus/MainMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Audio/Music/broken-Defekt_Maschine.wav" type="AudioStream" id=5]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 72

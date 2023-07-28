@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/enemy death.wav-dc926c106fb7e16b10919d7725e818ac.sample"
+path="res://.import/quick-jump-arcade.wav-3cc8100e5c9ec9ed28ac3a2d6b3e8c97.sample"
 
 [deps]
 
-source_file="res://Audio/enemy death.wav"
-dest_files=[ "res://.import/enemy death.wav-dc926c106fb7e16b10919d7725e818ac.sample" ]
+source_file="res://Audio/SFX/quick-jump-arcade.wav"
+dest_files=[ "res://.import/quick-jump-arcade.wav-3cc8100e5c9ec9ed28ac3a2d6b3e8c97.sample" ]
 
 [params]
 

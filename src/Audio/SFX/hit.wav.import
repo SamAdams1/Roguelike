@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/money-bag-drop-1989.wav-0dfb20d4be807dc2619be9f03defea9b.sample"
+path="res://.import/hit.wav-eb34f057423c537bc14019a092fa7f8f.sample"
 
 [deps]
 
-source_file="res://Audio/money-bag-drop-1989.wav"
-dest_files=[ "res://.import/money-bag-drop-1989.wav-0dfb20d4be807dc2619be9f03defea9b.sample" ]
+source_file="res://Audio/SFX/hit.wav"
+dest_files=[ "res://.import/hit.wav-eb34f057423c537bc14019a092fa7f8f.sample" ]
 
 [params]
 

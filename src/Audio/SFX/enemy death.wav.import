@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/short-laser-gun-shot-1670.wav-d5cfec91f82530695a587a44cf5cfb88.sample"
+path="res://.import/enemy death.wav-490397e03e445ba274030c92a9d3863d.sample"
 
 [deps]
 
-source_file="res://Audio/short-laser-gun-shot-1670.wav"
-dest_files=[ "res://.import/short-laser-gun-shot-1670.wav-d5cfec91f82530695a587a44cf5cfb88.sample" ]
+source_file="res://Audio/SFX/enemy death.wav"
+dest_files=[ "res://.import/enemy death.wav-490397e03e445ba274030c92a9d3863d.sample" ]
 
 [params]
 

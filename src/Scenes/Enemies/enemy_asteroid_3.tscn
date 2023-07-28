@@ -12,5 +12,8 @@ coinDroppedValue = 5
 modulate = Color( 0.168627, 0.831373, 0.0941176, 1 )
 scale = Vector2( 0.0583766, 0.0725934 )
 
+[node name="DeathExplosionSound" parent="." index="5"]
+bus = "SFX"
+
 [editable path="HurtBox"]
 [editable path="HitBox"]

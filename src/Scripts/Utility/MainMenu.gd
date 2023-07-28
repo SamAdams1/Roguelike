@@ -9,3 +9,7 @@ func _ready():
 
 func _on_NewGameButton_pressed():
 	get_tree().change_scene(mainGameScene.resource_path)
+
+
+func _on_OptionsButton_pressed():
+	#Popup()

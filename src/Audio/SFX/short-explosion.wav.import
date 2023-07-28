@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/quick-jump-arcade.wav-89008b1bf148eecfa13bf0825d592c12.sample"
+path="res://.import/short-explosion.wav-07912934b34aaa1d01ee2d717e9f1c7e.sample"
 
 [deps]
 
-source_file="res://Audio/quick-jump-arcade.wav"
-dest_files=[ "res://.import/quick-jump-arcade.wav-89008b1bf148eecfa13bf0825d592c12.sample" ]
+source_file="res://Audio/SFX/short-explosion.wav"
+dest_files=[ "res://.import/short-explosion.wav-07912934b34aaa1d01ee2d717e9f1c7e.sample" ]
 
 [params]
 

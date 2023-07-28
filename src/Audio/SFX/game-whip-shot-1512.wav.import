@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/game-whip-shot-1512.wav-ee07fc324400f61dbb16219035044353.sample"
+path="res://.import/game-whip-shot-1512.wav-67646cc4530529b43874e9d4c75ce3f0.sample"
 
 [deps]
 
-source_file="res://Audio/game-whip-shot-1512.wav"
-dest_files=[ "res://.import/game-whip-shot-1512.wav-ee07fc324400f61dbb16219035044353.sample" ]
+source_file="res://Audio/SFX/game-whip-shot-1512.wav"
+dest_files=[ "res://.import/game-whip-shot-1512.wav-67646cc4530529b43874e9d4c75ce3f0.sample" ]
 
 [params]
 

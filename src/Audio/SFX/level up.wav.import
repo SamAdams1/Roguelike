@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/autoFireSound.wav-ff1bb6942df6817ca0cc03630bec9a3c.sample"
+path="res://.import/level up.wav-5f140dc18533016d1b3db18e75213d68.sample"
 
 [deps]
 
-source_file="res://Audio/autoFireSound.wav"
-dest_files=[ "res://.import/autoFireSound.wav-ff1bb6942df6817ca0cc03630bec9a3c.sample" ]
+source_file="res://Audio/SFX/level up.wav"
+dest_files=[ "res://.import/level up.wav-5f140dc18533016d1b3db18e75213d68.sample" ]
 
 [params]
 

@@ -4,7 +4,7 @@
 [ext_resource path="res://Scripts/EnemyScripts/enemy_asteroid.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Utility/HurtBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Utility/HitBox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Audio/ArcadeExplosion.wav" type="AudioStream" id=5]
+[ext_resource path="res://Audio/SFX/ArcadeExplosion.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 32, 48 )
@@ -24,8 +24,6 @@ collision_mask = 2
 script = ExtResource( 2 )
 movementSpeed = 300.0
 health = 1
-experience = null
-coinValue = null
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -7.62939e-06 )
@@ -63,6 +61,7 @@ shape = SubResource( 5 )
 [node name="DeathExplosionSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = -15.0
+bus = "SFX"
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_HurtBox_hurt"]
 [connection signal="finished" from="DeathExplosionSound" to="." method="_on_AudioStreamPlayer_finished"]

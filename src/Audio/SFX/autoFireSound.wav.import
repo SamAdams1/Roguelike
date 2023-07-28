@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/ArcadeExplosion.wav-edb1ff07ad4f04bb74d3dc9f2510b720.sample"
+path="res://.import/autoFireSound.wav-865e3614643f54b829cbfc5bf30cd85a.sample"
 
 [deps]
 
-source_file="res://Audio/ArcadeExplosion.wav"
-dest_files=[ "res://.import/ArcadeExplosion.wav-edb1ff07ad4f04bb74d3dc9f2510b720.sample" ]
+source_file="res://Audio/SFX/autoFireSound.wav"
+dest_files=[ "res://.import/autoFireSound.wav-865e3614643f54b829cbfc5bf30cd85a.sample" ]
 
 [params]
 
