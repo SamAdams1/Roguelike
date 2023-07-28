@@ -83,7 +83,6 @@ position = Vector2( 154.384, -2.26209 )
 
 [node name="turretShootSound" type="AudioStreamPlayer2D" parent="turret"]
 position = Vector2( 154.384, 1.52589e-05 )
-scale = Vector2( 1, 1 )
 stream = ExtResource( 6 )
 volume_db = -15.0
 
@@ -117,17 +116,10 @@ position = Vector2( 0, 65.0925 )
 
 [node name="shipBulletPoint3" type="Node2D" parent="ship/bulletSpawnPoints"]
 position = Vector2( 47.1819, 32.2175 )
-HEAD
-
-
-[node name="directionalShootSound" type="AudioStreamPlayer" parent="ship"]
-stream = ExtResource( 14 )
-volume_db = -20.0
 
 [node name="autoFireSound" type="AudioStreamPlayer" parent="ship"]
 stream = ExtResource( 22 )
 volume_db = -10.0
-
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

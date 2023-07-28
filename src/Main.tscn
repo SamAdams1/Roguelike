@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Enemies/enemy_asteroid.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Audio/Music/let-the-games-begin-21858.wav" type="AudioStream" id=8]
 [ext_resource path="res://Scenes/Enemies/enemy_asteroid_2.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Enemies/enemy_asteroid_4.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Enemies/enemy_shooter.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Curve2D" id=2]
 _data = {
@@ -18,7 +19,7 @@ _data = {
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 6 )
-enemies = [ ExtResource( 2 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 10 ) ]
+enemies = [ ExtResource( 2 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 11 ) ]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1152, 761 )

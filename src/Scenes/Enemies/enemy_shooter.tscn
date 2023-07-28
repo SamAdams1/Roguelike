@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Enemies/enemy_asteroid.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/Enemies/enemy-spacecraft.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Enemies/enemy_shooter.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 519.91
+
+[node name="enemy_shooter" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+health = 50
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 2 )
+
+[node name="PlayerCollision" parent="." index="1"]
+visible = false
+
+[node name="HurtBox" parent="." index="2"]
+visible = false
+
+[node name="HitBox" parent="." index="3"]
+visible = false
+
+[node name="BulletCollision" parent="." index="4"]
+visible = false
+
+[node name="AvoidBox" type="Area2D" parent="." index="6"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AvoidBox" index="0"]
+position = Vector2( -3, 8 )
+shape = SubResource( 1 )
+
+[connection signal="area_entered" from="AvoidBox" to="." method="_on_AvoidBox_area_entered"]
+[connection signal="area_exited" from="AvoidBox" to="." method="_on_AvoidBox_area_exited"]
+
+[editable path="HurtBox"]
+[editable path="HitBox"]
