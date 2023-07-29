@@ -1,8 +1,12 @@
 extends "res://Scripts/EnemyScripts/enemy_core.gd"
 
 var is_in_void = false
+var enemyHealth = 15
+
 
 func _process(delta):
+	look_at(player.position)
+	
 	if is_in_void == false:
 		basic_movement_towards_player(delta)
 		print(is_in_void)

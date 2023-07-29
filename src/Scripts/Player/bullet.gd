@@ -1,4 +1,5 @@
 extends RigidBody2D
+
 var explosion = preload("res://Scenes/Explosion.tscn")
 onready var sound = $bulletHitSound
 onready var sprite = $Sprite

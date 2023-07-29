@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scenes/Main.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://Fonts/ArcadeFont.ttf" type="DynamicFontData" id=3]
 
@@ -27,7 +26,6 @@ corner_radius_bottom_left = 5
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource( 2 )
-mainGameScene = ExtResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1024.0
