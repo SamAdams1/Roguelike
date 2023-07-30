@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pixil-frame-0 (40).png-02149e02e0d1c30e97ad0b9360361f2b.stex"
+path="res://.import/barrel3.png-4381e2a42a6cacb66d36b255c83d8811.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Utility/pixil-frame-0 (40).png"
-dest_files=[ "res://.import/pixil-frame-0 (40).png-02149e02e0d1c30e97ad0b9360361f2b.stex" ]
+source_file="res://Sprites/Upgrades/barrel3.png"
+dest_files=[ "res://.import/barrel3.png-4381e2a42a6cacb66d36b255c83d8811.stex" ]
 
 [params]
 

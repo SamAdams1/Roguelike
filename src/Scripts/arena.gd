@@ -4,7 +4,7 @@ export(Array, PackedScene) var enemies
 onready var music = $music
 
 func _ready():
-	music.play()
+#	music.play()
 	randomize()
 	Global.points = 0
 

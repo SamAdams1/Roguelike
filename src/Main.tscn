@@ -10,7 +10,11 @@
 [ext_resource path="res://Audio/Music/let-the-games-begin-21858.wav" type="AudioStream" id=8]
 [ext_resource path="res://Scenes/Enemies/enemy_asteroid_2.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Enemies/enemy_asteroid_4.tscn" type="PackedScene" id=10]
+
 [ext_resource path="res://Scenes/Enemies/enemy_shooter.tscn" type="PackedScene" id=11]
+
+[ext_resource path="res://Scenes/Objects/experienceGem.tscn" type="PackedScene" id=11]
+
 
 [sub_resource type="Curve2D" id=2]
 _data = {
@@ -59,6 +63,9 @@ autostart = true
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -10.0
+
+[node name="experienceGem" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1146, 760 )
 
 [connection signal="timeout" from="enemy_spawn_timer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="difficulty_timer" to="." method="_on_difficulty_timer_timeout"]

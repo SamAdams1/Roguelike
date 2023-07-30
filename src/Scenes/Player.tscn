@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Player/turret.gd" type="Script" id=2]
@@ -25,7 +25,8 @@
 [ext_resource path="res://Sprites/Player/shipBoostFlames.png" type="Texture" id=23]
 [ext_resource path="res://Audio/batmobile no engine.mp3" type="AudioStream" id=24]
 [ext_resource path="res://Sprites/Utility/blackBar.png" type="Texture" id=25]
-[ext_resource path="res://Sprites/Utility/pixil-frame-0 (40).png" type="Texture" id=26]
+[ext_resource path="res://Sprites/Utility/white bar.png" type="Texture" id=26]
+[ext_resource path="res://Scenes/Utility/SkillTree.tscn" type="PackedScene" id=27]
 
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 25.6321, 29.6559 )
@@ -62,6 +63,7 @@ font_data = ExtResource( 9 )
 extents = Vector2( 342.069, 229.468 )
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
+pause_mode = 1
 scale = Vector2( 1.35645, 1.52091 )
 collision_layer = 3
 collision_mask = 0
@@ -228,7 +230,7 @@ position = Vector2( -22, 13 )
 scale = Vector2( 0.0653061, 0.0453752 )
 texture = ExtResource( 15 )
 
-[node name="Score" type="Label" parent="GUILayer/GUI"]
+[node name="enemyKills" type="Label" parent="GUILayer/GUI"]
 margin_left = 37.0
 margin_top = 35.0
 margin_right = 77.0
@@ -237,7 +239,7 @@ custom_fonts/font = SubResource( 31 )
 text = "0"
 script = ExtResource( 16 )
 
-[node name="skull" type="Sprite" parent="GUILayer/GUI/Score"]
+[node name="skull" type="Sprite" parent="GUILayer/GUI/enemyKills"]
 position = Vector2( -22, 12 )
 scale = Vector2( 0.0664062, 0.0625 )
 texture = ExtResource( 17 )
@@ -245,19 +247,27 @@ texture = ExtResource( 17 )
 [node name="timerLabel" type="Label" parent="GUILayer/GUI"]
 margin_left = 439.0
 margin_top = 36.0
-margin_right = 503.0
-margin_bottom = 68.0
+margin_right = 559.0
+margin_bottom = 86.0
 custom_fonts/font = SubResource( 32 )
-text = "30"
+text = "15:00"
+align = 1
 script = ExtResource( 19 )
 
-[node name="controls" type="Label" parent="GUILayer/GUI"]
+[node name="controlsLabel" type="Label" parent="GUILayer/GUI"]
 margin_left = -3.0
 margin_top = 579.0
 margin_right = 189.0
 margin_bottom = 595.0
 custom_fonts/font = SubResource( 34 )
-text = "Space = Boost | F = shipfire | leftmouse = turret attack | shift + wasd/alt = ship look around"
+text = "Space = Boost | F = shipfire | rightmouse = turret attack | shift + wasd/alt = ship look around"
+
+[node name="SkillTree" parent="GUILayer/GUI" instance=ExtResource( 27 )]
+visible = false
+margin_left = -4.0
+margin_top = -2.0
+margin_right = -4.0
+margin_bottom = -2.0
 
 [node name="autoAimArea" type="Area2D" parent="."]
 visible = false
@@ -295,7 +305,7 @@ volume_db = -25.0
 
 [node name="boostSound" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 24 )
-volume_db = -10.0
+volume_db = -15.0
 
 [node name="boostBar" type="TextureProgress" parent="."]
 modulate = Color( 1, 1, 1, 0.807843 )
@@ -315,5 +325,6 @@ tint_progress = Color( 0.0313726, 0.772549, 1, 1 )
 [connection signal="body_entered" from="autoAimArea" to="." method="_on_autoAimArea_body_entered"]
 [connection signal="body_exited" from="autoAimArea" to="." method="_on_autoAimArea_body_exited"]
 [connection signal="finished" from="sounds/deathSound" to="." method="_on_deathSound_finished"]
+[connection signal="finished" from="sounds/levelUpSound" to="." method="_on_levelUpSound_finished"]
 
 [editable path="HurtBox"]

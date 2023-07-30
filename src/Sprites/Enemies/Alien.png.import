@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shipBoostFlames2.png-bb27abc6136b7bd4d71de60c11399e6a.stex"
+path="res://.import/Alien.png-77d5b775e33552a11f3d270bfa5f4aae.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player/shipBoostFlames2.png"
-dest_files=[ "res://.import/shipBoostFlames2.png-bb27abc6136b7bd4d71de60c11399e6a.stex" ]
+source_file="res://Sprites/Enemies/Alien.png"
+dest_files=[ "res://.import/Alien.png-77d5b775e33552a11f3d270bfa5f4aae.stex" ]
 
 [params]
 

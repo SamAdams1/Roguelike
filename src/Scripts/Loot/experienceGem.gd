@@ -1,6 +1,8 @@
 extends Area2D
 
 export var experience = 1
+export var speed = -5
+export var speedMultiplier = 10
 
 var spriteRed = preload("res://Sprites/Loot/red gem2.png")
 var spriteOrange = preload("res://Sprites/Loot/orange gem.png")
@@ -8,7 +10,7 @@ var spriteGreen = preload("res://Sprites/Loot/green gem.png")
 onready var player = get_tree().current_scene.get_node('Player')
 
 var target = null
-var speed = -5
+
 
 onready var sprite = $Sprite
 onready var collision = $CollisionShape2D
@@ -24,7 +26,7 @@ func _ready(): #sets color of xp gem
 
 func _physics_process(delta):
 	global_position = global_position.move_toward(player.global_position, speed)
-	speed += 10 * delta
+	speed += speedMultiplier * delta
 
 func collect():
 	sound.play()

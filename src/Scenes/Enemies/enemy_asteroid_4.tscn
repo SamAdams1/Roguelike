@@ -8,7 +8,8 @@ radius = 515.009
 
 [node name="enemy_asteroid_4" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-health = 500
+health = 3
+healthDroppedValue = 3
 
 [node name="Sprite" parent="." index="0"]
 modulate = Color( 0, 0.858824, 1, 1 )
@@ -39,6 +40,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AvoidBox" index="0"]
+position = Vector2( 2, -1 )
 shape = SubResource( 1 )
 
 [connection signal="area_entered" from="AvoidBox" to="." method="_on_AvoidBox_area_entered"]
