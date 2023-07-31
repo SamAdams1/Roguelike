@@ -263,8 +263,6 @@ func fire(spawnPoint): #creates bullet
 	get_tree().get_root().call_deferred("add_child", bullet_instance)
 
 
-
-
 func findNearestEnemy():
 	for enemy in Global.closeEnemies:
 		var distance = self.global_position.distance_to(enemy.global_position)

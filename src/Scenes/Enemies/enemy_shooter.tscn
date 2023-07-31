@@ -9,7 +9,8 @@ radius = 519.91
 
 [node name="enemy_shooter" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-health = 50
+health = 30
+fireRate = 3.0
 
 [node name="Sprite" parent="." index="0"]
 rotation = 1.5708
@@ -42,6 +43,17 @@ collision_mask = 2
 position = Vector2( -3, 8 )
 rotation = 1.5708
 shape = SubResource( 1 )
+
+[node name="FiringPositions" type="Node2D" parent="." index="7"]
+
+[node name="LeftGun" type="Node2D" parent="FiringPositions" index="0"]
+position = Vector2( -7, -73 )
+
+[node name="RightGun" type="Node2D" parent="FiringPositions" index="1"]
+position = Vector2( -6, 73 )
+
+[node name="FireTimer" type="Timer" parent="." index="8"]
+one_shot = true
 
 [connection signal="area_entered" from="AvoidBox" to="." method="_on_AvoidBox_area_entered"]
 [connection signal="area_exited" from="AvoidBox" to="." method="_on_AvoidBox_area_exited"]
