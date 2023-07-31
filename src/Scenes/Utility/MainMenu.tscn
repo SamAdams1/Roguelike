@@ -27,6 +27,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="MainMenu" type="Node2D"]
+position = Vector2( 1, 0 )
 script = ExtResource( 3 )
 mainGameScene = ExtResource( 2 )
 

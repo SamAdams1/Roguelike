@@ -19,6 +19,7 @@ Updatedupstreamrun/main_scene="res://Scenes/MainMenu.tscn"
 [autoload]
 
 Global="*res://Scripts/global.gd"
+TimerLabel="*res://Scripts/Player/timerLabel.gd"
 
 [debug]
 
