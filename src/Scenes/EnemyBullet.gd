@@ -5,9 +5,15 @@ var pBulletEffect := preload("res://Scenes/EnemyBulletEffect.tscn")
 export var speed: float = 500
 onready var sound = $bulletHitSound
 onready var sprite = $Sprite
+var direction = Vector2.RIGHT
+var target = null
 
 func _physics_process(delta):
-	position.y += speed * delta
+	translate(direction * speed * delta)
+	if target:
+		direction = target.global_position - global_position
+		direction = direction.normalized()
+		look_at(target.global_position)
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()

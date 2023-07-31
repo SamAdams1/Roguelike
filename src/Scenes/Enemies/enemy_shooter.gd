@@ -4,10 +4,12 @@ var is_in_void = false
 var enemyHealth = 15
 
 onready var firingPositions := $FiringPositions
+
 var plBullet := preload("res://Scenes/EnemyBullet.tscn")
 onready var fireTimer := $FireTimer
-
 export var fireRate := 1.0
+
+export var fire_type = 1
 
 func _process(delta):
 	
@@ -20,6 +22,7 @@ func _process(delta):
 	if is_in_void == false:
 		basic_movement_towards_player(delta)
 		print(is_in_void)
+		
 	elif is_in_void == true:
 		print(is_in_void)
 		var direction = -global_position.direction_to(player.global_position)
@@ -36,7 +39,6 @@ func _on_AvoidBox_area_entered(area):
 func _on_AvoidBox_area_exited(area):
 	if area.is_in_group("player"):
 		is_in_void = false
-		
 		
 func fire():
 	for child in firingPositions.get_children():

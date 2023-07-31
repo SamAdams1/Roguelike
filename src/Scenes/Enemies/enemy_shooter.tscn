@@ -11,6 +11,7 @@ radius = 519.91
 script = ExtResource( 3 )
 health = 30
 fireRate = 3.0
+fire_type = 1
 
 [node name="Sprite" parent="." index="0"]
 rotation = 1.5708
