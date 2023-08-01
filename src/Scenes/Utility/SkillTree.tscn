@@ -16,7 +16,7 @@
 [ext_resource path="res://Sprites/Upgrades/2directions.png" type="Texture" id=14]
 [ext_resource path="res://Sprites/Player/newShip.png" type="Texture" id=15]
 [ext_resource path="res://Sprites/Upgrades/directionalshot2.png" type="Texture" id=16]
-[ext_resource path="res://Sprites/Player/turretSprite.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/Upgrades/turretSprite.png" type="Texture" id=17]
 [ext_resource path="res://Sprites/Player/shipBoostFlames.png" type="Texture" id=18]
 [ext_resource path="res://Sprites/Upgrades/4directions.png" type="Texture" id=19]
 [ext_resource path="res://Sprites/Upgrades/directionalshot1.png" type="Texture" id=20]
@@ -703,7 +703,7 @@ custom_styles/normal = SubResource( 32 )
 script = ExtResource( 1 )
 
 [node name="sprite" type="Sprite" parent="Turret/2direction"]
-position = Vector2( 42, 42 )
+position = Vector2( 42, 38 )
 scale = Vector2( 0.22, 0.235 )
 texture = ExtResource( 14 )
 
@@ -718,8 +718,9 @@ custom_styles/normal = SubResource( 36 )
 script = ExtResource( 1 )
 
 [node name="sprite" type="Sprite" parent="Turret/3direction"]
-position = Vector2( 41, 37 )
-scale = Vector2( 0.265, 0.25 )
+position = Vector2( 41, 52 )
+rotation = -1.5708
+scale = Vector2( 0.287514, 0.267216 )
 texture = ExtResource( 25 )
 
 [node name="4direction" type="Button" parent="Turret"]
@@ -733,7 +734,7 @@ custom_styles/normal = SubResource( 40 )
 script = ExtResource( 1 )
 
 [node name="sprite" type="Sprite" parent="Turret/4direction"]
-position = Vector2( 41, 42 )
+position = Vector2( 41, 37 )
 scale = Vector2( 0.25, 0.235 )
 texture = ExtResource( 19 )
 

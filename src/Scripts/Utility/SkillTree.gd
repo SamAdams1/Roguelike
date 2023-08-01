@@ -15,6 +15,7 @@ var points = 1
 var skillCost = 1
 
 signal changeBranchColor
+signal setPlayerTurret
 
 const SKILLS = {
 	'turret': {
@@ -150,7 +151,7 @@ const SKILLS = {
 }
 
 func _ready():
-	Global.skillUnlockPoints += 4
+	Global.skillUnlockPoints += 20
 	points = Global.skillUnlockPoints
 	pointLabel.text = 'x' + str(points)
 	
@@ -174,18 +175,22 @@ func _on_selectSkillButton_pressed():
 					list.append(cant != skill)
 			if skill == SKILLS[target]["prerequiste"]:
 				prereq = true
-	#				
+					
 		if prereq and checkAllTrue(list):
 			Global.unlockedSkills.append(target)
 			points -= skillCost
 			emit_signal("changeBranchColor", target)
-			
 			pointLabel.text = 'x' + str(points)
 			if points <= 0:
 				exitLabel.text = 'Exit'
+			setTurret()
 	else:
-		pass
-		
+		pass #add labels that tell why they cant buy the upgrade
+
+func setTurret():
+	if SKILLS[target]['category'] == 'turret':
+		emit_signal('setPlayerTurret', target)
+
 func changeLabels():
 	selectionDetails.visible = true
 	selectButton.visible = true

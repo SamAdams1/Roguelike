@@ -8,7 +8,7 @@ var nearestEnemy = null
 var points = 0
 
 #Skill Tree
-var unlockedSkills = ['first']
+var unlockedSkills = ['first', 'turret']
 var selectedButton = null
 var skillUnlockPoints = 0
 

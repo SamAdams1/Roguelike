@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/turretSprite.png-c6c7d9f044db8a6d3770b84ce618c9f5.stex"
+path="res://.import/turretSprite.png-8da37e6903ffe31250693fc922c424ab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player/turretSprite.png"
-dest_files=[ "res://.import/turretSprite.png-c6c7d9f044db8a6d3770b84ce618c9f5.stex" ]
+source_file="res://Sprites/Upgrades/turretSprite.png"
+dest_files=[ "res://.import/turretSprite.png-8da37e6903ffe31250693fc922c424ab.stex" ]
 
 [params]
 

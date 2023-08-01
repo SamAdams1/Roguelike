@@ -210,7 +210,6 @@ func spriteDamageFlicker(time):
 	takingDamage = false
 
 
-
 #Experience/Leveling
 func _on_GrabArea_area_entered(area):
 	if area.is_in_group('loot'):
@@ -292,6 +291,8 @@ func upgradePlayer():
 	get_tree().paused = false
 	calculateExperience(0)
 
+#func setTurretType:
+	
 
 
 #ShipShooting
@@ -307,6 +308,8 @@ func fire(spawnPoint): #creates bullet
 #	print(shipMovingMultiplier) 
 	bullet_instance.apply_impulse(Vector2(), Vector2(bulletSpeed + shipMovingMultiplier, 0).rotated(shipSprite.rotation))
 	get_tree().get_root().call_deferred("add_child", bullet_instance)
+
+
 
 
 func findNearestEnemy():
@@ -346,6 +349,10 @@ func _on_autoAimArea_body_exited(body):
 #	print(Global.closeEnemies)
 	nearestDistance = 100_000
 	Global.closeEnemies.erase(body)
+	
+	
+	
+
 
 
 
