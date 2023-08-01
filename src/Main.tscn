@@ -48,7 +48,7 @@ scale = Vector2( 6.6994, 6.30444 )
 [node name="Background" parent="." instance=ExtResource( 5 )]
 
 [node name="enemy_spawn_timer" type="Timer" parent="."]
-wait_time = 14.0
+wait_time = 3.0
 autostart = true
 
 [node name="difficulty_timer" type="Timer" parent="."]
@@ -56,21 +56,17 @@ autostart = true
 
 [node name="lootBase" type="Node2D" parent="." groups=["loot"]]
 
+[node name="experienceGem" parent="lootBase" instance=ExtResource( 11 )]
+position = Vector2( 1272, 477 )
+experience = 20
+
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -10.0
 
-[node name="experienceGem" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1272, 477 )
-experience = 20
-
 [node name="enemy_increase" type="Timer" parent="."]
 wait_time = 120.0
 autostart = true
-
-[node name="experienceGem2" parent="." instance=ExtResource( 11 )]
-position = Vector2( 998, 661 )
-experience = 30
 
 [connection signal="timeout" from="enemy_spawn_timer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="difficulty_timer" to="." method="_on_difficulty_timer_timeout"]

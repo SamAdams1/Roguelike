@@ -30,7 +30,6 @@ func _ready():
 	for skill in Global.unlockedSkills:
 		if skill == "turret":
 			currentTurret = 'turret'
-			print(currentTurret)
 			self.get_node(currentTurret).visible = true
 		
 

@@ -67,7 +67,6 @@ collision_mask = 0
 script = ExtResource( 5 )
 
 [node name="turret" parent="." instance=ExtResource( 28 )]
-scale = Vector2( 0.37071, 0.3176 )
 
 [node name="ship" type="Sprite" parent="."]
 position = Vector2( -1.90735e-06, 5.96046e-08 )
@@ -243,6 +242,11 @@ custom_fonts/font = SubResource( 34 )
 text = "Space = Boost | F = shipfire | leftmouse = turret attack | shift + wasd/alt = ship look around"
 
 [node name="SkillTree" parent="GUILayer/GUI" instance=ExtResource( 27 )]
+visible = false
+margin_left = -4.0
+margin_top = -1.0
+margin_right = -4.0
+margin_bottom = -1.0
 
 [node name="autoAimArea" type="Area2D" parent="."]
 visible = false
@@ -300,5 +304,6 @@ tint_progress = Color( 0.0313726, 0.772549, 1, 1 )
 [connection signal="body_entered" from="autoAimArea" to="." method="_on_autoAimArea_body_entered"]
 [connection signal="body_exited" from="autoAimArea" to="." method="_on_autoAimArea_body_exited"]
 [connection signal="finished" from="sounds/deathSound" to="." method="_on_deathSound_finished"]
+[connection signal="finished" from="sounds/levelUpSound" to="." method="_on_levelUpSound_finished"]
 
 [editable path="HurtBox"]

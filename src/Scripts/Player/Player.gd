@@ -54,6 +54,7 @@ var autoBulletSpeed = 1000
 var nearestDistance = 100_000
 var nearestEnemy = null
 var enemyClose = []
+var autoAimUnlocked = false
 
 #loot
 onready var moneyLabel = $GUILayer/GUI/moneyLabel
@@ -82,7 +83,8 @@ func _physics_process(delta):
 	if get_tree().paused == false:
 		movement(delta)
 		shipLookDirectionMoving()
-		autoAim()
+		if autoAimUnlocked:
+			autoAim()
 		calculateBoostBar(delta)
 		while toggleFire and !waitToFire:
 			waitToFire = true
@@ -231,19 +233,18 @@ func _on_CollectArea_area_entered(area):
 func calculateExperience(gemEXP):
 	var expRequired = calculateExperienceCap()
 	collectedExperience += gemEXP
-	
+#	print(collectedExperience, ' | ', expRequired)
 	if experience + collectedExperience >= expRequired: #Level Up
 		levelUpSound.play()
 		collectedExperience -= expRequired - experience
 		experienceLevel += 1
 		experience = 0
 		expRequired = calculateExperienceCap()
-		
 		levelUp()
+		print(collectedExperience, ' | ', expRequired)
 	else:
 		experience += collectedExperience
 		collectedExperience = 0
-	
 	setExpBar(experience, expRequired)
 	
 func calculateExperienceCap():
