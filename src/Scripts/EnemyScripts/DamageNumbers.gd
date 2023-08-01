@@ -11,10 +11,10 @@ func _ready():
 	randNum.randomize()
 	label.set_text(str(amount * randNum.randi_range(9, 13)))
 	
-	var numSideMovement = randNum.randi_range(-40, 40) * 4
-	velocity = Vector2(numSideMovement, 20)
-	tween.interpolate_property(self, 'scale', scale, Vector2(1, 1), 0.4, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-	tween.interpolate_property(self, 'scale', Vector2(1, 1), Vector2(0.1, 0.1), 1, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.3)
+	var numSideMovement = randNum.randi_range(-40, 40) * 5
+	velocity = Vector2(numSideMovement, 30)
+	tween.interpolate_property(self, 'scale', scale, Vector2(1, 1), 0.7, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	tween.interpolate_property(self, 'scale', Vector2(1, 1), Vector2(0.1, 0.1), 2, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.5)
 	tween.start()
 
 	

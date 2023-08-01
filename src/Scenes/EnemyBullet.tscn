@@ -1,17 +1,66 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scenes/bullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Utility/HitBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Enemies/pngkit_yellow-lens-flare-png_926482.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/EnemyScripts/EnemyBullet.gd" type="Script" id=3]
+[ext_resource path="res://Audio/hit.wav" type="AudioStream" id=4]
 
-[node name="EnemyBullet" instance=ExtResource( 1 )]
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 20.5, 11 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 20.5, 11 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 21.5, 12 )
+
+[node name="EnemyBullet" type="RigidBody2D"]
+pause_mode = 2
+physics_interpolation_mode = 1
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.0
+contacts_reported = 1
+contact_monitor = true
 script = ExtResource( 3 )
-speed = 500.0
 
-[node name="Sprite" parent="." index="4"]
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 18.5, 1.90735e-06 )
+scale = Vector2( 1.65, 0.55 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 19.5, 0 )
+shape = SubResource( 3 )
+
+[node name="HitBox" parent="." instance=ExtResource( 1 )]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2( 19.5, 0 )
+shape = SubResource( 4 )
+
+[node name="bulletHitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -15.0
+
+[node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0.0313726, 0.968627, 0.0666667, 1 )
 position = Vector2( 18.5, 2.38419e-07 )
 scale = Vector2( 0.055, 0.06 )
 texture = ExtResource( 2 )
+
+[node name="bulletPenetration" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bulletPenetration"]
+position = Vector2( 19.5, 0 )
+shape = SubResource( 5 )
+
+[connection signal="body_entered" from="." to="." method="_on_bullet_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="finished" from="bulletHitSound" to="." method="_on_bulletHitSound_finished"]
+[connection signal="area_entered" from="bulletPenetration" to="." method="_on_bulletPenetration_area_entered"]
 
 [editable path="HitBox"]

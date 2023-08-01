@@ -14,7 +14,7 @@ extents = Vector2( 10.5, 11 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 11.5, 12 )
 
-[node name="bigBullet" type="RigidBody2D"]
+[node name="autoBullet" type="RigidBody2D"]
 pause_mode = 2
 physics_interpolation_mode = 1
 collision_layer = 0
@@ -34,17 +34,10 @@ shape = SubResource( 3 )
 
 [node name="HitBox" parent="." instance=ExtResource( 2 )]
 collision_mask = 4
-damage = 2
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 position = Vector2( 19.5, 0 )
 shape = SubResource( 4 )
-
-[node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.968627, 0.0313726, 0.0313726, 1 )
-position = Vector2( 19.5, 0 )
-scale = Vector2( 0.08, 0.08 )
-texture = ExtResource( 3 )
 
 [node name="bulletHitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
@@ -57,6 +50,12 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bulletPenetration"]
 shape = SubResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.662745, 0, 1, 1 )
+position = Vector2( 19.5, 0 )
+scale = Vector2( 0.08, 0.08 )
+texture = ExtResource( 3 )
 
 [connection signal="body_entered" from="." to="." method="_on_bigBullet_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

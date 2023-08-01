@@ -16,6 +16,7 @@ var skillCost = 1
 
 signal changeBranchColor
 signal setPlayerTurret
+signal upgradePlayer
 
 const SKILLS = {
 	'turret': {
@@ -184,12 +185,15 @@ func _on_selectSkillButton_pressed():
 			if points <= 0:
 				exitLabel.text = 'Exit'
 			setTurret()
+			
 	else:
 		pass #add labels that tell why they cant buy the upgrade
 
 func setTurret():
 	if SKILLS[target]['category'] == 'turret':
 		emit_signal('setPlayerTurret', target)
+	else:
+		emit_signal("upgradePlayer", target, SKILLS[target]['category'])
 
 func changeLabels():
 	selectionDetails.visible = true

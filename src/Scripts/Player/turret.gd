@@ -1,12 +1,12 @@
 extends Node2D
 #attacking
-onready var bullet = preload('res://Scenes/bullet1.tscn')
+onready var bullet = preload('res://Scenes/bullet.tscn')
 onready var bigBullet = preload("res://Scenes/bigBullet.tscn")
 onready var sound = $turretShootSound
 var waitToFire = false
 var toggleFire = false
-var fireRate = 1
-var bulletSpeed = 800
+var fireRate = 0.5
+var bulletSpeed = 1000
 var currentTurret = null
 
 
@@ -39,6 +39,9 @@ func _ready():
 
 func _physics_process(_delta):
 	look_at(get_global_mouse_position())
+	if get_tree().paused == true:
+		toggleFire = false
+	
 
 func _input(event): #shooting has to be in here so only one input is taken per mouse click
 	if event.is_action_pressed("attack"):

@@ -91,13 +91,15 @@ offset = Vector2( 0.5, 3 )
 position = Vector2( -52.6745, -172.074 )
 scale = Vector2( 4.76336, 5.23418 )
 
-[node name="shipBulletPoint1" type="Node2D" parent="ship/bulletSpawnPoints"]
+[node name="directional1" type="Position2D" parent="ship/bulletSpawnPoints"]
+position = Vector2( 19.9049, 0.657532 )
 
-[node name="shipBulletPoint2" type="Node2D" parent="ship/bulletSpawnPoints"]
-position = Vector2( 0, 65.0925 )
+[node name="directional2" type="Position2D" parent="ship/bulletSpawnPoints"]
+position = Vector2( 71.5101, 32.2176 )
+scale = Vector2( 1, 1 )
 
-[node name="shipBulletPoint3" type="Node2D" parent="ship/bulletSpawnPoints"]
-position = Vector2( 47.1819, 32.2175 )
+[node name="directional3" type="Position2D" parent="ship/bulletSpawnPoints"]
+position = Vector2( 18.4304, 61.8051 )
 
 [node name="autoFireSound" type="AudioStreamPlayer" parent="ship"]
 stream = ExtResource( 15 )
@@ -139,6 +141,7 @@ collision_mask = 8
 shape = SubResource( 27 )
 
 [node name="GUILayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="GUI" type="Control" parent="GUILayer"]
 margin_left = 4.0
