@@ -48,7 +48,7 @@ scale = Vector2( 6.6994, 6.30444 )
 [node name="Background" parent="." instance=ExtResource( 5 )]
 
 [node name="enemy_spawn_timer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 14.0
 autostart = true
 
 [node name="difficulty_timer" type="Timer" parent="."]
