@@ -1,10 +1,11 @@
 extends Node2D
 #attacking
-var bullet = preload('res://Scenes/bullet.tscn')
+onready var bullet = preload('res://Scenes/bullet1.tscn')
+onready var bigBullet = preload("res://Scenes/bigBullet.tscn")
 onready var sound = $turretShootSound
 var waitToFire = false
 var toggleFire = false
-var fireRate = 0.3
+var fireRate = 1
 var bulletSpeed = 800
 var currentTurret = null
 
@@ -23,14 +24,17 @@ onready var bulletSpawnPoints = {
 	'4direction': [$"4direction/point1", $"4direction/point2Back", $"4direction/point3Left", $"4direction/point4Right"],
 }
 
+onready var turretIdentifiers = ['turret', 'barrel2', 'barrel3', 'barrel4', 'bigBullet', 'bigBullet2Direction', 
+'bigBullet2Barrel', '2direction', '3direction', '4direction']
 
 func _ready():
 	var skillTree = get_tree().get_root().find_node('SkillTree', true, false)
 	skillTree.connect("setPlayerTurret", self, 'upgradeTurret')
 	for skill in Global.unlockedSkills:
-		if skill == "turret":
-			currentTurret = 'turret'
-			self.get_node(currentTurret).visible = true
+		for turret in turretIdentifiers:
+			if skill == turret:
+				currentTurret = skill
+				self.get_node(currentTurret).visible = true
 		
 
 func _physics_process(_delta):
@@ -47,8 +51,8 @@ func _input(event): #shooting has to be in here so only one input is taken per m
 		yield(get_tree().create_timer(fireRate), "timeout")
 		waitToFire = false
 
-func fire(spawnPoint, direction): #creates bullet
-	var bullet_instance = bullet.instance()
+func fire(spawnPoint, direction, typeOfBullet): #creates bullet
+	var bullet_instance = typeOfBullet.instance()
 	bullet_instance.position = spawnPoint.get_global_position()
 	bullet_instance.rotation_degrees = rotation_degrees
 	bullet_instance.apply_impulse(Vector2(), Vector2(bulletSpeed * direction, 0).rotated(rotation))
@@ -71,14 +75,20 @@ func turretFireProcess():
 #	print('+++++++++++')
 	for spawnPoint in bulletSpawnPoints[currentTurret]:
 #		print(spawnPoint, '|||', spawnPoint.name == "point2Back")
-		if spawnPoint.name == "point2Back":
-			fire(spawnPoint, -1)
-#			return
+		if spawnPoint.get_parent().name.get_slice("2", 0) == 'bigBullet':
+			if spawnPoint.name == "point2Back":
+				fire(spawnPoint, -1, bigBullet)
+			else:
+				fire(spawnPoint, 1, bigBullet)
+			
+		elif spawnPoint.name == "point2Back":
+			fire(spawnPoint, -1, bullet)
+#			
 		elif spawnPoint.name == 'point3Left':
 			fire2(spawnPoint, 55, -90)
-#			return
+#			
 		elif spawnPoint.name == 'point4Right':
 			fire2(spawnPoint, -55, 90)
-#			return
+		
 		else:
-			fire(spawnPoint, 1)
+			fire(spawnPoint, 1, bullet)

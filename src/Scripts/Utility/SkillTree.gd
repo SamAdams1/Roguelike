@@ -49,7 +49,7 @@ const SKILLS = {
 	'bigBullet': {
 		'category': 'turret',
 		'title': 'Big Turret',
-		'desc': "Shoots a big bullet.",
+		'desc': "Shoots a big bullet that does 2x more damage.",
 		'prerequiste': 'turret',
 		'nonrequiste': ['barrel2', '2direction'],
 	},

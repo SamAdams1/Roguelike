@@ -39,7 +39,7 @@ var collectedExperience = 0
 #Directional Ship Shooting
 onready var turretSprite = $turret
 onready var directionalShootSound = $sounds/directionalShootSound
-var directionalBullet = preload("res://Scenes/directionalBullets.tscn")
+var directionalBullet = preload("res://Scenes/directionalBullet.tscn")
 var fireRate = 0.5
 var bulletSpeed = 1200
 var waitToFire = false
@@ -47,7 +47,7 @@ var toggleFire = false
 
 #Auto Bullets
 onready var autoFireSound = $sounds/autoFireSound
-var autoBullet = preload("res://Scenes/autoBullets.tscn")
+var autoBullet = preload("res://Scenes/autoBullet.tscn")
 var autoBulletFireRate = .5
 var autoBulletWaitTimer = false
 var autoBulletSpeed = 1000
@@ -233,7 +233,7 @@ func _on_CollectArea_area_entered(area):
 func calculateExperience(gemEXP):
 	var expRequired = calculateExperienceCap()
 	collectedExperience += gemEXP
-#	print(collectedExperience, ' | ', expRequired)
+
 	if experience + collectedExperience >= expRequired: #Level Up
 		levelUpSound.play()
 		collectedExperience -= expRequired - experience
@@ -241,7 +241,7 @@ func calculateExperience(gemEXP):
 		experience = 0
 		expRequired = calculateExperienceCap()
 		levelUp()
-		print(collectedExperience, ' | ', expRequired)
+		
 	else:
 		experience += collectedExperience
 		collectedExperience = 0
@@ -292,7 +292,7 @@ func upgradePlayer():
 	get_tree().paused = false
 	calculateExperience(0)
 
-#func setTurretType:
+
 	
 
 

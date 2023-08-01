@@ -16,6 +16,7 @@ animations = [ {
 [node name="Explosion" type="AnimatedSprite"]
 modulate = Color( 0.580392, 0.0666667, 0.0666667, 1 )
 self_modulate = Color( 0.823529, 0.482353, 0.0823529, 1 )
+position = Vector2( -1, 0 )
 scale = Vector2( 0.429688, 0.417969 )
 frames = SubResource( 1 )
 frame = 3
