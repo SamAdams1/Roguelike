@@ -7,6 +7,11 @@ var nearestEnemy = null
 
 var points = 0
 
+#Skill Tree
+var unlockedSkills = ['first']
+var selectedButton = null
+var skillUnlockPoints = 0
+
 func instance_node(node, location, parent):
 	var node_instance = node.instance()
 	parent.add_child(node_instance)

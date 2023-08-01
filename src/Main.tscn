@@ -10,7 +10,7 @@
 [ext_resource path="res://Audio/Music/let-the-games-begin-21858.wav" type="AudioStream" id=8]
 [ext_resource path="res://Scenes/Enemies/enemy_asteroid_2.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Enemies/enemy_asteroid_4.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/Enemies/enemy_shooter.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Objects/experienceGem.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Curve2D" id=2]
 _data = {
@@ -48,7 +48,7 @@ scale = Vector2( 6.6994, 6.30444 )
 [node name="Background" parent="." instance=ExtResource( 5 )]
 
 [node name="enemy_spawn_timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 10.0
 autostart = true
 
 [node name="difficulty_timer" type="Timer" parent="."]
@@ -60,5 +60,13 @@ autostart = true
 stream = ExtResource( 8 )
 volume_db = -10.0
 
+[node name="experienceGem" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1146, 760 )
+
+[node name="enemy_increase" type="Timer" parent="."]
+wait_time = 120.0
+autostart = true
+
 [connection signal="timeout" from="enemy_spawn_timer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="difficulty_timer" to="." method="_on_difficulty_timer_timeout"]
+[connection signal="timeout" from="enemy_increase" to="." method="_on_enemy_increase_timeout"]
