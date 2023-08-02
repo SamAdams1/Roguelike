@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Fonts/ArcadeFont.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Main.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Utility/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://Audio/Music/music-alexandr-zhelanov.wav" type="AudioStream" id=4]
+[ext_resource path="res://Scenes/Menus/OptionsMenu.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -135,6 +136,9 @@ text = "Credits"
 stream = ExtResource( 4 )
 volume_db = -10.0
 bus = "Music"
+
+[node name="OptionsMenu" parent="." instance=ExtResource( 5 )]
+visible = false
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/OptionsButton" to="." method="_on_OptionsButton_pressed"]

@@ -1,9 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Fonts/OpenSans-ExtraBold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scenes/Menus/OptionsMenu.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
+size = 35
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
 size = 35
 font_data = ExtResource( 1 )
 
@@ -17,7 +21,7 @@ script = ExtResource( 2 )
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.345098, 0.0784314, 0.482353, 1 )
+color = Color( 0.270588, 0.0196078, 0.4, 1 )
 
 [node name="Options" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -32,6 +36,7 @@ margin_left = 25.0
 margin_top = 25.0
 margin_right = 999.0
 margin_bottom = 575.0
+custom_constants/vseparation = 20
 columns = 2
 
 [node name="Fullscreen" type="Label" parent="Options/OptionsGrid"]
@@ -50,41 +55,83 @@ margin_right = 974.0
 margin_bottom = 49.0
 size_flags_horizontal = 10
 
-[node name="SFX" type="Label" parent="Options/OptionsGrid"]
-margin_top = 53.0
-margin_right = 278.0
-margin_bottom = 102.0
+[node name="Master" type="Label" parent="Options/OptionsGrid"]
+margin_top = 69.0
+margin_right = 143.0
+margin_bottom = 118.0
 rect_pivot_offset = Vector2( -322, -156 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
 custom_fonts/font = SubResource( 1 )
-text = "Sound Effects"
+text = "Master"
 uppercase = true
 
-[node name="SFXSlider" type="HSlider" parent="Options/OptionsGrid"]
-margin_left = 282.0
-margin_top = 53.0
+[node name="MasterSlider" type="HSlider" parent="Options/OptionsGrid"]
+margin_left = 574.0
+margin_top = 69.0
 margin_right = 974.0
-margin_bottom = 69.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 400, 0 )
+size_flags_horizontal = 10
+min_value = -50.0
+max_value = 0.0
+step = 5.0
+value = -10.0
+scrollable = false
 
-[node name="Music" type="Label" parent="Options/OptionsGrid"]
-margin_top = 106.0
-margin_right = 115.0
-margin_bottom = 155.0
+[node name="Sfx" type="Label" parent="Options/OptionsGrid"]
+margin_top = 138.0
+margin_right = 278.0
+margin_bottom = 187.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
 custom_fonts/font = SubResource( 1 )
+text = "Sound effects"
+uppercase = true
+
+[node name="SfxSlider" type="HSlider" parent="Options/OptionsGrid"]
+margin_left = 574.0
+margin_top = 138.0
+margin_right = 974.0
+margin_bottom = 154.0
+rect_min_size = Vector2( 400, 0 )
+size_flags_horizontal = 10
+min_value = -50.0
+max_value = 0.0
+step = 5.0
+value = -10.0
+scrollable = false
+
+[node name="Music" type="Label" parent="Options/OptionsGrid"]
+margin_top = 207.0
+margin_right = 278.0
+margin_bottom = 256.0
+custom_fonts/font = SubResource( 2 )
 text = "Music"
 uppercase = true
 
 [node name="MusicSlider" type="HSlider" parent="Options/OptionsGrid"]
-margin_left = 282.0
-margin_top = 106.0
+margin_left = 574.0
+margin_top = 207.0
 margin_right = 974.0
-margin_bottom = 122.0
+margin_bottom = 223.0
+rect_min_size = Vector2( 400, 0 )
+size_flags_horizontal = 10
+min_value = -50.0
+max_value = 0.0
+step = 5.0
+value = -10.0
+scrollable = false
+
+[node name="Label" type="Label" parent="Options/OptionsGrid"]
+anchor_right = 0.017
+margin_top = 276.0
+margin_right = 278.0
+margin_bottom = 290.0
 
 [connection signal="toggled" from="Options/OptionsGrid/FCButton" to="." method="_on_FCButton_toggled"]
-[connection signal="value_changed" from="Options/OptionsGrid/SFXSlider" to="." method="_on_SFXSlider_value_changed"]
+[connection signal="value_changed" from="Options/OptionsGrid/MasterSlider" to="." method="_on_MasterSlider_value_changed"]
+[connection signal="value_changed" from="Options/OptionsGrid/SfxSlider" to="." method="_on_SfxSlider_value_changed"]
 [connection signal="value_changed" from="Options/OptionsGrid/MusicSlider" to="." method="_on_MusicSlider_value_changed"]

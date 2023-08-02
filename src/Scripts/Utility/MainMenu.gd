@@ -2,6 +2,8 @@ extends Node2D
 
 
 export var mainGameScene : PackedScene
+
+onready var options_menu = $OptionsMenu
 onready var music = $MenuMusic
 
 func _ready():
@@ -12,4 +14,4 @@ func _on_NewGameButton_pressed():
 
 
 func _on_OptionsButton_pressed():
-	#Popup()
+	options_menu.popup_centered()
