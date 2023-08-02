@@ -7,5 +7,5 @@
 modulate = Color( 0.18, 0.48, 0.4, 1 )
 
 [node name="loot_planet_base" parent="." index="0"]
-modulate = Color( 1, 1, 2, 1 )
+modulate = Color( 1, 1.64, 9.68, 1 )
 texture = ExtResource( 1 )

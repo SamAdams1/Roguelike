@@ -4,6 +4,7 @@
 [ext_resource path="res://Scenes/loot_planets/loot_planet_core.tscn" type="PackedScene" id=2]
 
 [node name="loot_planet_3" instance=ExtResource( 2 )]
+modulate = Color( 1, 1.26, 1.43, 1 )
 
 [node name="loot_planet_base" parent="." index="0"]
 texture = ExtResource( 1 )
