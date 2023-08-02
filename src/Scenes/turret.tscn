@@ -26,6 +26,7 @@ __meta__ = {
 position = Vector2( 0, -7.42846e-07 )
 stream = ExtResource( 2 )
 volume_db = -15.0
+bus = "SFX"
 
 [node name="turret" type="Sprite" parent="."]
 visible = false

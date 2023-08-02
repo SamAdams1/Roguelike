@@ -268,31 +268,38 @@ scale = Vector2( 0.37071, 0.3176 )
 [node name="deathSound" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 22 )
 volume_db = -10.0
+bus = "SFX"
 
 [node name="shipMovingSound" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 23 )
 volume_db = -10.0
 pitch_scale = 0.7
+bus = "SFX"
 
 [node name="directionalShootSound" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 21 )
 volume_db = -20.0
+bus = "SFX"
 
 [node name="autoFireSound" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 15 )
 volume_db = -10.0
+bus = "SFX"
 
 [node name="levelUpSound" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 18 )
 volume_db = -25.0
+bus = "SFX"
 
 [node name="boostSound" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 25 )
 volume_db = -10.0
+bus = "SFX"
 
 [node name="new_ship_sound" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 6 )
 volume_db = 24.0
+bus = "SFX"
 
 [node name="boostBar" type="TextureProgress" parent="."]
 modulate = Color( 1, 1, 1, 0.807843 )
