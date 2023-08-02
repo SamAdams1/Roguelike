@@ -12,17 +12,17 @@ func _ready():
 
 
 func _on_FCButton_toggled(button_pressed):
-	global_settings.toggle_fullscreen(button_pressed)
-
+	GlobalSettings.toggle_fullscreen(button_pressed)
+	
 
 func _on_MasterSlider_value_changed(value):
-	global_settings.update_master_vol(value)
-
+	GlobalSettings.update_master_vol(value)
+	
 
 func _on_SfxSlider_value_changed(value):
-	global_settings.update_sfx_vol(value)
-
+	GlobalSettings.update_sfx_vol(value)
+	
 
 func _on_MusicSlider_value_changed(value):
-	global_settings.update_music_vol(value)
-
+	GlobalSettings.update_music_vol(value)
+	

@@ -20,7 +20,7 @@ Updatedupstreamrun/main_scene="res://Scenes/MainMenu.tscn"
 
 Global="*res://Scripts/global.gd"
 TimerLabel="*res://Scripts/Player/timerLabel.gd"
-GlobalSettings="*res://global_settings.gd"
+GlobalSettings="*res://GlobalSettings.gd"
 
 [debug]
 
