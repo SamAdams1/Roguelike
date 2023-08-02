@@ -71,3 +71,4 @@ func disableEnemyOnDead():
 	hitBox.call_deferred("set", "disabled", true)
 	movementSpeed = 0
 	sprite.visible = false
+	queue_free()

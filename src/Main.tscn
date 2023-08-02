@@ -70,7 +70,7 @@ stream = ExtResource( 8 )
 volume_db = -10.0
 
 [node name="enemy_increase" type="Timer" parent="."]
-wait_time = 120.0
+wait_time = 2.0
 autostart = true
 
 [node name="enemy_base" parent="." instance=ExtResource( 2 )]
