@@ -1,0 +1,1089 @@
+[gd_scene load_steps=109 format=2]
+
+[ext_resource path="res://Scripts/Utility/button.tres.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Utility/buttonCore.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Utility/SkillTree.gd" type="Script" id=3]
+[ext_resource path="res://Fonts/ArcadeFont.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Sprites/Upgrades/autoFire2.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Upgrades/bigShotDouble.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Utility/blackBar.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Upgrades/directionalshot3.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Upgrades/barrel3.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Upgrades/bigShot.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Enemies/AsteroidSprite.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Upgrades/explosion.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Utility/white bar.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Upgrades/2directions.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Player/newShip.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Upgrades/directionalshot2.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/Upgrades/turretSprite.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/Player/shipBoostFlames.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/Upgrades/4directions.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/Upgrades/directionalshot1.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/Upgrades/barrel2.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/Upgrades/bigShot2Direction.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/Upgrades/autoFire1.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/space background.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/Upgrades/3directions.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/Upgrades/barrel4.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/Upgrades/autoFire3.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/Upgrades/homingBullets.png" type="Texture" id=28]
+[ext_resource path="res://Scripts/Utility/skillTreeLines.gd" type="Script" id=29]
+[ext_resource path="res://Scripts/Utility/skillTreeLinesTres.gd" type="Script" id=30]
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=87]
+bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=88]
+bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=89]
+bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=26]
+bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=28]
+bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=30]
+bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=31]
+bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=32]
+bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=34]
+bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=35]
+bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=36]
+bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=38]
+bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=39]
+bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=40]
+bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=42]
+bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=43]
+bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=44]
+bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=46]
+bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=47]
+bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=48]
+bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=50]
+bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=51]
+bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=52]
+bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=54]
+bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=55]
+bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=56]
+bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=58]
+bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=59]
+bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=60]
+bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=62]
+bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=63]
+bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=64]
+bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=66]
+bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=67]
+bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=68]
+bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=70]
+bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=71]
+bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=72]
+bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=74]
+bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=75]
+bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=76]
+bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=78]
+bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=79]
+bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=80]
+bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 12
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=84]
+bg_color = Color( 0.403922, 0.188235, 1, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=85]
+bg_color = Color( 0.188235, 0.0235294, 0.643137, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=86]
+bg_color = Color( 0.254902, 0.0235294, 0.890196, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=83]
+size = 14
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=91]
+bg_color = Color( 1, 0.188235, 0.188235, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=92]
+bg_color = Color( 0.643137, 0.0235294, 0.0235294, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=93]
+bg_color = Color( 0.890196, 0.0235294, 0.0235294, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=90]
+size = 32
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=102]
+size = 50
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=94]
+bg_color = Color( 0.278431, 0.67451, 0.0392157, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=95]
+bg_color = Color( 0.145098, 0.356863, 0.0196078, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=96]
+bg_color = Color( 0.188235, 0.466667, 0.0196078, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=97]
+size = 8
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=98]
+bg_color = Color( 1, 0.188235, 0.188235, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=99]
+bg_color = Color( 0.643137, 0.0235294, 0.0235294, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=100]
+bg_color = Color( 0.890196, 0.0235294, 0.0235294, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[node name="SkillTree" type="Control"]
+pause_mode = 2
+physics_interpolation_mode = 1
+margin_top = 4.0
+margin_bottom = 4.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="background" type="Sprite" parent="."]
+position = Vector2( 0, -4 )
+scale = Vector2( 0.768192, 0.805333 )
+texture = ExtResource( 24 )
+centered = false
+
+[node name="treeLines" type="Node2D" parent="."]
+position = Vector2( 112, 40 )
+
+[node name="turret" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 399, 396.311 )
+rotation = 1.5708
+scale = Vector2( 0.0952967, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 29 )
+
+[node name="barrel2" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 400, 328 )
+rotation = 1.5708
+scale = Vector2( 0.0952967, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="barrel3" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 400, 224 )
+rotation = 1.5708
+scale = Vector2( 0.0952967, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="barrel4" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 400, 112 )
+rotation = 1.5708
+scale = Vector2( 0.0952967, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="2direction" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 475, 325 )
+rotation = -0.523599
+scale = Vector2( 0.20676, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="3direction" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 510, 243.061 )
+rotation = 1.5708
+scale = Vector2( 0.131981, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="4direction" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 510, 113 )
+rotation = 1.5708
+scale = Vector2( 0.0794044, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="bigBullet" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 315, 321 )
+rotation = 0.523599
+scale = Vector2( 0.20676, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="bigBullet2Barrel" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 227.611, 222.611 )
+rotation = 0.785398
+scale = Vector2( 0.147724, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="bigBullet2Direction" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 274, 218 )
+rotation = -0.785398
+scale = Vector2( 0.147724, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="directional2" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 65.4995, 241.717 )
+rotation = 1.5708
+scale = Vector2( 0.125929, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="directional3" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 10, 163 )
+scale = Vector2( 0.125929, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="autoAim1" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 703.5, 318.102 )
+rotation = 1.5708
+scale = Vector2( 0.157938, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="autoAim1Branch" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 683.283, 378 )
+scale = Vector2( 0.0706209, 0.370035 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="autoAim2" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 703.5, 225 )
+rotation = 1.5708
+scale = Vector2( 0.169074, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="autoAim3" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 773, 162 )
+scale = Vector2( 0.169074, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="boostToExplosion" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 594.9, 378 )
+scale = Vector2( 0.182143, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="rightAngle" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 455, 411 )
+rotation = -0.785398
+scale = Vector2( 0.139057, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="mainRight" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 508.9, 378 )
+scale = Vector2( 0.065, 0.37 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="look" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 167, 434.984 )
+rotation = 1.5708
+scale = Vector2( 0.149548, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="tracerBullet" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 279, 434.945 )
+rotation = 1.5708
+scale = Vector2( 0.149659, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="boost" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 527, 435.473 )
+rotation = 1.5708
+scale = Vector2( 0.151008, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="explosiveBullet" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 654, 434.976 )
+rotation = 1.5708
+scale = Vector2( 0.149569, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="directional1" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 65.4995, 330.016 )
+rotation = 1.5708
+scale = Vector2( 0.123926, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="mainleftdirectional1" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 112, 378.001 )
+scale = Vector2( 0.145714, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="leftAngle" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 346.653, 413.654 )
+rotation = 0.785398
+scale = Vector2( 0.148862, 0.370313 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="mainleft2" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 293.75, 378 )
+scale = Vector2( 0.055, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="tracerLook" type="Sprite" parent="treeLines"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 218.5, 378 )
+scale = Vector2( 0.16, 0.370034 )
+texture = ExtResource( 13 )
+script = ExtResource( 30 )
+
+[node name="Ship" type="ColorRect" parent="."]
+margin_left = 464.0
+margin_top = 459.0
+margin_right = 558.0
+margin_bottom = 557.0
+color = Color( 1, 0.764706, 0.207843, 1 )
+
+[node name="sprite" type="Sprite" parent="Ship"]
+position = Vector2( 48, 50 )
+rotation = -1.5708
+scale = Vector2( 0.245491, 0.229489 )
+texture = ExtResource( 15 )
+
+[node name="Turret" type="Node2D" parent="."]
+position = Vector2( 469, 362 )
+
+[node name="turret" type="Button" parent="Turret"]
+margin_right = 82.0
+margin_bottom = 79.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+script = ExtResource( 2 )
+
+[node name="sprite" type="Sprite" parent="Turret/turret"]
+position = Vector2( 61, -28 )
+rotation = -1.5708
+scale = Vector2( 0.410878, 0.452313 )
+texture = ExtResource( 17 )
+
+[node name="barrel2" type="Button" parent="Turret"]
+margin_left = -1.0
+margin_top = -95.0
+margin_right = 81.0
+margin_bottom = -16.0
+custom_styles/hover = SubResource( 87 )
+custom_styles/pressed = SubResource( 88 )
+custom_styles/normal = SubResource( 89 )
+script = ExtResource( 1 )
+
+[node name="sprite" type="Sprite" parent="Turret/barrel2"]
+position = Vector2( 36, 35 )
+rotation = 3.14159
+scale = Vector2( 0.447472, 0.393592 )
+texture = ExtResource( 21 )
+
+[node name="barrel3" type="Button" parent="Turret"]
+margin_top = -199.0
+margin_right = 82.0
+margin_bottom = -120.0
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+script = ExtResource( 1 )
+
+[node name="sprite" type="Sprite" parent="Turret/barrel3"]
+position = Vector2( 44, 33 )
+rotation = 3.14159
+scale = Vector2( 0.419242, 0.384528 )
+texture = ExtResource( 9 )
+
+[node name="barrel4" type="Button" parent="Turret"]
+margin_top = -303.0
+margin_right = 82.0
+margin_bottom = -224.0
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/normal = SubResource( 16 )
+script = ExtResource( 1 )
+
+[node name="sprite" type="Sprite" parent="Turret/barrel4"]
+position = Vector2( 51, 35 )
+rotation = 3.14159
+scale = Vector2( 0.391697, 0.365105 )
+texture = ExtResource( 26 )
+
+[node name="bigBullet" type="Button" parent="Turret"]
+margin_left = -152.0
+margin_top = -96.0
+margin_right = -70.0
+margin_bottom = -17.0
+custom_styles/hover = SubResource( 18 )
+custom_styles/pressed = SubResource( 19 )
+custom_styles/normal = SubResource( 20 )
+script = ExtResource( 1 )
+
+[node name="sprite" type="Sprite" parent="Turret/bigBullet"]
+position = Vector2( 34, 60.0001 )
+rotation = 3.14159
+scale = Vector2( 0.392006, 0.392979 )
+texture = ExtResource( 10 )
+
+[node name="bigBullet2Direction" type="Button" parent="Turret"]
+margin_left = -104.0
+margin_top = -199.0
+margin_right = -22.0
+margin_bottom = -120.0
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
+script = ExtResource( 1 )
+
+[node name="sprite" type="Sprite" parent="Turret/bigBullet2Direction"]
+position = Vector2( 32.9999, 40 )
+rotation = 3.14159
+scale = Vector2( 0.375573, 0.26 )
+texture = ExtResource( 22 )
+
+[node name="bigBullet2Barrel" type="Button" parent="Turret"]
+margin_left = -208.0
+margin_top = -199.0
+margin_right = -126.0
+margin_bottom = -120.0
+custom_styles/hover = SubResource( 26 )
+custom_styles/pressed = SubResource( 27 )
+custom_styles/normal = SubResource( 28 )
+script = ExtResource( 1 )
+
+[node name="sprite" type="Sprite" parent="Turret/bigBullet2Barrel"]
+position = Vector2( 49, 62 )
+rotation = 3.14159
+scale = Vector2( 0.408557, 0.399738 )
+texture = ExtResource( 6 )
+
+[node name="2direction" type="Button" parent="Turret"]
+margin_left = 111.0
+margin_top = -95.0
+margin_right = 193.0
+margin_bottom = -16.0
+custom_styles/hover = SubResource( 30 )
+custom_styles/pressed = SubResource( 31 )
+custom_styles/normal = SubResource( 32 )
+script = ExtResource( 1 )
+
+[node name="sprite" type="Sprite" parent="Turret/2direction"]
+position = Vector2( 42, 38 )
+scale = Vector2( 0.22, 0.235 )
+texture = ExtResource( 14 )
+
+[node name="3direction" type="Button" parent="Turret"]
+margin_left = 112.0
+margin_top = -198.0
+margin_right = 194.0
+margin_bottom = -119.0
+custom_styles/hover = SubResource( 34 )
+custom_styles/pressed = SubResource( 35 )
+custom_styles/normal = SubResource( 36 )
+script = ExtResource( 1 )
+
+[node name="sprite" type="Sprite" parent="Turret/3direction"]
+position = Vector2( 41, 52 )
+rotation = -1.5708
+scale = Vector2( 0.287514, 0.267216 )
+texture = ExtResource( 25 )
+
+[node name="4direction" type="Button" parent="Turret"]
+margin_left = 112.0
+margin_top = -303.0
+margin_right = 194.0
+margin_bottom = -224.0
+custom_styles/hover = SubResource( 38 )
+custom_styles/pressed = SubResource( 39 )
+custom_styles/normal = SubResource( 40 )
+script = ExtResource( 1 )
+
+[node name="sprite" type="Sprite" parent="Turret/4direction"]
+position = Vector2( 41, 37 )
+scale = Vector2( 0.25, 0.235 )
+texture = ExtResource( 19 )
+
+[node name="AutoAim" type="Node2D" parent="."]
+position = Vector2( 773, 266 )
+
+[node name="autoAim1" type="Button" parent="AutoAim"]
+margin_right = 82.0
+margin_bottom = 79.0
+custom_styles/hover = SubResource( 42 )
+custom_styles/pressed = SubResource( 43 )
+custom_styles/normal = SubResource( 44 )
+script = ExtResource( 1 )
+
+[node name="sprite" type="Sprite" parent="AutoAim/autoAim1"]
+position = Vector2( 40.4819, 41.1558 )
+scale = Vector2( 0.410056, 0.399959 )
+texture = ExtResource( 23 )
+offset = Vector2( 1.25, -2.9 )
+
+[node name="autoAim2" type="Button" parent="AutoAim"]
+margin_left = 1.0
+margin_top = -103.0
+margin_right = 83.0
+margin_bottom = -24.0
+custom_styles/hover = SubResource( 46 )
+custom_styles/pressed = SubResource( 47 )
+custom_styles/normal = SubResource( 48 )
+script = ExtResource( 1 )
+
+[node name="sprite2" type="Sprite" parent="AutoAim/autoAim2"]
+position = Vector2( 39, 40 )
+scale = Vector2( 0.410056, 0.399959 )
+texture = ExtResource( 5 )
+offset = Vector2( 1.25, -2.9 )
+
+[node name="autoAim3" type="Button" parent="AutoAim"]
+margin_left = 139.0
+margin_top = -104.0
+margin_right = 221.0
+margin_bottom = -25.0
+custom_styles/hover = SubResource( 50 )
+custom_styles/pressed = SubResource( 51 )
+custom_styles/normal = SubResource( 52 )
+script = ExtResource( 1 )
+
+[node name="sprite3" type="Sprite" parent="AutoAim/autoAim3"]
+position = Vector2( 40, 42 )
+scale = Vector2( 0.410056, 0.399959 )
+texture = ExtResource( 27 )
+offset = Vector2( 1.25, -2.9 )
+
+[node name="DirectionalShoot" type="Node2D" parent="."]
+position = Vector2( 137, 266 )
+
+[node name="directional1" type="Button" parent="DirectionalShoot"]
+margin_left = -1.0
+margin_right = 81.0
+margin_bottom = 79.0
+custom_styles/hover = SubResource( 54 )
+custom_styles/pressed = SubResource( 55 )
+custom_styles/normal = SubResource( 56 )
+script = ExtResource( 1 )
+
+[node name="sprite" type="Sprite" parent="DirectionalShoot/directional1"]
+position = Vector2( 42, 40 )
+scale = Vector2( 0.273333, 0.228571 )
+texture = ExtResource( 20 )
+
+[node name="directional2" type="Button" parent="DirectionalShoot"]
+margin_top = -103.0
+margin_right = 82.0
+margin_bottom = -24.0
+custom_styles/hover = SubResource( 58 )
+custom_styles/pressed = SubResource( 59 )
+custom_styles/normal = SubResource( 60 )
+script = ExtResource( 1 )
+
+[node name="sprite2" type="Sprite" parent="DirectionalShoot/directional2"]
+position = Vector2( 41, 32 )
+scale = Vector2( 0.273333, 0.266667 )
+texture = ExtResource( 16 )
+
+[node name="directional3" type="Button" parent="DirectionalShoot"]
+margin_left = -113.0
+margin_top = -105.0
+margin_right = -31.0
+margin_bottom = -26.0
+custom_styles/hover = SubResource( 62 )
+custom_styles/pressed = SubResource( 63 )
+custom_styles/normal = SubResource( 64 )
+script = ExtResource( 1 )
+
+[node name="sprite3" type="Sprite" parent="DirectionalShoot/directional3"]
+position = Vector2( 41, 40.25 )
+scale = Vector2( 0.273333, 0.23 )
+texture = ExtResource( 8 )
+
+[node name="Other" type="Node2D" parent="."]
+position = Vector2( 112, 40 )
+
+[node name="look" type="Button" parent="Other"]
+margin_left = 125.0
+margin_top = 449.0
+margin_right = 207.0
+margin_bottom = 530.0
+custom_styles/hover = SubResource( 66 )
+custom_styles/pressed = SubResource( 67 )
+custom_styles/normal = SubResource( 68 )
+script = ExtResource( 1 )
+
+[node name="sprite" type="Sprite" parent="Other/look"]
+position = Vector2( 50, 53 )
+rotation = 0.785398
+scale = Vector2( 0.192518, 0.19559 )
+texture = ExtResource( 15 )
+
+[node name="tracerBullet" type="Button" parent="Other"]
+margin_left = 237.0
+margin_top = 450.0
+margin_right = 319.0
+margin_bottom = 531.0
+custom_styles/hover = SubResource( 70 )
+custom_styles/pressed = SubResource( 71 )
+custom_styles/normal = SubResource( 72 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Other/tracerBullet"]
+position = Vector2( 58, 27 )
+scale = Vector2( 0.0167933, 0.0252498 )
+texture = ExtResource( 11 )
+
+[node name="sprite" type="Sprite" parent="Other/tracerBullet/Sprite"]
+position = Vector2( -1845.98, 1108.92 )
+rotation = 0.586907
+scale = Vector2( 14.7223, 14.8126 )
+texture = ExtResource( 28 )
+
+[node name="explosiveBullet" type="Button" parent="Other"]
+margin_left = 613.0
+margin_top = 447.0
+margin_right = 695.0
+margin_bottom = 528.0
+custom_styles/hover = SubResource( 74 )
+custom_styles/pressed = SubResource( 75 )
+custom_styles/normal = SubResource( 76 )
+script = ExtResource( 1 )
+
+[node name="sprite" type="Sprite" parent="Other/explosiveBullet"]
+position = Vector2( 48, 34 )
+rotation = -1.5708
+scale = Vector2( 0.16312, 0.164092 )
+texture = ExtResource( 12 )
+
+[node name="boost" type="Button" parent="Other"]
+margin_left = 488.0
+margin_top = 447.0
+margin_right = 570.0
+margin_bottom = 528.0
+custom_styles/hover = SubResource( 78 )
+custom_styles/pressed = SubResource( 79 )
+custom_styles/normal = SubResource( 80 )
+script = ExtResource( 1 )
+
+[node name="sprite" type="Sprite" parent="Other/boost"]
+position = Vector2( 41, 30 )
+rotation = -1.5708
+scale = Vector2( 0.145545, 0.15921 )
+texture = ExtResource( 15 )
+
+[node name="Sprite" type="Sprite" parent="Other/boost/sprite"]
+position = Vector2( -218.162, -5.20685 )
+scale = Vector2( 1, 1.00045 )
+texture = ExtResource( 18 )
+offset = Vector2( 0, 1.5 )
+
+[node name="selection" type="ColorRect" parent="."]
+margin_left = 24.0
+margin_top = 48.0
+margin_right = 458.0
+margin_bottom = 155.0
+color = Color( 0.364706, 0.176471, 0.886275, 1 )
+
+[node name="title" type="Label" parent="selection"]
+margin_left = 5.0
+margin_top = 3.0
+margin_right = 422.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 200, 20 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Title"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="description" type="Label" parent="selection"]
+margin_left = 6.0
+margin_top = 38.0
+margin_right = 426.0
+margin_bottom = 100.0
+custom_colors/font_color = Color( 0.776471, 0.776471, 0.776471, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "description"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="selectSkillButton" type="Button" parent="."]
+margin_left = 115.0
+margin_top = 451.0
+margin_right = 216.0
+margin_bottom = 570.0
+focus_mode = 0
+custom_styles/hover = SubResource( 84 )
+custom_styles/pressed = SubResource( 85 )
+custom_styles/normal = SubResource( 86 )
+
+[node name="SelectSkillLabel" type="Label" parent="selectSkillButton"]
+margin_left = 1.0
+margin_top = 5.0
+margin_right = 103.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 100, 110 )
+custom_fonts/font = SubResource( 83 )
+text = "Select Skill"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="exitAndSaveButton" type="Button" parent="."]
+margin_left = 872.0
+margin_top = 488.0
+margin_right = 984.0
+margin_bottom = 567.0
+focus_mode = 0
+custom_styles/hover = SubResource( 91 )
+custom_styles/pressed = SubResource( 92 )
+custom_styles/normal = SubResource( 93 )
+
+[node name="exitLabel" type="Label" parent="exitAndSaveButton"]
+margin_left = 8.0
+margin_right = 108.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 100, 70 )
+custom_fonts/font = SubResource( 83 )
+text = "Exit and Save Points"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="LevelUpPanel" type="ColorRect" parent="."]
+margin_top = -4.0
+margin_right = 1024.0
+margin_bottom = 40.0
+color = Color( 0.254902, 0.0235294, 0.890196, 1 )
+
+[node name="LevelupLabel" type="Label" parent="LevelUpPanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -250.0
+margin_top = 7.0
+margin_right = 250.0
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 90 )
+text = "LEVEL UP !"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="pointsLabel" type="Label" parent="LevelUpPanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 301.0
+margin_top = 70.0
+margin_right = 401.0
+margin_bottom = 120.0
+rect_rotation = 5.0
+rect_pivot_offset = Vector2( 50, 25 )
+custom_fonts/font = SubResource( 102 )
+text = "x1"
+align = 1
+valign = 1
+
+[node name="border" type="Sprite" parent="LevelUpPanel"]
+position = Vector2( 511.999, 44 )
+scale = Vector2( 1.46286, 0.185017 )
+texture = ExtResource( 7 )
+
+[node name="confirmOrCancel" type="Node2D" parent="."]
+
+[node name="confirmButton" type="Button" parent="confirmOrCancel"]
+margin_left = 864.0
+margin_top = 440.0
+margin_right = 928.0
+margin_bottom = 487.0
+custom_styles/hover = SubResource( 94 )
+custom_styles/pressed = SubResource( 95 )
+custom_styles/normal = SubResource( 96 )
+
+[node name="confirm" type="Label" parent="confirmOrCancel/confirmButton"]
+margin_right = 64.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 97 )
+text = "confirm"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="cancelButton" type="Button" parent="confirmOrCancel"]
+margin_left = 928.0
+margin_top = 440.0
+margin_right = 992.0
+margin_bottom = 487.0
+custom_styles/hover = SubResource( 98 )
+custom_styles/pressed = SubResource( 99 )
+custom_styles/normal = SubResource( 100 )
+
+[node name="confirm" type="Label" parent="confirmOrCancel/cancelButton"]
+margin_right = 64.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 97 )
+text = "cancel"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[connection signal="pressed" from="Turret/turret" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Turret/barrel2" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Turret/barrel3" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Turret/barrel4" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Turret/bigBullet" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Turret/bigBullet2Direction" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Turret/bigBullet2Barrel" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Turret/2direction" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Turret/3direction" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Turret/4direction" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="AutoAim/autoAim1" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="AutoAim/autoAim2" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="AutoAim/autoAim3" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="DirectionalShoot/directional1" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="DirectionalShoot/directional2" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="DirectionalShoot/directional3" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Other/look" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Other/tracerBullet" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Other/explosiveBullet" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Other/boost" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="selectSkillButton" to="." method="_on_selectSkillButton_pressed"]
+[connection signal="pressed" from="exitAndSaveButton" to="." method="_on_exitAndSaveButton_pressed"]
+[connection signal="pressed" from="confirmOrCancel/confirmButton" to="." method="_on_confirmButton_pressed"]
+[connection signal="pressed" from="confirmOrCancel/cancelButton" to="." method="_on_cancelButton_pressed"]

@@ -57,6 +57,7 @@ func disableEnemyOnDead():
 	hurtBox.call_deferred("set", "disabled", true)
 	movementSpeed = 0
 	sprite.visible = false
+	queue_free()
 
 
 func createLoot():

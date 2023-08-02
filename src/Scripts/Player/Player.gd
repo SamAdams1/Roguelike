@@ -1,94 +1,121 @@
 extends KinematicBody2D
 
 #Movement
+onready var shipSprite = $ship
+onready var shipMovingSprite = $ship/shipMovingFlames
+onready var shipMovingSound = $sounds/new_ship_sound
+onready var boostFlames = $ship/shipBoostFlames
+onready var boostSound = $sounds/boostSound
+onready var boostBar = $boostBar
 var velocity = Vector2.ZERO
 var speed = 500
 var friction = 0.001
 var acceleration = 0.1
-onready var shipSprite = $ship
-onready var shipMovingSprite = $ship/shipMovingFlames
-onready var shipMovingSound = $ship/shipMovingFlames/shipMovingSound
+var nonBoostValue = 1
+var boostValue = 250
+var boostAmount = 10
+var boostCapacity = 10
+var canBoost = true
+var lookNotPressed = true
+var lookUnlocked = false
+var boostUnlocked = false
 
 #Health
-var playerHealth = 1
+onready var deathSound = $sounds/deathSound
+onready var hurtBox = $HurtBox/CollisionShape2D
 onready var healthBar = get_node('%healthBar')
 onready var healthBarUnder = get_node('%healthBarUnder')
 onready var updateTween = $GUILayer/GUI/healthBarUnder/Tween
 var takingDamage = false
-onready var deathSound = $deathSound
-onready var hurtBox = $HurtBox/CollisionShape2D
+var playerHealth = 15
 
 #Levels
 onready var expBar = get_node('%ExperienceBar')
 onready var labelLevel = get_node('%labelLevel')
-onready var levelUpSound = $GUILayer/GUI/ExperienceBar/levelUpSound
+onready var levelUpSound = $sounds/levelUpSound
+onready var skillTree = $GUILayer/GUI/SkillTree
 var experience = 0 
-var experienceLevel = 1
+var experienceLevel = 0
 var collectedExperience = 0
+
+var fireRate = 0.5
+var bulletSpeed = 1200
+var homingBulletUnlocked = false
+var explosiveBulletUnlocked = false
 
 #Directional Ship Shooting
 onready var turretSprite = $turret
-onready var directionalShootSound = $ship/directionalShootSound
-var directionalBullet = preload("res://Scenes/directionalBullets.tscn")
-var fireRate = 0.5
-var bulletSpeed = 1200
+onready var directionalShootSound = $sounds/directionalShootSound
+var directionalBullet = preload("res://Scenes/directionalBullet.tscn")
 var waitToFire = false
 var toggleFire = false
+var directionalShootUnlocked = false
+onready var directionalShootLevel = 0
+var directionalShoot = []
 
-#Auto Bullets
-onready var autoFireSound = $ship/autoFireSound
-var autoBullet = preload("res://Scenes/autoBullets.tscn")
-var autoBulletFireRate = .5
+
+#Auto Aim Bullets
+onready var autoFireSound = $sounds/autoFireSound
+var autoBullet = preload("res://Scenes/autoBullet.tscn")
 var autoBulletWaitTimer = false
-var autoBulletSpeed = 1000
 var nearestDistance = 100_000
 var nearestEnemy = null
+var enemyClose = []
+var autoAimUnlocked = false
+var autoAimLevel = 0
+
 
 #loot
 onready var moneyLabel = $GUILayer/GUI/moneyLabel
 var money = 0
 
-#enemy related
-var enemyClose = []
 
 func _ready():
+#	var master_sound = AudioServer.get_bus_index("Master")
+#	AudioServer.set_bus_mute(master_sound, true)
+	
+	labelLevel.text = "Level: " + str(experienceLevel)
+	skillTree.visible = false
 	$GUILayer.visible = true
+	boostFlames.visible = false
+	boostBar.visible = false
+	
+	shipMovingSound.play()
+	
 	setExpBar(experience, calculateExperienceCap())
 	healthBar.max_value = playerHealth
 	healthBar.value = playerHealth
 	healthBarUnder.max_value = playerHealth
 	healthBarUnder.value = playerHealth
+	boostBar.max_value = boostCapacity
+	
+	skillTree.connect("upgradePlayer", self, 'updatePlayerSkills')
 
 
 func _physics_process(delta):
-	movement(delta)
-	shipLookDirectionMoving()
-	
-	autoAim()
-	
-	while toggleFire and !waitToFire:
-		waitToFire = true
-		directionalShootSound.play()
-		fire($ship/bulletSpawnPoints/shipBulletPoint1)
-		fire($ship/bulletSpawnPoints/shipBulletPoint2)
-		fire($ship/bulletSpawnPoints/shipBulletPoint3)
-		yield(get_tree().create_timer(fireRate), "timeout")
-		waitToFire = false
-
+	if get_tree().paused == false:
+		movement(delta)
+		shipLookDirectionMoving(delta)
+		autoAim()
+		if !waitToFire:
+			directionalFire()
+			waitToFire = true
+			yield(get_tree().create_timer(fireRate), "timeout")
+			waitToFire = false
 
 func movement(_delta):
 	var input_velocity = Vector2.ZERO
 	
-	if Input.is_action_pressed("right"):
+	if Input.is_action_pressed("right") and lookNotPressed:
 		input_velocity.x += 1
-	if Input.is_action_pressed("left"):
+	if Input.is_action_pressed("left") and lookNotPressed:
 		input_velocity.x -= 1
-	if Input.is_action_pressed("down"):
+	if Input.is_action_pressed("down") and lookNotPressed:
 		input_velocity.y += 1
-	if Input.is_action_pressed("up"):
+	if Input.is_action_pressed("up") and lookNotPressed:
 		input_velocity.y -= 1
-	input_velocity = input_velocity.normalized() * speed
-
+	input_velocity = input_velocity.normalized() * (speed + nonBoostValue)
+	
 	#acceleration
 	if input_velocity.length() > 0:
 		velocity = velocity.linear_interpolate(input_velocity, acceleration)
@@ -96,9 +123,10 @@ func movement(_delta):
 	#deceleration
 		velocity = velocity.linear_interpolate(Vector2.ZERO, friction)
 	velocity = move_and_slide(velocity)
-	#print(velocity.y, "  ||  ", velocity.x, "  ||  ", input_velocity)
+#	print(velocity.y, "  ||  ", velocity.x, "  ||  ", input_velocity, "  ||  ", velocity)
 
-func shipLookDirectionMoving():
+
+func shipLookDirectionMoving(delta):
 	if Input.is_action_pressed("up"):
 		shipSprite.rotation_degrees = -90
 	if Input.is_action_pressed("down"):
@@ -118,23 +146,51 @@ func shipLookDirectionMoving():
 		
 	if !takingDamage:
 		shipMovingSprite.visible = isShipMoving()
+		if boostUnlocked:
+			boost()
+			calculateBoostBar(delta)
 	
-	if !Input.is_action_pressed("right") and !Input.is_action_pressed("down") and !Input.is_action_pressed("left") and !Input.is_action_pressed("up"):
-		shipMovingSound.stop()
+	if Input.is_action_pressed("look") and lookUnlocked:
+		lookNotPressed = false
+	else:
+		lookNotPressed = true
+	
+func boost():
+	if Input.is_action_pressed("ui_select") and isShipMoving() and canBoost:
+		boostFlames.visible = true
+		nonBoostValue = boostValue
+		if !boostSound.playing:
+			boostSound.play()
+	else:
+		nonBoostValue = 1
+		boostFlames.visible = false
+		boostSound.stop()
 
-	
+func calculateBoostBar(delta):
+	if boostFlames.visible == true:
+		boostAmount -= delta
+	if boostAmount <= 0:
+		canBoost = false
+	if boostAmount == boostCapacity:
+		canBoost = true
+	if boostFlames.visible == false and boostAmount < boostCapacity:
+		boostAmount += delta
+	boostBar.value = boostAmount
+
+
 func _input(event):
-	if event.is_action_pressed("ui_select"):
+	if event.is_action_pressed("fire"):
 		toggleFire = !toggleFire
 
 func isShipMoving():
-	if Input.is_action_pressed("right") or Input.is_action_pressed("down") or Input.is_action_pressed("left") or Input.is_action_pressed("up"):
-#		shipMovingSound.play()
+	if ((Input.is_action_pressed("right") or Input.is_action_pressed("down") or Input.is_action_pressed("left") or Input.is_action_pressed("up")) and lookNotPressed):
+		shipMovingSound.volume_db = -20
 		return true
 	
 	else:
-#		shipMovingSound.stop()
+		shipMovingSound.volume_db = -100
 		return false
+
 
 
 func _on_HurtBox_hurt(damage):
@@ -186,24 +242,24 @@ func _on_CollectArea_area_entered(area):
 func calculateExperience(gemEXP):
 	var expRequired = calculateExperienceCap()
 	collectedExperience += gemEXP
-	
+
 	if experience + collectedExperience >= expRequired: #Level Up
+		levelUpSound.play()
 		collectedExperience -= expRequired - experience
 		experienceLevel += 1
-		labelLevel.text = str("LEVEL: ", experienceLevel)
 		experience = 0
 		expRequired = calculateExperienceCap()
-		calculateExperience(0)
-		levelUpSound.play()
+		
 	else:
 		experience += collectedExperience
 		collectedExperience = 0
-	
 	setExpBar(experience, expRequired)
 	
 func calculateExperienceCap():
 	var expCap = experienceLevel
-	if experienceLevel < 20:
+	if experienceLevel == 0:
+		expCap = 1
+	elif experienceLevel < 20:
 		expCap = experienceLevel * 5
 	elif experienceLevel < 40:
 		expCap = 95 * (experienceLevel - 19) * 8
@@ -214,15 +270,90 @@ func calculateExperienceCap():
 func setExpBar(setValue = 1, setMaxValue = 100):
 	expBar.value = setValue
 	expBar.max_value = setMaxValue
-	
-#ShipShooting
-func fire(spawnPoint): #creates bullet
-	var bullet_instance = directionalBullet.instance()
-	bullet_instance.position = spawnPoint.get_global_position()
-	bullet_instance.rotation_degrees = shipSprite.rotation_degrees
-	bullet_instance.apply_impulse(Vector2(), Vector2(bulletSpeed, 0).rotated(shipSprite.rotation))
-	get_tree().get_root().call_deferred("add_child", bullet_instance)
 
+
+func _on_levelUpSound_finished():
+	labelLevel.text = str("LEVEL: ", experienceLevel)
+	
+	if experienceLevel % 2 != 0:
+		skillTree.points += 1
+		skillTree.updatePoints()
+	if experienceLevel % 5 == 0 or experienceLevel == 1:
+		toggleFire = false
+		skillTree.visible = true
+		get_tree().paused = true
+		
+
+func upgradePlayer():
+#	var optionChildren = upgradeOptions.get_children()
+#	for i in optionChildren:
+#		i.queue_free()
+	skillTree.visible = false
+	get_tree().paused = false
+	calculateExperience(0)
+
+
+func updatePlayerSkills(target, category):
+	if category == 'directional':
+		directionalShootUnlocked = true
+		directionalShootLevel += 1
+		directionalShoot.append(target)
+	elif category == 'autoaim':
+		autoAimLevel += 1
+		autoAimUnlocked = true
+	elif target == 'look':
+		lookUnlocked = true
+	elif target == 'boost':
+		boostUnlocked = true
+		boostBar.visible = true
+	elif target == 'tracerBullet':
+		homingBulletUnlocked = true
+	elif target == 'explosiveBullet':
+		explosiveBulletUnlocked = true
+
+
+
+
+
+#ShipShooting
+func directionalFire():
+	if directionalShootUnlocked and toggleFire and !waitToFire:
+		var counter = 1
+		var limit =  directionalShoot.size()
+		while counter <= limit:
+			var spawnPoint = directionalShootDetermine(counter, limit)
+			
+			directionalShootSound.play()
+			var bullet_instance = directionalBullet.instance()
+			bullet_instance.position = spawnPoint.get_global_position()
+			bullet_instance.rotation_degrees = shipSprite.rotation_degrees
+			
+			var shipMovingMultiplier = 1
+#			var shipMovingMultiplier = abs(velocity.y) + abs(velocity.x)
+#			if lookNotPressed:
+#				shipMovingMultiplier /= 2
+#			else:
+#				shipMovingMultiplier /= 4
+			bullet_instance.apply_impulse(Vector2(), Vector2(bulletSpeed + shipMovingMultiplier, 0).rotated(shipSprite.rotation))
+			get_tree().get_root().call_deferred("add_child", bullet_instance)
+			counter += 1
+
+func directionalShootDetermine(counter, limit):
+	if limit == 1:
+		if counter == 1:
+			return $ship/bulletSpawnPoints/directional2
+	elif limit == 2:
+		if counter == 1:
+			return $ship/bulletSpawnPoints/directional3
+		if counter == 2:
+			return $ship/bulletSpawnPoints/directional1
+	else:
+		if counter == 1:
+			return $ship/bulletSpawnPoints/directional1
+		if counter == 2:
+			return $ship/bulletSpawnPoints/directional2
+		if counter == 3:
+			return $ship/bulletSpawnPoints/directional3
 
 
 
@@ -234,26 +365,33 @@ func findNearestEnemy():
 			nearestEnemy = enemy
 			Global.nearestEnemy = enemy
 #			print(nearestDistance, '||', nearestEnemy)
-			
 
 
 func autoAim():
-	findNearestEnemy()
-	if nearestEnemy != null and !autoBulletWaitTimer and playerHealth > 0:
-		autoBulletWaitTimer = true
-		
-		if is_instance_valid(nearestEnemy):
-			autoFireSound.play()
-			var bullet_instance = autoBullet.instance()
-			bullet_instance.global_position = global_position
-			var direction = (self.global_position - nearestEnemy.global_position).normalized() * -1
-			bullet_instance.apply_impulse(Vector2(), direction * autoBulletSpeed)
-			get_parent().add_child(bullet_instance)
-#			print(nearestEnemy.global_position, '|', self.global_position, '|', direction)
-		
-		yield(get_tree().create_timer(autoBulletFireRate), "timeout")
-		autoBulletWaitTimer = false
-	
+	if autoAimUnlocked:
+		findNearestEnemy()
+		if nearestEnemy != null and !autoBulletWaitTimer and playerHealth > 0:
+			autoBulletWaitTimer = true
+			var counter = 0
+			while counter < autoAimLevel:
+				var burstTimer = true
+				if burstTimer:
+					var bullet_instance = autoBullet.instance()
+					bullet_instance.global_position = global_position
+					if is_instance_valid(nearestEnemy):
+						autoFireSound.play()
+						var direction = (self.global_position - nearestEnemy.global_position).normalized() * -1
+						bullet_instance.apply_impulse(Vector2(), direction * bulletSpeed)
+						get_parent().add_child(bullet_instance)
+					burstTimer = false
+				yield(get_tree().create_timer(0.2), "timeout")
+				burstTimer = true
+				counter += 1
+				
+			
+			yield(get_tree().create_timer(fireRate), "timeout")
+			autoBulletWaitTimer = false
+
 
 func _on_autoAimArea_body_entered(body):
 	if body.is_in_group('enemy'):
@@ -264,3 +402,10 @@ func _on_autoAimArea_body_exited(body):
 #	print(Global.closeEnemies)
 	nearestDistance = 100_000
 	Global.closeEnemies.erase(body)
+	
+	
+	
+
+
+
+

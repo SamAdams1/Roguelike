@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="TechWise Project"
-run/main_scene="res://Scenes/Menus/MainMenu.tscn"
+run/main_scene="res://Scenes/Utility/MainMenu.tscn"
 config/icon="res://Sprites/Player/newShip.png"
 <<<<<<<Updatedupstreamrun/main_scene="res://Scenes/Main.tscn"
 Updatedupstreamrun/main_scene="res://Scenes/MainMenu.tscn"
@@ -19,8 +19,7 @@ Updatedupstreamrun/main_scene="res://Scenes/MainMenu.tscn"
 [autoload]
 
 Global="*res://Scripts/global.gd"
-Save="*res://Scripts/save.gd"
-GlobalSettings="*res://global_settings.gd"
+TimerLabel="*res://Scripts/Player/timerLabel.gd"
 
 [debug]
 
@@ -31,6 +30,7 @@ gdscript/warnings/return_value_discarded=false
 window/size/test_width=1024
 window/size/test_height=600
 mouse_cursor/custom_image="res://Sprites/Player/crosshair2.png"
+mouse_cursor/custom_image_hotspot=Vector2( 30, 30 )
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
@@ -65,6 +65,22 @@ down={
  ]
 }
 attack={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+fire={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":70,"unicode":0,"echo":false,"script":null)
+ ]
+}
+look={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777237,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777240,"unicode":0,"echo":false,"script":null)
+ ]
+}
+click={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]

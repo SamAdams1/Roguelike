@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Sprites/Enemies/AsteroidSprite.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/EnemyScripts/enemy_asteroid.gd" type="Script" id=2]
@@ -18,12 +18,17 @@ extents = Vector2( 32, 48 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 79, 79 )
 
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 100.75, 93 )
+
 [node name="enemy_base" type="KinematicBody2D"]
+pause_mode = 1
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 2 )
 movementSpeed = 300.0
 health = 1
+healthDroppedValue = 1
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -7.62939e-06 )
@@ -57,6 +62,15 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BulletCollision"]
 shape = SubResource( 5 )
+
+[node name="BulletCollisionArea" type="Area2D" parent="." groups=["enemy"]]
+position = Vector2( -210, -32 )
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletCollisionArea"]
+position = Vector2( 212.25, 32 )
+shape = SubResource( 6 )
 
 [node name="DeathExplosionSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )

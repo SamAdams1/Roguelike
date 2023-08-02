@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Enemies/enemy_asteroid.tscn" type="PackedScene" id=2]
@@ -10,6 +10,10 @@
 [ext_resource path="res://Audio/Music/let-the-games-begin-21858.wav" type="AudioStream" id=8]
 [ext_resource path="res://Scenes/Enemies/enemy_asteroid_2.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Enemies/enemy_asteroid_4.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Objects/experienceGem.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/loot_planets/loot_planet_core.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/loot_planets/loot_planet_2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/loot_planets/loot_planet_3.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Curve2D" id=2]
 _data = {
@@ -18,7 +22,8 @@ _data = {
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 6 )
-enemies = [ ExtResource( 2 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 10 ) ]
+enemies = [ ExtResource( 2 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 11 ) ]
+planets = [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1152, 761 )
@@ -47,7 +52,7 @@ scale = Vector2( 6.6994, 6.30444 )
 [node name="Background" parent="." instance=ExtResource( 5 )]
 
 [node name="enemy_spawn_timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 autostart = true
 
 [node name="difficulty_timer" type="Timer" parent="."]
@@ -55,10 +60,58 @@ autostart = true
 
 [node name="lootBase" type="Node2D" parent="." groups=["loot"]]
 
+[node name="experienceGem" parent="lootBase" instance=ExtResource( 11 )]
+position = Vector2( 1345, 531 )
+speed = 10
+speedMultiplier = 0
+
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -10.0
 bus = "Music"
 
+[node name="enemy_increase" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="enemy_base" parent="." instance=ExtResource( 2 )]
+position = Vector2( 914, 742 )
+movementSpeed = 0.0
+
+[node name="enemy_base2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 752, 746 )
+movementSpeed = 0.0
+
+[node name="enemy_base3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 620, 755 )
+movementSpeed = 0.0
+
+[node name="enemy_base4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 490, 763 )
+movementSpeed = 0.0
+
+[node name="enemy_base5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1614, 558 )
+movementSpeed = 0.0
+
+[node name="enemy_base6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1738, 637 )
+movementSpeed = 0.0
+
+[node name="enemy_asteroid_3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1131, 344 )
+movementSpeed = 0.0
+health = 50
+
+[node name="enemy_asteroid_4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1129, 187 )
+movementSpeed = 0.0
+health = 50
+
+[node name="planet_loot_spawner" type="Timer" parent="."]
+autostart = true
+
 [connection signal="timeout" from="enemy_spawn_timer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="difficulty_timer" to="." method="_on_difficulty_timer_timeout"]
+[connection signal="timeout" from="enemy_increase" to="." method="_on_enemy_increase_timeout"]
+[connection signal="timeout" from="planet_loot_spawner" to="." method="_on_planet_loot_spawner_timeout"]
