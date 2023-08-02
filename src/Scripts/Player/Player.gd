@@ -3,7 +3,7 @@ extends KinematicBody2D
 #Movement
 onready var shipSprite = $ship
 onready var shipMovingSprite = $ship/shipMovingFlames
-onready var shipMovingSound = $sounds/shipMovingSound
+onready var shipMovingSound = $sounds/new_ship_sound
 onready var boostFlames = $ship/shipBoostFlames
 onready var boostSound = $sounds/boostSound
 onready var boostBar = $boostBar
