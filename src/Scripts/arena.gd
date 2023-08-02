@@ -6,7 +6,6 @@ var num_of_enemies = 0
 var difficulty = 14
 
 export(Array, PackedScene) var planets
-var num_of_loot_planets = 0
 
 func _ready():
 #	music.play()
@@ -43,7 +42,7 @@ func _on_planet_loot_spawner_timeout():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	
-	var planet_number = round(rand_range(0, num_of_loot_planets))
+	var planet_number = round(rand_range(0, (planets.size() - 1)))
 	
 	$Player/Path2D/PathFollow2D.offset = rng.randi_range(0, 3300)
 	var instance = planets[planet_number].instance()
