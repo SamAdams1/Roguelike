@@ -96,7 +96,6 @@ position = Vector2( 19.9049, 0.657532 )
 
 [node name="directional2" type="Position2D" parent="ship/bulletSpawnPoints"]
 position = Vector2( 71.5101, 32.2176 )
-scale = Vector2( 1, 1 )
 
 [node name="directional3" type="Position2D" parent="ship/bulletSpawnPoints"]
 position = Vector2( 18.4304, 61.8051 )

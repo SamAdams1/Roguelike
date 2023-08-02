@@ -212,7 +212,7 @@ bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
 bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
 
 [sub_resource type="DynamicFont" id=1]
-size = 14
+size = 20
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -440,8 +440,7 @@ script = ExtResource( 30 )
 
 [node name="directional3" type="Sprite" parent="treeLines"]
 self_modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 65.4995, 131.717 )
-rotation = 1.5708
+position = Vector2( 10, 163 )
 scale = Vector2( 0.125929, 0.370034 )
 texture = ExtResource( 13 )
 script = ExtResource( 30 )
@@ -471,8 +470,7 @@ script = ExtResource( 30 )
 
 [node name="autoAim3" type="Sprite" parent="treeLines"]
 self_modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 703.5, 109 )
-rotation = 1.5708
+position = Vector2( 773, 162 )
 scale = Vector2( 0.169074, 0.370034 )
 texture = ExtResource( 13 )
 script = ExtResource( 30 )
@@ -772,10 +770,10 @@ texture = ExtResource( 5 )
 offset = Vector2( 1.25, -2.9 )
 
 [node name="autoAim3" type="Button" parent="AutoAim"]
-margin_left = 1.0
-margin_top = -208.0
-margin_right = 83.0
-margin_bottom = -129.0
+margin_left = 139.0
+margin_top = -104.0
+margin_right = 221.0
+margin_bottom = -25.0
 custom_styles/hover = SubResource( 50 )
 custom_styles/pressed = SubResource( 51 )
 custom_styles/normal = SubResource( 52 )
@@ -819,9 +817,10 @@ scale = Vector2( 0.273333, 0.266667 )
 texture = ExtResource( 16 )
 
 [node name="directional3" type="Button" parent="DirectionalShoot"]
-margin_top = -208.0
-margin_right = 82.0
-margin_bottom = -129.0
+margin_left = -113.0
+margin_top = -105.0
+margin_right = -31.0
+margin_bottom = -26.0
 custom_styles/hover = SubResource( 62 )
 custom_styles/pressed = SubResource( 63 )
 custom_styles/normal = SubResource( 64 )
@@ -911,7 +910,7 @@ texture = ExtResource( 18 )
 offset = Vector2( 0, 1.5 )
 
 [node name="selection" type="ColorRect" parent="."]
-margin_left = 230.0
+margin_left = 24.0
 margin_top = 48.0
 margin_right = 458.0
 margin_bottom = 155.0
@@ -920,7 +919,7 @@ color = Color( 0.364706, 0.176471, 0.886275, 1 )
 [node name="title" type="Label" parent="selection"]
 margin_left = 5.0
 margin_top = 3.0
-margin_right = 220.0
+margin_right = 422.0
 margin_bottom = 33.0
 rect_min_size = Vector2( 200, 20 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -933,7 +932,7 @@ autowrap = true
 [node name="description" type="Label" parent="selection"]
 margin_left = 6.0
 margin_top = 38.0
-margin_right = 223.0
+margin_right = 426.0
 margin_bottom = 100.0
 custom_colors/font_color = Color( 0.776471, 0.776471, 0.776471, 1 )
 custom_fonts/font = SubResource( 2 )
@@ -1008,10 +1007,10 @@ uppercase = true
 [node name="pointsLabel" type="Label" parent="LevelUpPanel"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 384.0
-margin_top = 76.0
-margin_right = 484.0
-margin_bottom = 126.0
+margin_left = 301.0
+margin_top = 70.0
+margin_right = 401.0
+margin_bottom = 120.0
 rect_rotation = 5.0
 rect_pivot_offset = Vector2( 50, 25 )
 custom_fonts/font = SubResource( 102 )

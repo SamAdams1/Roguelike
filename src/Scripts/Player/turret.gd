@@ -6,7 +6,7 @@ onready var sound = $turretShootSound
 var waitToFire = false
 var toggleFire = false
 var fireRate = 0.5
-var bulletSpeed = 1000
+var bulletSpeed = 600
 var currentTurret = null
 
 

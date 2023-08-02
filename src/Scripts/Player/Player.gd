@@ -35,11 +35,13 @@ onready var labelLevel = get_node('%labelLevel')
 onready var levelUpSound = $sounds/levelUpSound
 onready var skillTree = $GUILayer/GUI/SkillTree
 var experience = 0 
-var experienceLevel = 4
+var experienceLevel = 0
 var collectedExperience = 0
 
 var fireRate = 0.5
 var bulletSpeed = 1200
+var homingBulletUnlocked = false
+var explosiveBulletUnlocked = false
 
 #Directional Ship Shooting
 onready var turretSprite = $turret
@@ -276,10 +278,11 @@ func _on_levelUpSound_finished():
 	if experienceLevel % 2 != 0:
 		skillTree.points += 1
 		skillTree.updatePoints()
-	if experienceLevel % 5 == 0:
+	if experienceLevel % 5 == 0 or experienceLevel == 1:
+		toggleFire = false
 		skillTree.visible = true
 		get_tree().paused = true
-		toggleFire = false
+		
 
 func upgradePlayer():
 #	var optionChildren = upgradeOptions.get_children()
@@ -303,6 +306,10 @@ func updatePlayerSkills(target, category):
 	elif target == 'boost':
 		boostUnlocked = true
 		boostBar.visible = true
+	elif target == 'tracerBullet':
+		homingBulletUnlocked = true
+	elif target == 'explosiveBullet':
+		explosiveBulletUnlocked = true
 
 
 

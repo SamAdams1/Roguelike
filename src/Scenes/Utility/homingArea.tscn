@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="homingArea" type="Area2D"]
+visible = false
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -73.9056, 3 )
+scale = Vector2( 3.10217, 1.98864 )
+polygon = PoolVector2Array( 35.7978, -7.54286, 107.947, -20.6171, 107.655, 20.6171, 35.7978, 4.52571, 35.7978, -0.514343 )

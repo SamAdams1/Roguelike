@@ -91,19 +91,19 @@ const SKILLS = {
 	},
 	'autoAim1': {
 		'category': 'autoaim',
-		'title': 'Auto Aim    Turret',
+		'title': 'Auto Aim Turret',
 		'desc': "Shoots at the nearest enemy.",
 		'prerequiste': 'first',
 	},
 	'autoAim2': {
 		'category': 'autoaim',
-		'title': 'Auto-Aim    Turret 2',
+		'title': 'Auto-Aim Turret 2',
 		'desc': "Shoots 2 bullets at the nearest enemy in rapid succesion.",
 		'prerequiste': 'autoAim1',
 	},
 	'autoAim3': {
 		'category': 'autoaim',
-		'title': 'Auto-Aim    Turret 3',
+		'title': 'Auto-Aim Turret 3',
 		'desc': "Shoots 3 bullets at the nearest enemy in rapid succesion.",
 		'prerequiste': 'autoAim2',
 	},
@@ -128,7 +128,7 @@ const SKILLS = {
 	'tracerBullet': {
 		'category': 'other',
 		'title': 'Tracer Bullets',
-		'desc': "Bullets will lock on to any enemies in front of it.",
+		'desc': "Bullets will lock on to an enemy in front of it. Sets bullet penetration to 0.",
 		'prerequiste': 'first',
 	},
 	'look': {
