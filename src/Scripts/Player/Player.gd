@@ -46,7 +46,7 @@ var explosiveBulletUnlocked = false
 #Directional Ship Shooting
 onready var turretSprite = $turret
 onready var directionalShootSound = $sounds/directionalShootSound
-var directionalBullet = preload("res://Scenes/directionalBullet.tscn")
+var directionalBullet = preload("res://Audio/SFX/hit.wav")
 var waitToFire = false
 var toggleFire = false
 var directionalShootUnlocked = false

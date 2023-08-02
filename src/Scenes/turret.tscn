@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Sprites/Upgrades/regTurret.png" type="Texture" id=1]
-[ext_resource path="res://Audio/short-laser-gun-shot-1670.wav" type="AudioStream" id=2]
+[ext_resource path="res://Audio/SFX/short-laser-gun-shot-1670.wav" type="AudioStream" id=2]
 [ext_resource path="res://Scripts/Player/turret.gd" type="Script" id=3]
 [ext_resource path="res://Sprites/Upgrades/barrel2.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/Upgrades/barrel4.png" type="Texture" id=5]
