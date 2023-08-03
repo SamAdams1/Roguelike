@@ -7,8 +7,8 @@ onready var lockedColor = Color(0, 0, 0)
 var otherBranches = {
 	'directional1' : ['directional1', 'mainleftdirectional1', 'tracerLook', 'mainleft2','leftAngle'],
 	'look' : ['look', 'leftAngle', 'mainleft2', 'tracerLook'],
-	'tracerBullet' : ['tracerBullet', 'leftAngle', 'mainleft2'],
-	'boost': ['boost', 'rightAngle', 'mainRight'],
+	'tracerBullet' : ['tracerBullet', 'rightAngle', 'mainRight'],
+	'boost': ['boost', 'leftAngle', 'mainleft2'],
 	'explosiveBullet': ['rightAngle', 'mainRight', 'boostToExplosion', 'explosiveBullet'],
 	'autoAim1': ['rightAngle', 'mainRight', 'boostToExplosion', 'autoAim1', 'autoAim1Branch'],
 }
