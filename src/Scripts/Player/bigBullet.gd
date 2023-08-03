@@ -5,7 +5,7 @@ onready var sound = $bulletHitSound
 onready var sprite = $Sprite
 onready var hitBox = $HitBox/CollisionShape2D
 
-onready var bulletHealth = 1
+onready var bulletHealth = Global.bulletHealth
 var target = null
 var direction = Vector2.RIGHT
 onready var speed = 400
@@ -21,7 +21,7 @@ func _ready():
 		bulletHealth = 0
 
 func _physics_process(delta):
-	if target and is_instance_valid(target):
+	if target and is_instance_valid(target) and homingBulletUnlocked:
 		translate(direction * speed * delta)
 		direction = target.global_position - global_position
 		direction = direction.normalized()

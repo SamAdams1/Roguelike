@@ -1,5 +1,14 @@
 extends KinematicBody2D
 
+#upgradable stats
+var speed = 500
+var playerHealth = 15
+var boostCapacity = 2
+var boostValue = 100
+
+var fireRate = 0.5
+var bulletSpeed = 600
+
 #Movement
 onready var shipSprite = $ship
 onready var shipMovingSprite = $ship/shipMovingFlames
@@ -8,13 +17,10 @@ onready var boostFlames = $ship/shipBoostFlames
 onready var boostSound = $sounds/boostSound
 onready var boostBar = $boostBar
 var velocity = Vector2.ZERO
-var speed = 500
 var friction = 0.001
 var acceleration = 0.1
 var nonBoostValue = 1
-var boostValue = 250
-var boostAmount = 10
-var boostCapacity = 10
+var boostAmount = 2
 var canBoost = true
 var lookNotPressed = true
 var lookUnlocked = false
@@ -27,7 +33,7 @@ onready var healthBar = get_node('%healthBar')
 onready var healthBarUnder = get_node('%healthBarUnder')
 onready var updateTween = $GUILayer/GUI/healthBarUnder/Tween
 var takingDamage = false
-var playerHealth = 15
+
 
 #Levels
 onready var expBar = get_node('%ExperienceBar')
@@ -37,9 +43,6 @@ onready var skillTree = $GUILayer/GUI/SkillTree
 var experience = 0 
 var experienceLevel = 0
 var collectedExperience = 0
-
-var fireRate = 0.5
-var bulletSpeed = 1200
 var homingBulletUnlocked = false
 var explosiveBulletUnlocked = false
 
@@ -71,8 +74,8 @@ var money = 0
 
 
 func _ready():
-#	var master_sound = AudioServer.get_bus_index("Master")
-#	AudioServer.set_bus_mute(master_sound, true)
+	var master_sound = AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_mute(master_sound, true)
 	
 	labelLevel.text = "Level: " + str(experienceLevel)
 	skillTree.visible = false
@@ -167,7 +170,7 @@ func boost():
 		boostSound.stop()
 
 func calculateBoostBar(delta):
-	if boostFlames.visible == true:
+	if Input.is_action_pressed("ui_select"):
 		boostAmount -= delta
 	if boostAmount <= 0:
 		canBoost = false
@@ -271,6 +274,7 @@ func setExpBar(setValue = 1, setMaxValue = 100):
 	expBar.value = setValue
 	expBar.max_value = setMaxValue
 
+signal firstLevel
 
 func _on_levelUpSound_finished():
 	labelLevel.text = str("LEVEL: ", experienceLevel)
@@ -279,6 +283,8 @@ func _on_levelUpSound_finished():
 		skillTree.points += 1
 		skillTree.updatePoints()
 	if experienceLevel % 5 == 0 or experienceLevel == 1:
+		emit_signal("firstLevel", experienceLevel)
+		shipMovingSound.volume_db = -100
 		toggleFire = false
 		skillTree.visible = true
 		get_tree().paused = true
@@ -328,7 +334,7 @@ func directionalFire():
 			bullet_instance.position = spawnPoint.get_global_position()
 			bullet_instance.rotation_degrees = shipSprite.rotation_degrees
 			
-			var shipMovingMultiplier = 1
+			var shipMovingMultiplier = 0
 #			var shipMovingMultiplier = abs(velocity.y) + abs(velocity.x)
 #			if lookNotPressed:
 #				shipMovingMultiplier /= 2
