@@ -72,7 +72,6 @@ volume_db = -10.0
 bus = "Music"
 
 [node name="enemy_increase" type="Timer" parent="."]
-wait_time = 120.0
 autostart = true
 
 [node name="enemy_base" parent="." instance=ExtResource( 2 )]

@@ -1,6 +1,31 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Enemies/enemy_asteroid.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/Enemies/black_enemy.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 800, 0, 800, 800 )
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 800, 800 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 800, 800, 800 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 800, 800 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 1 ), SubResource( 3 ), SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
 
 [node name="enemy_asteroid_3" instance=ExtResource( 1 )]
 physics_interpolation_mode = 1
@@ -10,11 +35,32 @@ experienceDroppedValue = 5
 coinDroppedValue = 5
 
 [node name="Sprite" parent="." index="0"]
-modulate = Color( 0.168627, 0.831373, 0.0941176, 1 )
-scale = Vector2( 0.0583766, 0.0725934 )
+modulate = Color( 1, 1, 0.196078, 1 )
+position = Vector2( -11, 33 )
+scale = Vector2( 0.75, 0.75 )
+texture = null
 
-[node name="DeathExplosionSound" parent="." index="5"]
-bus = "SFX"
+[node name="PlayerCollision" parent="." index="1"]
+visible = false
+
+[node name="HurtBox" parent="." index="2"]
+visible = false
+
+[node name="HitBox" parent="." index="3"]
+visible = false
+
+[node name="BulletCollision" parent="." index="4"]
+visible = false
+
+[node name="BulletCollisionArea" parent="." index="5"]
+visible = false
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="7"]
+position = Vector2( -16, 51 )
+scale = Vector2( 0.75, 0.745 )
+frames = SubResource( 4 )
+frame = 2
+playing = true
 
 [editable path="HurtBox"]
 [editable path="HitBox"]
