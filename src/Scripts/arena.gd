@@ -3,7 +3,7 @@ extends Node
 export(Array, PackedScene) var enemies
 onready var music = $music
 var num_of_enemies = 0
-var difficulty = 14
+var difficulty = 4
 
 export(Array, PackedScene) var planets
 
@@ -11,6 +11,7 @@ func _ready():
 #	music.play()
 	randomize()
 	Global.points = 0
+	$enemy_spawn_timer.wait_time = difficulty
 	
 
 func _on_enemy_spawn_timer_timeout():
@@ -26,12 +27,20 @@ func _on_enemy_spawn_timer_timeout():
 	instance.global_position = $Player/Path2D/PathFollow2D/Position2D.global_position
 	add_child(instance)
 	
-func _on_difficulty_timer_timeout():
-	if $enemy_spawn_timer.wait_time > 0.5:
+	if $enemy_spawn_timer.wait_time > 0.2:
+		print($enemy_spawn_timer.wait_time, "spawn")
 		$enemy_spawn_timer.wait_time -= 0.2
+	else:
+		pass
+	
+func _on_difficulty_timer_timeout():
+	print($difficulty_timer.wait_time, "difficulty")
+	$enemy_spawn_timer.wait_time = (difficulty - 2)
+	
+
 
 func _on_enemy_increase_timeout():
-	$enemy_spawn_timer.wait_time = (difficulty - 2)
+	print($enemy_increase.wait_time)
 	if num_of_enemies < (enemies.size() - 1):
 		num_of_enemies += 1
 	else:

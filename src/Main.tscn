@@ -52,10 +52,11 @@ scale = Vector2( 6.6994, 6.30444 )
 [node name="Background" parent="." instance=ExtResource( 5 )]
 
 [node name="enemy_spawn_timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 14.0
 autostart = true
 
 [node name="difficulty_timer" type="Timer" parent="."]
+wait_time = 60.0
 autostart = true
 
 [node name="lootBase" type="Node2D" parent="." groups=["loot"]]
@@ -71,7 +72,7 @@ volume_db = -10.0
 bus = "Music"
 
 [node name="enemy_increase" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 120.0
 autostart = true
 
 [node name="enemy_base" parent="." instance=ExtResource( 2 )]
@@ -109,6 +110,7 @@ movementSpeed = 0.0
 health = 50
 
 [node name="planet_loot_spawner" type="Timer" parent="."]
+wait_time = 45.0
 autostart = true
 
 [connection signal="timeout" from="enemy_spawn_timer" to="." method="_on_enemy_spawn_timer_timeout"]
