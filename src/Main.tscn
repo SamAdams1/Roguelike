@@ -109,7 +109,7 @@ movementSpeed = 0.0
 health = 50
 
 [node name="planet_loot_spawner" type="Timer" parent="."]
-wait_time = 45.0
+wait_time = 2.0
 autostart = true
 
 [connection signal="timeout" from="enemy_spawn_timer" to="." method="_on_enemy_spawn_timer_timeout"]

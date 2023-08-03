@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var damageNumbers = preload("res://Scenes/Enemies/DamageNumbers.tscn")
+var damageNumbers = preload("res://Scenes/Explosion.tscn")
 var explosion = preload("res://Scenes/Explosion.tscn")
 var xpGem = preload("res://Scenes/Objects/experienceGem.tscn")
 var coin = preload("res://Scenes/Objects/coin.tscn")
@@ -47,6 +47,7 @@ func createLoot():
 
 
 func _on_HurtBox_hurt(damage):
+	print("hurt")
 	health -= damage
 	if notDead:
 		var text = damageNumbers.instance()

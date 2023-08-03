@@ -59,7 +59,6 @@ visible = false
 position = Vector2( -16, 51 )
 scale = Vector2( 0.75, 0.745 )
 frames = SubResource( 4 )
-frame = 1
 playing = true
 
 [editable path="HurtBox"]
