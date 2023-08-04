@@ -58,7 +58,6 @@ func _on_HurtBox_hurt(damage):
 			var explosion_instance = explosion.instance()
 			explosion_instance.position = get_global_position()
 			get_tree().get_root().add_child(explosion_instance)
-			
 			createLoot()
 			
 func disableEnemyOnDead():

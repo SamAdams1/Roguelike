@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=2]
+[gd_scene load_steps=112 format=2]
 
 [ext_resource path="res://Scripts/Utility/button.tres.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Utility/buttonCore.gd" type="Script" id=2]
@@ -56,7 +56,7 @@ bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
 bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
 
 [sub_resource type="StyleBoxFlat" id=12]
-bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+bg_color = Color( 0.396078, 0.109804, 0.862745, 1 )
 
 [sub_resource type="StyleBoxFlat" id=14]
 bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
@@ -65,7 +65,7 @@ bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
 bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
 
 [sub_resource type="StyleBoxFlat" id=16]
-bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+bg_color = Color( 0.254902, 0.0235294, 0.890196, 1 )
 
 [sub_resource type="StyleBoxFlat" id=18]
 bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
@@ -83,7 +83,7 @@ bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
 bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
 
 [sub_resource type="StyleBoxFlat" id=24]
-bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+bg_color = Color( 0.396078, 0.109804, 0.862745, 1 )
 
 [sub_resource type="StyleBoxFlat" id=26]
 bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
@@ -92,7 +92,7 @@ bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
 bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
 
 [sub_resource type="StyleBoxFlat" id=28]
-bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+bg_color = Color( 0.396078, 0.109804, 0.862745, 1 )
 
 [sub_resource type="StyleBoxFlat" id=30]
 bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
@@ -110,7 +110,7 @@ bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
 bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
 
 [sub_resource type="StyleBoxFlat" id=36]
-bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+bg_color = Color( 0.396078, 0.109804, 0.862745, 1 )
 
 [sub_resource type="StyleBoxFlat" id=38]
 bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
@@ -119,7 +119,7 @@ bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
 bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
 
 [sub_resource type="StyleBoxFlat" id=40]
-bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+bg_color = Color( 0.254902, 0.0235294, 0.890196, 1 )
 
 [sub_resource type="StyleBoxFlat" id=42]
 bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
@@ -137,7 +137,7 @@ bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
 bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
 
 [sub_resource type="StyleBoxFlat" id=48]
-bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+bg_color = Color( 0.396078, 0.109804, 0.862745, 1 )
 
 [sub_resource type="StyleBoxFlat" id=50]
 bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
@@ -146,7 +146,7 @@ bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
 bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
 
 [sub_resource type="StyleBoxFlat" id=52]
-bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+bg_color = Color( 0.254902, 0.0235294, 0.890196, 1 )
 
 [sub_resource type="StyleBoxFlat" id=54]
 bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
@@ -158,13 +158,13 @@ bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
 bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
 
 [sub_resource type="StyleBoxFlat" id=58]
-bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
+bg_color = Color( 0.478431, 0.164706, 0.996078, 1 )
 
 [sub_resource type="StyleBoxFlat" id=59]
 bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
 
 [sub_resource type="StyleBoxFlat" id=60]
-bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+bg_color = Color( 0.396078, 0.109804, 0.862745, 1 )
 
 [sub_resource type="StyleBoxFlat" id=62]
 bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
@@ -173,7 +173,7 @@ bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
 bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
 
 [sub_resource type="StyleBoxFlat" id=64]
-bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+bg_color = Color( 0.278431, 0.0156863, 1, 1 )
 
 [sub_resource type="StyleBoxFlat" id=66]
 bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
@@ -200,7 +200,7 @@ bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
 bg_color = Color( 0.247059, 0.0196078, 0.443137, 1 )
 
 [sub_resource type="StyleBoxFlat" id=76]
-bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
+bg_color = Color( 0.396078, 0.109804, 0.862745, 1 )
 
 [sub_resource type="StyleBoxFlat" id=78]
 bg_color = Color( 0.415686, 0.262745, 0.670588, 1 )
@@ -213,9 +213,15 @@ bg_color = Color( 0.360784, 0.223529, 0.584314, 1 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 12
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=105]
 size = 12
 font_data = ExtResource( 4 )
 
@@ -244,7 +250,7 @@ border_width_bottom = 2
 border_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="DynamicFont" id=83]
-size = 14
+size = 24
 font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxFlat" id=91]
@@ -270,6 +276,10 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=104]
+size = 20
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=90]
 size = 32
@@ -921,33 +931,43 @@ margin_bottom = 155.0
 color = Color( 0.364706, 0.176471, 0.886275, 1 )
 
 [node name="title" type="Label" parent="selection"]
-margin_left = 5.0
-margin_top = 3.0
-margin_right = 422.0
-margin_bottom = 33.0
+margin_left = 6.0
+margin_top = 2.0
+margin_right = 431.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 200, 20 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "Title"
+text = "Upgrade your Ship!"
 align = 1
-valign = 1
 autowrap = true
 
 [node name="description" type="Label" parent="selection"]
 margin_left = 6.0
-margin_top = 38.0
+margin_top = 58.0
 margin_right = 426.0
 margin_bottom = 100.0
 custom_colors/font_color = Color( 0.776471, 0.776471, 0.776471, 1 )
 custom_fonts/font = SubResource( 2 )
-text = "description"
+text = "Gain Unlock Points by leveling up, destroying planets or buying them at gas stations."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="cost" type="Label" parent="selection"]
+margin_left = 5.0
+margin_top = 28.0
+margin_right = 428.0
+margin_bottom = 57.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 105 )
 align = 1
 valign = 1
 autowrap = true
 
 [node name="selectSkillButton" type="Button" parent="."]
-margin_left = 115.0
-margin_top = 451.0
+margin_left = 18.0
+margin_top = 433.0
 margin_right = 216.0
 margin_bottom = 570.0
 focus_mode = 0
@@ -956,11 +976,10 @@ custom_styles/pressed = SubResource( 85 )
 custom_styles/normal = SubResource( 86 )
 
 [node name="SelectSkillLabel" type="Label" parent="selectSkillButton"]
-margin_left = 1.0
-margin_top = 5.0
-margin_right = 103.0
-margin_bottom = 115.0
-rect_min_size = Vector2( 100, 110 )
+margin_left = 4.0
+margin_top = 15.0
+margin_right = 194.0
+margin_bottom = 118.0
 custom_fonts/font = SubResource( 83 )
 text = "Select Skill"
 align = 1
@@ -968,22 +987,23 @@ valign = 1
 autowrap = true
 uppercase = true
 
-[node name="exitAndSaveButton" type="Button" parent="."]
-margin_left = 872.0
-margin_top = 488.0
-margin_right = 984.0
-margin_bottom = 567.0
+[node name="exitButton" type="Button" parent="."]
+margin_left = 848.0
+margin_top = 461.0
+margin_right = 1010.0
+margin_bottom = 569.0
 focus_mode = 0
 custom_styles/hover = SubResource( 91 )
 custom_styles/pressed = SubResource( 92 )
 custom_styles/normal = SubResource( 93 )
 
-[node name="exitLabel" type="Label" parent="exitAndSaveButton"]
-margin_left = 8.0
-margin_right = 108.0
-margin_bottom = 80.0
+[node name="exitLabel" type="Label" parent="exitButton"]
+margin_left = 7.0
+margin_top = 2.0
+margin_right = 156.0
+margin_bottom = 107.0
 rect_min_size = Vector2( 100, 70 )
-custom_fonts/font = SubResource( 83 )
+custom_fonts/font = SubResource( 104 )
 text = "Exit and Save Points"
 align = 1
 valign = 1
@@ -1037,6 +1057,7 @@ align = 1
 valign = 1
 
 [node name="confirmOrCancel" type="Node2D" parent="."]
+position = Vector2( 0, -28 )
 
 [node name="confirmButton" type="Button" parent="confirmOrCancel"]
 margin_left = 864.0
@@ -1097,6 +1118,6 @@ uppercase = true
 [connection signal="pressed" from="Other/explosiveBullet" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Other/boost" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="selectSkillButton" to="." method="_on_selectSkillButton_pressed"]
-[connection signal="pressed" from="exitAndSaveButton" to="." method="_on_exitAndSaveButton_pressed"]
+[connection signal="pressed" from="exitButton" to="." method="_on_exitAndSaveButton_pressed"]
 [connection signal="pressed" from="confirmOrCancel/confirmButton" to="." method="_on_confirmButton_pressed"]
 [connection signal="pressed" from="confirmOrCancel/cancelButton" to="." method="_on_cancelButton_pressed"]

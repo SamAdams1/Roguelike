@@ -6,10 +6,12 @@ onready var description = $selection/description
 onready var selectButton = $selectSkillButton
 onready var branchLines = preload("res://Scripts/Utility/skillTreeLines.gd")
 onready var cancelOrConfirmButtons = $confirmOrCancel
-onready var exitLabel = $exitAndSaveButton/exitLabel
+onready var exitLabel = $exitButton/exitLabel
+onready var exitButton = $exitButton
 onready var pointLabel =$header/pointsLabel
 onready var headerLabel = $header/headerLabel
 onready var levelLabel = $header/playerLevel
+onready var costLabel = $selection/cost
 
 onready var player = get_tree().current_scene.get_node('Player')
 var target = null
@@ -28,6 +30,8 @@ const SKILLS = {
 		'desc': 'Toggle shoots at mouse position.',
 		'prerequiste': ['first'],
 		'nonrequiste': [''],
+		'cost': 1,
+		'totalCost': 1,
 	},
 	'barrel2': {
 		'category': 'turret',
@@ -35,20 +39,26 @@ const SKILLS = {
 		'desc': 'Shoot 2 bullets.',
 		'prerequiste': ['turret',],
 		'nonrequiste': ['bigBullet', '2direction'],
+		'cost': 1,
+		'totalCost': 2,
 	},
 	'barrel3':{
 		'category': 'turret',
 		'title': "Triple Barrel",
 		'desc': "Shoots 3 bullets.",
-		'prerequiste': ['turret, barrel2'],
+		'prerequiste': ['turret', 'barrel2'],
 		'nonrequiste': ['bigBullet', '2direction'],
+		'cost': 2,
+		'totalCost': 4,
 	},
 	'barrel4': {
 		'category': 'turret',
 		'title': 'Quad Barrel',
 		'desc': "Shoots 4 Bullets.",
-		'prerequiste': ['barrel3'],
+		'prerequiste': ['turret', 'barrel2', 'barrel3'],
 		'nonrequiste': ['bigBullet', '2direction'],
+		'cost': 3,
+		'totalCost': 7,
 	},
 	'bigBullet': {
 		'category': 'turret',
@@ -56,20 +66,26 @@ const SKILLS = {
 		'desc': "Shoots a big bullet that does 2x more damage.",
 		'prerequiste': ['turret'],
 		'nonrequiste': ['barrel2', '2direction'],
+		'cost': 1,
+		'totalCost': 2,
 	},
 	'bigBullet2Barrel': {
 		'category': 'turret',
 		'title': 'Double Big Barrels',
 		'desc': "Shoots two big bullets side by side.",
-		'prerequiste': ['bigBullet'],
+		'prerequiste': ['turret', 'bigBullet'],
 		'nonrequiste': ['barrel2', '2direction'],
+		'cost': 2,
+		'totalCost': 4,
 	},
 	'bigBullet2Direction': {
 		'category': 'turret',
 		'title': '2-D Big Turret',
 		'desc': "Shoots big bullets from the front and the back.",
-		'prerequiste': ['bigBullet'],
+		'prerequiste': ['turret', 'bigBullet'],
 		'nonrequiste': ['barrel2', '2direction'],
+		'cost': 2,
+		'totalCost': 4,
 	},
 	'2direction': {
 		'category': 'turret',
@@ -77,80 +93,106 @@ const SKILLS = {
 		'desc': "Shoots in 2 separate directions.",
 		'prerequiste': ['turret'],
 		'nonrequiste': ['barrel2', 'bigBullet'],
+		'cost': 1,
+		'totalCost': 2,
 	},
 	'3direction': {
 		'category': 'turret',
 		'title': '3-D Turret',
 		'desc': "Shoots in 3 separate directions.",
-		'prerequiste': ['2direction'],
+		'prerequiste': ['turret','2direction'],
 		'nonrequiste': ['barrel2', 'bigBullet'],
+		'cost': 2,
+		'totalCost': 4,
 	},
 	'4direction': {
 		'category': 'turret',
 		'title': '4-D Turret',
 		'desc': "Shoots in 4 separate directions.",
-		'prerequiste': ['3direction'],
+		'prerequiste': ['turret','2direction', '3direction'],
 		'nonrequiste': ['barrel2', 'bigBullet'],
+		'cost': 3,
+		'totalCost': 7,
 	},
 	'autoAim1': {
 		'category': 'autoaim',
 		'title': 'Auto Aim Turret',
 		'desc': "Shoots at the nearest enemy.",
 		'prerequiste': ['first'],
+		'cost': 1,
+		'totalCost': 1,
 	},
 	'autoAim2': {
 		'category': 'autoaim',
 		'title': 'Auto-Aim Turret 2',
 		'desc': "Shoots 2 bullets at the nearest enemy in rapid succesion.",
 		'prerequiste': ['autoAim1'],
+		'cost': 2,
+		'totalCost': 3,
 	},
 	'autoAim3': {
 		'category': 'autoaim',
 		'title': 'Auto-Aim Turret 3',
 		'desc': "Shoots 3 bullets at the nearest enemy in rapid succesion.",
-		'prerequiste': ['autoAim2'],
+		'prerequiste': ['autoAim1', 'autoAim2'],
+		'cost': 3,
+		'totalCost': 6,
 	},
 	'directional1': {
 		'category': 'directional',
 		'title': '1st Ship Gun',
 		'desc': "Shoots a bullet in the direction your ship is facing.",
 		'prerequiste': ['first'],
+		'cost': 1,
+		'totalCost': 1,
 	},
 	'directional2': {
 		'category': 'directional',
 		'title': '2nd Ship Gun',
 		'desc': "Shoots 2 bullets in the direction your ship is facing.",
 		'prerequiste': ['directional1'],
+		'cost': 2,
+		'totalCost': 3,
 	},
 	'directional3': {
 		'category': 'directional',
 		'title': '3rd Ship Gun',
 		'desc': "Shoots 3 bullets in the direction your ship is facing.",
-		'prerequiste': ['directional2'],
+		'prerequiste': ['directional1', 'directional2'],
+		'cost': 3,
+		'totalCost': 6,
 	},
 	'tracerBullet': {
 		'category': 'other',
 		'title': 'Tracer Bullets',
 		'desc': "Bullets will lock on to an enemy in front of it. Sets bullet penetration to 0.",
 		'prerequiste': ['first'],
+		'cost': 1,
+		'totalCost': 1,
 	},
 	'look': {
 		'category': 'other',
 		'title': 'Look',
 		'desc': "Press alt/shift with WASD to turn your ship with out moving.",
 		'prerequiste': ['first'],
+		'cost': 1,
+		'totalCost': 1,
 	},
 	'explosiveBullet': {
 		'category': 'other',
 		'title': 'Explosive Bullets',
 		'desc': "Bullets explode on impact, dealing a wider range of damage.",
 		'prerequiste': ['first'],
+		'cost': 2,
+		'totalCost': 1,
 	},
 	'boost': {
 		'category': 'other',
 		'title': 'Boost',
 		'desc': "Press space to go into hyperdrive.",
 		'prerequiste': ['first'],
+		'cost': 1,
+		'totalCost': 1,
 	},
 }
 
@@ -158,12 +200,13 @@ func _ready():
 	if str(get_tree().current_scene).get_slice(":", 0) == 'Main':
 		player.connect('firstLevel', self, 'hideOther')
 	
-	Global.skillUnlockPoints += 5
+	Global.skillUnlockPoints += 10
 	points = Global.skillUnlockPoints
 	pointLabel.text = 'x' + str(points)
 	
-	selectionDetails.visible = false
+	selectionDetails.visible = true
 	selectButton.visible = true
+	exitButton.visible = false
 	cancelOrConfirmButtons.visible = false
 	emit_signal("changeBranchColor", target)
 
@@ -171,30 +214,28 @@ func _on_Button_pressed():
 	target = str(get_focus_owner()).get_slice(":", 0)
 	Global.selectedButton = target
 	changeLabels()
-	print(checkPrereqs())
 
 func _on_selectSkillButton_pressed():
-	
 	if points >= 1 and target != null and targetNotUnlocked():
-		var list = []
-		var prereq = false
+		var list = [true]
+		var prereq = checkPrereqs()
 		
 		for skill in Global.unlockedSkills:
 			if SKILLS[target]['category'] == 'turret':
 				for cant in SKILLS[target]["nonrequiste"]:
 					list.append(cant != skill)
-			if checkPrereqs():
-				prereq = true
-					
-		if prereq and checkAllTrue(list):
-			Global.unlockedSkills.append(target)
-			points -= skillCost
-			emit_signal("changeBranchColor", target)
-			pointLabel.text = 'x' + str(points)
-			if points <= 0:
-				exitLabel.text = 'Exit'
-			setTurret()
-			
+		
+		if checkAllTrue(list) and SKILLS[target]["totalCost"] <= points:
+			if prereq:
+				unlockSkill(target)
+			elif !prereq:
+				if SKILLS[target]["totalCost"] <= points:
+					for requisite in SKILLS[target]["prerequiste"]:
+						if Global.unlockedSkills.count(requisite) == 0:
+							unlockSkill(requisite)
+					unlockSkill(target)
+		exitButton.visible = true
+		
 	else:
 		pass #add labels that tell why they cant buy the upgrade
 
@@ -216,9 +257,17 @@ func checkPrereqs():
 		for unlockedSkill in Global.unlockedSkills:
 			if prereq == unlockedSkill:
 				prereqList.append(prereq)
-#	print(prereqList.size(), SKILLS[target]["prerequiste"].size())
 	return prereqList.size() == SKILLS[target]["prerequiste"].size()
-	
+
+func unlockSkill(upgrade):
+	Global.unlockedSkills.append(upgrade)
+	points -= SKILLS[upgrade]["cost"]
+	emit_signal("changeBranchColor", upgrade)
+	pointLabel.text = 'x' + str(points)
+	if points <= 0:
+		exitLabel.text = 'Exit'
+	setTurret()
+
 func setTurret():
 	if SKILLS[target]['category'] == 'turret':
 		emit_signal('setPlayerTurret', target)
@@ -230,6 +279,10 @@ func changeLabels():
 	selectButton.visible = true
 	title.text = str(SKILLS[target]['title'])
 	description.text = str(SKILLS[target]['desc'])
+	if str(SKILLS[target]['cost']) == '1':
+		costLabel.text = str(SKILLS[target]['cost']) + " Unlock Point"
+	else:
+		costLabel.text = str(SKILLS[target]['cost']) + " Unlock Points"
 
 func updatePoints():
 	pointLabel.text = 'x' + str(points)

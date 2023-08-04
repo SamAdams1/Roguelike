@@ -60,13 +60,13 @@ autostart = true
 [node name="lootBase" type="Node2D" parent="." groups=["loot"]]
 
 [node name="experienceGem" parent="lootBase" instance=ExtResource( 11 )]
-position = Vector2( 1345, 531 )
+position = Vector2( 1149, 762 )
 speed = 10
 speedMultiplier = 0
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
-volume_db = -10.0
+volume_db = -15.0
 bus = "Music"
 
 [node name="enemy_increase" type="Timer" parent="."]

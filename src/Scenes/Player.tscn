@@ -102,11 +102,6 @@ position = Vector2( 71.5101, 32.2176 )
 [node name="directional3" type="Position2D" parent="ship/bulletSpawnPoints"]
 position = Vector2( 18.4304, 61.8051 )
 
-[node name="autoFireSound" type="AudioStreamPlayer" parent="ship"]
-stream = ExtResource( 15 )
-volume_db = -10.0
-bus = "SFX"
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 5.96046e-08 )
@@ -272,7 +267,7 @@ bus = "SFX"
 
 [node name="shipMovingSound" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 23 )
-volume_db = -10.0
+volume_db = -20.0
 pitch_scale = 0.7
 bus = "SFX"
 
@@ -298,7 +293,7 @@ bus = "SFX"
 
 [node name="new_ship_sound" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 6 )
-volume_db = 24.0
+volume_db = -20.0
 bus = "SFX"
 
 [node name="boostBar" type="TextureProgress" parent="."]

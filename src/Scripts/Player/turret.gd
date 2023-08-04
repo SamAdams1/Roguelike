@@ -5,7 +5,7 @@ onready var bigBullet = preload("res://Scenes/bigBullet.tscn")
 onready var sound = $turretShootSound
 var waitToFire = false
 var toggleFire = false
-var fireRate = Global.fireRate
+var fireRate =  0.5
 var bulletSpeed = 600
 var currentTurret = null
 

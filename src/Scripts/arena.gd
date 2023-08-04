@@ -2,6 +2,7 @@ extends Node
 
 export(Array, PackedScene) var enemies
 onready var music = $music
+onready var enemySpawnTimer = $enemy_spawn_timer
 var num_of_enemies = 0
 var difficulty = 4
 
@@ -15,7 +16,6 @@ func _ready():
 	
 
 func _on_enemy_spawn_timer_timeout():
-	
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	
@@ -23,38 +23,32 @@ func _on_enemy_spawn_timer_timeout():
 	
 	$Player/Path2D/PathFollow2D.offset = rng.randi_range(0, 3300)
 	var instance = enemies[enemy_number].instance()
-	
 	instance.global_position = $Player/Path2D/PathFollow2D/Position2D.global_position
 	add_child(instance)
 	
 	if $enemy_spawn_timer.wait_time > 0.2:
-		print($enemy_spawn_timer.wait_time, "spawn")
+#		print($enemy_spawn_timer.wait_time, "spawn")
 		$enemy_spawn_timer.wait_time -= 0.2
 	else:
 		pass
 	
 func _on_difficulty_timer_timeout():
-	print($difficulty_timer.wait_time, "difficulty")
+#	print($difficulty_timer.wait_time, "difficulty")
 	$enemy_spawn_timer.wait_time = (difficulty - 2)
-	
-
 
 func _on_enemy_increase_timeout():
-	print($enemy_increase.wait_time)
+#	print($enemy_increase.wait_time)
 	if num_of_enemies < (enemies.size() - 1):
 		num_of_enemies += 1
 	else:
 		pass
 
-
 func _on_planet_loot_spawner_timeout():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	
 	var planet_number = round(rand_range(0, (planets.size() - 1)))
 	
 	$Player/Path2D/PathFollow2D.offset = rng.randi_range(0, 3300)
 	var instance = planets[planet_number].instance()
-	
 	instance.global_position = $Player/Path2D/PathFollow2D/Position2D.global_position
 	add_child(instance)

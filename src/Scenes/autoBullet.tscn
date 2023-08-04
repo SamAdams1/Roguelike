@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scripts/Player/bigBullet.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Player/bullet.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Utility/HitBox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sprites/Player/attacks.png" type="Texture" id=3]
 [ext_resource path="res://Audio/SFX/bullet hit.mp3" type="AudioStream" id=4]

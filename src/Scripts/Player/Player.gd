@@ -12,6 +12,7 @@ var bulletSpeed = 600
 #Movement
 onready var shipSprite = $ship
 onready var shipMovingSprite = $ship/shipMovingFlames
+#onready var shipMovingSound = $sounds/shipMovingSound
 onready var shipMovingSound = $sounds/new_ship_sound
 onready var boostFlames = $ship/shipBoostFlames
 onready var boostSound = $sounds/boostSound
@@ -49,7 +50,7 @@ var explosiveBulletUnlocked = false
 #Directional Ship Shooting
 onready var turretSprite = $turret
 onready var directionalShootSound = $sounds/directionalShootSound
-var directionalBullet = preload("res://Audio/SFX/hit.wav")
+var directionalBullet = preload("res://Scenes/directionalBullet.tscn")
 var waitToFire = false
 var toggleFire = false
 var directionalShootUnlocked = false
@@ -74,8 +75,8 @@ var money = 0
 
 
 func _ready():
-	var master_sound = AudioServer.get_bus_index("Master")
-	AudioServer.set_bus_mute(master_sound, true)
+#	var master_sound = AudioServer.get_bus_index("Master")
+#	AudioServer.set_bus_mute(master_sound, true)
 	
 	labelLevel.text = "Level: " + str(experienceLevel)
 	skillTree.visible = false
@@ -212,7 +213,7 @@ func _on_HurtBox_hurt(damage):
 
 func _on_deathSound_finished():
 	yield(get_tree().create_timer(1), "timeout")
-	get_tree().change_scene("res://Scenes/Utility/GameOverScreen.tscn")
+	get_tree().change_scene("res://Scenes/Menus/GameOverScreen.tscn")
 
 func spriteDamageFlicker(time):
 	takingDamage = true
