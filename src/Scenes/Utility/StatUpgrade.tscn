@@ -1,0 +1,787 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Fonts/ArcadeFont.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Sprites/Utility/white bar rounded.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Utility/stat upgrade border.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.419608, 0.439216, 0.501961, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.25098, 0.258824, 0.294118, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.262745, 0.27451, 0.317647, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 42
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="StreamTexture" id=8]
+load_path = "res://.import/white bar rounded.png-d9863953260140878213d7a06d0f858f.stex"
+
+[sub_resource type="StreamTexture" id=9]
+load_path = "res://.import/stat upgrade border.png-d5745673c180635cd195ede366159fad.stex"
+
+[node name="StatUpgrade" type="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -226.5
+margin_top = -274.0
+margin_right = 223.5
+margin_bottom = 226.0
+color = Color( 0.490196, 0, 1, 1 )
+
+[node name="header" type="Label" parent="."]
+margin_top = -7.0
+margin_right = 450.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 1 )
+text = "Stat Upgrade"
+align = 1
+valign = 1
+
+[node name="points" type="Label" parent="."]
+anchor_left = 1.01978
+anchor_top = 0.14
+anchor_right = 1.01978
+anchor_bottom = 0.14
+margin_left = -36.4
+margin_top = -9.99998
+margin_right = 31.6
+margin_bottom = 22.0
+rect_rotation = -10.0
+custom_fonts/font = SubResource( 7 )
+text = "x4"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="movementSpeed" type="Sprite" parent="."]
+position = Vector2( -10, 0 )
+
+[node name="TextureProgress" type="TextureProgress" parent="movementSpeed"]
+anchor_left = 0.261078
+anchor_top = -0.731438
+anchor_right = 3.26111
+anchor_bottom = 0.268562
+margin_left = 31.2389
+margin_top = 86.7314
+margin_right = 731.239
+margin_bottom = 111.731
+rect_scale = Vector2( 0.504104, 1.51921 )
+max_value = 6.0
+value = 2.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+tint_under = Color( 0.0941176, 0.113725, 0.376471, 1 )
+tint_progress = Color( 0.215686, 0.278431, 0.964706, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Button" type="Button" parent="movementSpeed"]
+anchor_left = -0.00332642
+anchor_top = -0.0039978
+anchor_right = 6.99667
+anchor_bottom = 1.996
+margin_left = 383.003
+margin_top = 86.004
+margin_right = 421.003
+margin_bottom = 122.004
+rect_clip_content = true
+focus_mode = 0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 4 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="title" type="Label" parent="movementSpeed"]
+anchor_left = -9.5
+anchor_top = -0.357666
+anchor_right = 8.5
+anchor_bottom = -0.357666
+margin_left = 41.5
+margin_top = 93.3577
+margin_right = 377.5
+margin_bottom = 118.358
+custom_fonts/font = SubResource( 2 )
+text = "Movement Speed"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="plus" type="Label" parent="movementSpeed"]
+anchor_left = -0.00220751
+anchor_top = -0.00182482
+anchor_right = -0.00220751
+anchor_bottom = -0.00182482
+margin_left = 386.509
+margin_top = 76.0894
+margin_right = 428.509
+margin_bottom = 118.089
+custom_fonts/font = SubResource( 3 )
+text = "+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="boostSpeed" type="Sprite" parent="."]
+position = Vector2( -10, 40 )
+
+[node name="TextureProgress" type="TextureProgress" parent="boostSpeed"]
+anchor_left = 0.261078
+anchor_top = -0.731438
+anchor_right = 3.26111
+anchor_bottom = 0.268562
+margin_left = 31.2389
+margin_top = 86.7314
+margin_right = 731.239
+margin_bottom = 111.731
+rect_scale = Vector2( 0.504104, 1.51921 )
+max_value = 6.0
+value = 3.0
+texture_under = SubResource( 8 )
+texture_over = SubResource( 9 )
+texture_progress = SubResource( 8 )
+tint_under = Color( 0.0588235, 0.258824, 0.243137, 1 )
+tint_progress = Color( 0.203922, 0.964706, 0.909804, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Button" type="Button" parent="boostSpeed"]
+anchor_left = -0.00332642
+anchor_top = -0.0039978
+anchor_right = 6.99667
+anchor_bottom = 1.996
+margin_left = 383.003
+margin_top = 86.004
+margin_right = 421.003
+margin_bottom = 122.004
+rect_clip_content = true
+focus_mode = 0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 4 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="title" type="Label" parent="boostSpeed"]
+anchor_left = -9.5
+anchor_top = -0.357666
+anchor_right = 8.5
+anchor_bottom = -0.357666
+margin_left = 41.5
+margin_top = 93.3577
+margin_right = 377.5
+margin_bottom = 118.358
+custom_fonts/font = SubResource( 2 )
+text = "Boost Speed"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="plus" type="Label" parent="boostSpeed"]
+anchor_left = -0.00220751
+anchor_top = -0.00182482
+anchor_right = -0.00220751
+anchor_bottom = -0.00182482
+margin_left = 386.509
+margin_top = 76.0894
+margin_right = 428.509
+margin_bottom = 118.089
+custom_fonts/font = SubResource( 3 )
+text = "+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="boostCapacity" type="Sprite" parent="."]
+position = Vector2( -10, 80 )
+
+[node name="TextureProgress" type="TextureProgress" parent="boostCapacity"]
+anchor_left = 0.261078
+anchor_top = -0.731438
+anchor_right = 3.26111
+anchor_bottom = 0.268562
+margin_left = 31.2389
+margin_top = 86.7314
+margin_right = 731.239
+margin_bottom = 111.731
+rect_scale = Vector2( 0.504104, 1.51921 )
+max_value = 6.0
+value = 5.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+tint_under = Color( 0.235294, 0.0431373, 0.396078, 1 )
+tint_progress = Color( 0.407843, 0, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Button" type="Button" parent="boostCapacity"]
+anchor_left = -0.00332642
+anchor_top = -0.0039978
+anchor_right = 6.99667
+anchor_bottom = 1.996
+margin_left = 383.003
+margin_top = 86.004
+margin_right = 421.003
+margin_bottom = 122.004
+rect_clip_content = true
+focus_mode = 0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 4 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="title" type="Label" parent="boostCapacity"]
+anchor_left = -9.5
+anchor_top = -0.357666
+anchor_right = 8.5
+anchor_bottom = -0.357666
+margin_left = 41.5
+margin_top = 93.3577
+margin_right = 377.5
+margin_bottom = 118.358
+custom_fonts/font = SubResource( 2 )
+text = "Boost Capacity"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="plus" type="Label" parent="boostCapacity"]
+anchor_left = -0.00220751
+anchor_top = -0.00182482
+anchor_right = -0.00220751
+anchor_bottom = -0.00182482
+margin_left = 386.509
+margin_top = 76.0894
+margin_right = 428.509
+margin_bottom = 118.089
+custom_fonts/font = SubResource( 3 )
+text = "+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="maxHealth" type="Sprite" parent="."]
+position = Vector2( -10, 120 )
+
+[node name="TextureProgress" type="TextureProgress" parent="maxHealth"]
+anchor_left = 0.261078
+anchor_top = -0.731438
+anchor_right = 3.26111
+anchor_bottom = 0.268562
+margin_left = 31.2389
+margin_top = 86.7314
+margin_right = 731.239
+margin_bottom = 111.731
+rect_scale = Vector2( 0.504104, 1.51921 )
+max_value = 6.0
+value = 2.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+tint_under = Color( 0.0235294, 0.219608, 0.0588235, 1 )
+tint_progress = Color( 0, 0.890196, 0.164706, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Button" type="Button" parent="maxHealth"]
+anchor_left = -0.00332642
+anchor_top = -0.0039978
+anchor_right = 6.99667
+anchor_bottom = 1.996
+margin_left = 383.003
+margin_top = 86.004
+margin_right = 421.003
+margin_bottom = 122.004
+rect_clip_content = true
+focus_mode = 0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 4 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="title" type="Label" parent="maxHealth"]
+anchor_left = -9.5
+anchor_top = -0.357666
+anchor_right = 8.5
+anchor_bottom = -0.357666
+margin_left = 41.5
+margin_top = 93.3577
+margin_right = 377.5
+margin_bottom = 118.358
+custom_fonts/font = SubResource( 2 )
+text = "Max Health"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="plus" type="Label" parent="maxHealth"]
+anchor_left = -0.00220751
+anchor_top = -0.00182482
+anchor_right = -0.00220751
+anchor_bottom = -0.00182482
+margin_left = 386.509
+margin_top = 76.0894
+margin_right = 428.509
+margin_bottom = 118.089
+custom_fonts/font = SubResource( 3 )
+text = "+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="fireRate" type="Sprite" parent="."]
+position = Vector2( -10, 160 )
+
+[node name="TextureProgress" type="TextureProgress" parent="fireRate"]
+anchor_left = 0.261078
+anchor_top = -0.731438
+anchor_right = 3.26111
+anchor_bottom = 0.268562
+margin_left = 31.2389
+margin_top = 86.7314
+margin_right = 731.239
+margin_bottom = 111.731
+rect_scale = Vector2( 0.504104, 1.51921 )
+max_value = 6.0
+value = 4.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+tint_under = Color( 0.227451, 0.164706, 0.101961, 1 )
+tint_progress = Color( 0.568627, 0.278431, 0.00784314, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Button" type="Button" parent="fireRate"]
+anchor_left = -0.00332642
+anchor_top = -0.0039978
+anchor_right = 6.99667
+anchor_bottom = 1.996
+margin_left = 383.003
+margin_top = 86.004
+margin_right = 421.003
+margin_bottom = 122.004
+rect_clip_content = true
+focus_mode = 0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 4 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="title" type="Label" parent="fireRate"]
+anchor_left = -9.5
+anchor_top = -0.357666
+anchor_right = 8.5
+anchor_bottom = -0.357666
+margin_left = 41.5
+margin_top = 93.3577
+margin_right = 377.5
+margin_bottom = 118.358
+custom_fonts/font = SubResource( 2 )
+text = "Fire Rate"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="plus" type="Label" parent="fireRate"]
+anchor_left = -0.00220751
+anchor_top = -0.00182482
+anchor_right = -0.00220751
+anchor_bottom = -0.00182482
+margin_left = 386.509
+margin_top = 76.0894
+margin_right = 428.509
+margin_bottom = 118.089
+custom_fonts/font = SubResource( 3 )
+text = "+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="knockback" type="Sprite" parent="."]
+position = Vector2( -10, 200 )
+
+[node name="TextureProgress" type="TextureProgress" parent="knockback"]
+anchor_left = 0.261078
+anchor_top = -0.731438
+anchor_right = 3.26111
+anchor_bottom = 0.268562
+margin_left = 31.2389
+margin_top = 86.7314
+margin_right = 731.239
+margin_bottom = 111.731
+rect_scale = Vector2( 0.504104, 1.51921 )
+max_value = 6.0
+value = 5.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+tint_under = Color( 0.27451, 0.105882, 0.301961, 1 )
+tint_progress = Color( 0.870588, 0.301961, 0.952941, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Button" type="Button" parent="knockback"]
+anchor_left = -0.00332642
+anchor_top = -0.0039978
+anchor_right = 6.99667
+anchor_bottom = 1.996
+margin_left = 383.003
+margin_top = 86.004
+margin_right = 421.003
+margin_bottom = 122.004
+rect_clip_content = true
+focus_mode = 0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 4 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="title" type="Label" parent="knockback"]
+anchor_left = -9.5
+anchor_top = -0.357666
+anchor_right = 8.5
+anchor_bottom = -0.357666
+margin_left = 41.5
+margin_top = 93.3577
+margin_right = 377.5
+margin_bottom = 118.358
+custom_fonts/font = SubResource( 2 )
+text = "Knockback"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="plus" type="Label" parent="knockback"]
+anchor_left = -0.00220751
+anchor_top = -0.00182482
+anchor_right = -0.00220751
+anchor_bottom = -0.00182482
+margin_left = 386.509
+margin_top = 76.0894
+margin_right = 428.509
+margin_bottom = 118.089
+custom_fonts/font = SubResource( 3 )
+text = "+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="bulletPenetration" type="Sprite" parent="."]
+position = Vector2( -10, 240 )
+
+[node name="TextureProgress" type="TextureProgress" parent="bulletPenetration"]
+anchor_left = 0.261078
+anchor_top = -0.731438
+anchor_right = 3.26111
+anchor_bottom = 0.268562
+margin_left = 31.2389
+margin_top = 86.7314
+margin_right = 731.239
+margin_bottom = 111.731
+rect_scale = Vector2( 0.504104, 1.51921 )
+max_value = 6.0
+value = 1.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+tint_under = Color( 0.439216, 0.384314, 0.105882, 1 )
+tint_progress = Color( 1, 0.941176, 0.0666667, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Button" type="Button" parent="bulletPenetration"]
+anchor_left = -0.00332642
+anchor_top = -0.0039978
+anchor_right = 6.99667
+anchor_bottom = 1.996
+margin_left = 383.003
+margin_top = 86.004
+margin_right = 421.003
+margin_bottom = 122.004
+rect_clip_content = true
+focus_mode = 0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 4 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="title" type="Label" parent="bulletPenetration"]
+anchor_left = -9.5
+anchor_top = -0.357666
+anchor_right = 8.5
+anchor_bottom = -0.357666
+margin_left = 41.5
+margin_top = 93.3577
+margin_right = 377.5
+margin_bottom = 118.358
+custom_fonts/font = SubResource( 2 )
+text = "Bullet Penetration"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="plus" type="Label" parent="bulletPenetration"]
+anchor_left = -0.00220751
+anchor_top = -0.00182482
+anchor_right = -0.00220751
+anchor_bottom = -0.00182482
+margin_left = 386.509
+margin_top = 76.0894
+margin_right = 428.509
+margin_bottom = 118.089
+custom_fonts/font = SubResource( 3 )
+text = "+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="bulletDamage" type="Sprite" parent="."]
+position = Vector2( -10, 280 )
+
+[node name="TextureProgress" type="TextureProgress" parent="bulletDamage"]
+anchor_left = 0.261078
+anchor_top = -0.731438
+anchor_right = 3.26111
+anchor_bottom = 0.268562
+margin_left = 31.2389
+margin_top = 86.7314
+margin_right = 731.239
+margin_bottom = 111.731
+rect_scale = Vector2( 0.504104, 1.51921 )
+max_value = 6.0
+value = 4.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+tint_under = Color( 0.368627, 0.0901961, 0.0901961, 1 )
+tint_progress = Color( 1, 0.192157, 0.0352941, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Button" type="Button" parent="bulletDamage"]
+anchor_left = -0.00332642
+anchor_top = -0.0039978
+anchor_right = 6.99667
+anchor_bottom = 1.996
+margin_left = 383.003
+margin_top = 86.004
+margin_right = 421.003
+margin_bottom = 122.004
+rect_clip_content = true
+focus_mode = 0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 4 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="title" type="Label" parent="bulletDamage"]
+anchor_left = -9.5
+anchor_top = -0.357666
+anchor_right = 8.5
+anchor_bottom = -0.357666
+margin_left = 41.5
+margin_top = 93.3577
+margin_right = 377.5
+margin_bottom = 118.358
+custom_fonts/font = SubResource( 2 )
+text = "Bullet Damage"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="plus" type="Label" parent="bulletDamage"]
+anchor_left = -0.00220751
+anchor_top = -0.00182482
+anchor_right = -0.00220751
+anchor_bottom = -0.00182482
+margin_left = 386.509
+margin_top = 76.0894
+margin_right = 428.509
+margin_bottom = 118.089
+custom_fonts/font = SubResource( 3 )
+text = "+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="bulletSpeed" type="Sprite" parent="."]
+position = Vector2( -10, 320 )
+
+[node name="TextureProgress" type="TextureProgress" parent="bulletSpeed"]
+anchor_left = 0.261078
+anchor_top = -0.731438
+anchor_right = 3.26111
+anchor_bottom = 0.268562
+margin_left = 31.2389
+margin_top = 86.7314
+margin_right = 731.239
+margin_bottom = 111.731
+rect_scale = Vector2( 0.504104, 1.51921 )
+max_value = 6.0
+value = 5.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+tint_under = Color( 0.313726, 0.14902, 0.027451, 1 )
+tint_progress = Color( 0.996078, 0.45098, 0.0509804, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Button" type="Button" parent="bulletSpeed"]
+anchor_left = -0.00332642
+anchor_top = -0.0039978
+anchor_right = 6.99667
+anchor_bottom = 1.996
+margin_left = 383.003
+margin_top = 86.004
+margin_right = 421.003
+margin_bottom = 122.004
+rect_clip_content = true
+focus_mode = 0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 4 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="title" type="Label" parent="bulletSpeed"]
+anchor_left = -9.5
+anchor_top = -0.357666
+anchor_right = 8.5
+anchor_bottom = -0.357666
+margin_left = 41.5
+margin_top = 93.3577
+margin_right = 377.5
+margin_bottom = 118.358
+custom_fonts/font = SubResource( 2 )
+text = "Bullet Speed"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="plus" type="Label" parent="bulletSpeed"]
+anchor_left = -0.00220751
+anchor_top = -0.00182482
+anchor_right = -0.00220751
+anchor_bottom = -0.00182482
+margin_left = 386.509
+margin_top = 76.0894
+margin_right = 428.509
+margin_bottom = 118.089
+custom_fonts/font = SubResource( 3 )
+text = "+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}

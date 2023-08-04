@@ -10,7 +10,7 @@
 [ext_resource path="res://Sprites/Utility/greenBar.png" type="Texture" id=10]
 [ext_resource path="res://Sprites/Utility/barBorder.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/Player/newShip.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Utility/redBar.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Utility/red bar.png" type="Texture" id=13]
 [ext_resource path="res://Sprites/Utility/white bar.png" type="Texture" id=14]
 [ext_resource path="res://Audio/SFX/autoFireSound.wav" type="AudioStream" id=15]
 [ext_resource path="res://Sprites/skull.png" type="Texture" id=16]
@@ -224,6 +224,7 @@ scale = Vector2( 0.0664062, 0.0625 )
 texture = ExtResource( 16 )
 
 [node name="timerLabel" type="Label" parent="GUILayer/GUI"]
+pause_mode = 1
 margin_left = 439.0
 margin_top = 36.0
 margin_right = 503.0
@@ -293,7 +294,7 @@ bus = "SFX"
 
 [node name="new_ship_sound" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 6 )
-volume_db = -20.0
+volume_db = -25.0
 bus = "SFX"
 
 [node name="boostBar" type="TextureProgress" parent="."]

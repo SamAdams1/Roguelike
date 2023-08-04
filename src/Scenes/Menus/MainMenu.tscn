@@ -7,7 +7,7 @@
 [ext_resource path="res://Scenes/Menus/OptionsMenu.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
-size = 72
+size = 64
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -56,7 +56,7 @@ margin_bottom = 285.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
-text = "Title Here"
+text = "Cosmic Crusade"
 align = 1
 valign = 1
 
@@ -139,6 +139,7 @@ volume_db = -10.0
 bus = "Music"
 
 [node name="OptionsMenu" parent="." instance=ExtResource( 5 )]
+visible = false
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/OptionsButton" to="." method="_on_OptionsButton_pressed"]

@@ -188,7 +188,7 @@ func _input(event):
 
 func isShipMoving():
 	if ((Input.is_action_pressed("right") or Input.is_action_pressed("down") or Input.is_action_pressed("left") or Input.is_action_pressed("up")) and lookNotPressed):
-		shipMovingSound.volume_db = -20
+		shipMovingSound.volume_db = -25
 		return true
 	
 	else:
@@ -279,11 +279,9 @@ signal firstLevel
 
 func _on_levelUpSound_finished():
 	labelLevel.text = str("LEVEL: ", experienceLevel)
-	
-	if experienceLevel % 2 != 0:
-		skillTree.points += 1
-		skillTree.updatePoints()
-	if experienceLevel % 5 == 0 or experienceLevel == 1:
+	skillTree.points += 1
+	skillTree.updatePoints()	
+	if experienceLevel % 2 != 0 :
 		emit_signal("firstLevel", experienceLevel)
 		shipMovingSound.volume_db = -100
 		toggleFire = false
