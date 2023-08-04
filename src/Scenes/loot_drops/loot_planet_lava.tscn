@@ -89,24 +89,29 @@ radius = 26.8742
 radius = 26.6687
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
+modulate = Color( 0.72549, 0.054902, 0.054902, 1 )
 scale = Vector2( 3, 3 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 63 )
 
 [node name="PlanetHurtBox" parent="." instance=ExtResource( 61 )]
+visible = false
 collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="PlanetHurtBox"]
+visible = false
 shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+modulate = Color( 1.64, 28.48, 0, 1 )
 frames = SubResource( 1 )
 frame = 33
 playing = true
 
 [node name="HitBox" parent="." instance=ExtResource( 62 )]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -118,6 +123,7 @@ visible = false
 shape = SubResource( 4 )
 
 [node name="BulletCollision" type="StaticBody2D" parent="." groups=["enemy"]]
+visible = false
 collision_layer = 4
 collision_mask = 4
 
@@ -126,6 +132,7 @@ position = Vector2( 0, -0.666666 )
 shape = SubResource( 5 )
 
 [node name="BulletCollisionArea" type="Area2D" parent="." groups=["enemy"]]
+visible = false
 position = Vector2( -210, -32 )
 collision_layer = 0
 collision_mask = 4
