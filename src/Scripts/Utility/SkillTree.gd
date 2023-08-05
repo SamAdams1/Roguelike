@@ -291,7 +291,8 @@ func _on_exitAndSaveButton_pressed():
 	if points > 0:
 		cancelOrConfirmButtons.visible = true
 	elif str(get_tree().current_scene).get_slice(":", 0) == 'Main':
-		player.upgradePlayer()
+#		player.upgradePlayer()
+		self.visible = false
 	elif str(get_tree().current_scene).get_slice(":", 0) == 'SkillTree':
 		get_tree().quit()
 

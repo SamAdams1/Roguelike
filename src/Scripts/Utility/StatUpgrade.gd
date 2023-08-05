@@ -1,6 +1,6 @@
 extends ColorRect
 
-onready var statPoints = 6
+onready var statPoints = 2
 onready var homingBulletUnlocked = false
 onready var pointsLabel = $points
 var target = null
@@ -10,14 +10,14 @@ onready var player = get_tree().current_scene.get_node('Player')
 onready var turret = get_tree().get_root().find_node('turret', true, false)
 
 
-signal upgradeStats
+#signal upgradeStats
 
 const VALUES = {
 	'playerMovementSpeed':  25,
 	'boostValue': 25,
-	'boostCapacity': 1,
+	'boostCapacity': 0.9,
 	'maxHealth': 2,
-	'fireRate': 0.15,
+	'fireRate': 0.1,
 	'knockback': 5,
 	'bulletHealth': 1,
 	'bulletDamage': 1,
@@ -28,27 +28,27 @@ func _ready():
 	
 
 
-func _physics_process(delta):
-	pointsLabel.text = 'x' + str(statPoints)
-	if statPoints == 0:
-		yield(get_tree().create_timer(0.5), "timeout")
-		player.upgradePlayer()
-	if homingBulletUnlocked:
-		pass
+func _physics_process(_delta):
+	if get_tree().paused == true:
+		
+		if homingBulletUnlocked:
+			pass
 
 func _on_button_pressed():
 	target = str(get_focus_owner()).get_slice(":", 0)
 	value = VALUES[target]
 	increaseBar()
 	upgradeStat()
-	emit_signal("upgradeStats", target, value)
+	if statPoints == 0:
+		yield(get_tree().create_timer(0.25), "timeout")
+		player.upgradePlayer()
 
 func increaseBar():
 	var progressBar = get_node(get_focus_owner().get_parent().name + '/' +  'TextureProgress')
 	if statPoints > 0 and progressBar.value < progressBar.max_value:
 		progressBar.value += 1
 		statPoints -= 1
-		
+
 
 func upgradeStat():
 	if target == 'bulletSpeed':
@@ -79,4 +79,7 @@ func upgradeStat():
 		Global.playerMovementSpeed += value
 	player.setStats()
 	turret.setStats()
-	
+
+
+func updatePoints():
+	pointsLabel.text = 'x' + str(statPoints)

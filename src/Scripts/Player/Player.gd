@@ -94,6 +94,7 @@ func _ready():
 	healthBarUnder.value = playerHealth
 	boostBar.max_value = boostCapacity
 	
+	
 	skillTree.connect("upgradePlayer", self, 'updatePlayerSkills')
 	statUpgrade.connect('upgradeStats', self, 'upgradePlayerStats')
 
@@ -283,24 +284,24 @@ func _on_levelUpSound_finished():
 	labelLevel.text = str("LEVEL: ", experienceLevel)
 	skillTree.points += 1
 	statUpgrade.statPoints += 1
-	skillTree.updatePoints()	
-	if experienceLevel % 5 == 0 or experienceLevel == 1 or experienceLevel == 5:
+	statUpgrade.updatePoints()
+	skillTree.updatePoints()
+	toggleFire = false
+	print(experienceLevel, experienceLevel % 5)
+	if experienceLevel % 5 == 0 or experienceLevel == 1:
 		emit_signal("firstLevel", experienceLevel)
-		shipMovingSound.volume_db = -100
-		boostSound.stop()
-		toggleFire = false
 		skillTree.visible = true
-		get_tree().paused = true
-	elif experienceLevel % 5 != 0:
-		statUpgrade.visible = true
-		shipMovingSound.volume_db = -100
-		boostSound.stop()
-		get_tree().paused = true
+	
+	statUpgrade.visible = true
+	shipMovingSound.volume_db = -100
+	boostSound.stop()
+	get_tree().paused = true
 	calculateExperience(0)
 
 func upgradePlayer():
-	statUpgrade.visible = false
+	toggleFire = true
 	skillTree.visible = false
+	statUpgrade.visible = false
 	get_tree().paused = false
 	calculateExperience(0)
 
@@ -326,9 +327,11 @@ func updatePlayerSkills(target, category):
 func setStats():
 	speed = Global.playerMovementSpeed
 	healthBar.max_value = Global.playerHealth
-	boostCapacity = Global.boostCapacity
+	healthBarUnder.max_value = Global.playerHealth
 	boostValue = Global.boostValue
-	boostBar.max_value = Global.boostValue
+	boostCapacity = Global.boostCapacity
+	boostBar.max_value = boostCapacity
+	boostAmount = boostCapacity
 	fireRate = Global.fireRate
 	bulletSpeed = Global.bulletSpeed
 

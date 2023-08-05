@@ -10,14 +10,14 @@ var nearestEnemy = null
 var points = 0
 
 # upgradable stats
-var fireRate = .1
+var fireRate = 1
 var bulletSpeed = 500
 var bulletHealth = 0
 var bulletDamageMultiplier = 0
 var knockback = 0
 
 var playerMovementSpeed = 300
-var playerHealth = 15
+var playerHealth = 10
 var boostCapacity = 2
 var boostValue = 100
 

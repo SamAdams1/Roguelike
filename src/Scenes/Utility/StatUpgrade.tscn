@@ -74,7 +74,7 @@ margin_left = -226.0
 margin_top = -274.0
 margin_right = 224.0
 margin_bottom = 247.0
-rect_min_size = Vector2( 450, 521 )
+rect_min_size = Vector2( 0, 521 )
 color = Color( 0.490196, 0, 1, 1 )
 script = ExtResource( 4 )
 
@@ -423,8 +423,7 @@ max_value = 6.0
 texture_under = ExtResource( 2 )
 texture_over = ExtResource( 3 )
 texture_progress = ExtResource( 2 )
-tint_under = Color( 0.227451, 0.164706, 0.101961, 1 )
-tint_progress = Color( 0.568627, 0.278431, 0.00784314, 1 )
+tint_under = Color( 0.415686, 0.415686, 0.415686, 1 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -557,7 +556,7 @@ __meta__ = {
 }
 
 [node name="bulletPenetration" type="Sprite" parent="."]
-position = Vector2( -3, 280 )
+position = Vector2( -3, 380 )
 
 [node name="TextureProgress" type="TextureProgress" parent="bulletPenetration"]
 anchor_left = 0.261078
@@ -707,7 +706,7 @@ __meta__ = {
 }
 
 [node name="bulletSpeed" type="Sprite" parent="."]
-position = Vector2( -3, 380 )
+position = Vector2( -3, 280 )
 
 [node name="TextureProgress" type="TextureProgress" parent="bulletSpeed"]
 anchor_left = 0.261078
