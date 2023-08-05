@@ -101,7 +101,7 @@ movementSpeed = 0.0
 experienceDroppedValue = 10
 
 [node name="enemy_asteroid_3" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1131, 344 )
+position = Vector2( 1128, 283 )
 movementSpeed = 0.0
 health = 5
 experienceDroppedValue = 10

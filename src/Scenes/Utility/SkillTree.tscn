@@ -943,10 +943,10 @@ align = 1
 autowrap = true
 
 [node name="description" type="Label" parent="selection"]
-margin_left = 6.0
+margin_left = 3.0
 margin_top = 58.0
-margin_right = 426.0
-margin_bottom = 100.0
+margin_right = 431.0
+margin_bottom = 104.0
 custom_colors/font_color = Color( 0.776471, 0.776471, 0.776471, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Gain Unlock Points by leveling up, destroying planets or buying them at gas stations."

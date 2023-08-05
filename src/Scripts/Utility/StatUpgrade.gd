@@ -1,8 +1,10 @@
 extends ColorRect
 
-onready var statPoints = 2
-onready var homingBulletUnlocked = false
+onready var statPoints = 10
+onready var tracerBulletUnlocked = false
+onready var boostUnlocked = false
 onready var pointsLabel = $points
+onready var warningLabel  = $warning
 var target = null
 var value = null
 
@@ -25,18 +27,26 @@ const VALUES = {
 }
 func _ready():
 	pointsLabel.text = 'x' + str(statPoints)
+	warningLabel.visible = false
 	
 
 
 func _physics_process(_delta):
 	if get_tree().paused == true:
-		
-		if homingBulletUnlocked:
-			pass
+		updatePoints()
 
 func _on_button_pressed():
 	target = str(get_focus_owner()).get_slice(":", 0)
 	value = VALUES[target]
+	if target == 'bulletHealth' and tracerBulletUnlocked:
+		warningLabel.visible = true
+		warningLabel.text = 'Cannot upgrade with Tracer Bullet Unlocked'
+		return
+	if (target == 'boostCapacity' or target == 'boostValue') and !boostUnlocked:
+		warningLabel.visible = true
+		warningLabel.text = 'Unlock Boost Skill'
+		return
+	warningLabel.visible = false
 	increaseBar()
 	upgradeStat()
 	if statPoints == 0:
@@ -57,7 +67,7 @@ func upgradeStat():
 	elif target == 'bulletDamage':
 		Global.bulletDamageMultiplier += value
 		
-	elif target == 'bulletHealth':
+	elif target == 'bulletHealth' and !tracerBulletUnlocked:
 		Global.bulletHealth += value
 		
 	elif target == 'knockback':
@@ -69,10 +79,10 @@ func upgradeStat():
 	elif target == 'maxHealth':
 		Global.playerHealth += value
 		
-	elif target == 'boostCapacity':
+	elif target == 'boostCapacity' and boostUnlocked:
 		Global.boostCapacity += value
 		
-	elif target == 'boostValue':
+	elif target == 'boostValue' and boostUnlocked:
 		Global.boostValue += value
 		
 	elif target == 'playerMovementSpeed':
@@ -83,3 +93,11 @@ func upgradeStat():
 
 func updatePoints():
 	pointsLabel.text = 'x' + str(statPoints)
+
+func tracerBulletandBoost(item):
+	if item == 'boost':
+		boostUnlocked = true
+	elif item == 'tracerBullet':
+		tracerBulletUnlocked = true
+		statPoints += $bulletPenetration/TextureProgress.value
+		$bulletPenetration/TextureProgress.value = 0

@@ -14,6 +14,7 @@ onready var levelLabel = $header/playerLevel
 onready var costLabel = $selection/cost
 
 onready var player = get_tree().current_scene.get_node('Player')
+onready var statUpgrade = get_tree().get_root().find_node('StatUpgrade', true, false)
 var target = null
 var points = 1
 var skillCost = 1
@@ -165,7 +166,7 @@ const SKILLS = {
 	'tracerBullet': {
 		'category': 'other',
 		'title': 'Tracer Bullets',
-		'desc': "Bullets will lock on to an enemy in front of it. Sets bullet penetration to 0.",
+		'desc': "Bullets will lock on to an enemy in front of it. Refunds points spent on bullet penetration.",
 		'prerequiste': ['first'],
 		'cost': 1,
 		'totalCost': 1,
@@ -228,8 +229,9 @@ func _on_selectSkillButton_pressed():
 		if checkAllTrue(list):
 			if prereq:
 				unlockSkill(target)
+				stopStatUpgrades(target)
 			elif !prereq:
-				if SKILLS[target]["totalCost"] <= points:
+				if checkTotalCost() <= points:
 					for requisite in SKILLS[target]["prerequiste"]:
 						if Global.unlockedSkills.count(requisite) == 0:
 							unlockSkill(requisite)
@@ -320,8 +322,16 @@ func hideOther(playerLevel):
 			levelLabel.text = 'Level: ' + str(playerLevel)
 			get_node(i).visible = true
 
+func checkTotalCost():
+	var cost = 0
+	for prereq in SKILLS[target]["prerequiste"]:
+		for skill in Global.unlockedSkills:
+			if prereq == skill:
+				cost += SKILLS[prereq]["cost"]
+	return cost
 
-
+func stopStatUpgrades(target):
+	statUpgrade.tracerBulletandBoost(target)
 
 
 
