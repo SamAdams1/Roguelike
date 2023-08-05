@@ -1,13 +1,12 @@
 extends KinematicBody2D
 
 #upgradable stats
-var speed = 500
-var playerHealth = 15
-var boostCapacity = 2
-var boostValue = 100
-
-var fireRate = 0.5
-var bulletSpeed = 600
+var speed = Global.playerMovementSpeed
+var playerHealth = Global.playerHealth
+var boostCapacity = Global.boostCapacity
+var boostValue = Global.boostValue
+var fireRate = Global.fireRate
+var bulletSpeed = Global.bulletSpeed
 
 #Movement
 onready var shipSprite = $ship
@@ -41,6 +40,7 @@ onready var expBar = get_node('%ExperienceBar')
 onready var labelLevel = get_node('%labelLevel')
 onready var levelUpSound = $sounds/levelUpSound
 onready var skillTree = $GUILayer/GUI/SkillTree
+onready var statUpgrade = $GUILayer/GUI/StatUpgrade
 var experience = 0 
 var experienceLevel = 0
 var collectedExperience = 0
@@ -80,6 +80,7 @@ func _ready():
 	
 	labelLevel.text = "Level: " + str(experienceLevel)
 	skillTree.visible = false
+	statUpgrade.visible = false
 	$GUILayer.visible = true
 	boostFlames.visible = false
 	boostBar.visible = false
@@ -94,6 +95,7 @@ func _ready():
 	boostBar.max_value = boostCapacity
 	
 	skillTree.connect("upgradePlayer", self, 'updatePlayerSkills')
+	statUpgrade.connect('upgradeStats', self, 'upgradePlayerStats')
 
 
 func _physics_process(delta):
@@ -280,19 +282,24 @@ signal firstLevel
 func _on_levelUpSound_finished():
 	labelLevel.text = str("LEVEL: ", experienceLevel)
 	skillTree.points += 1
+	statUpgrade.statPoints += 1
 	skillTree.updatePoints()	
-	if experienceLevel % 2 != 0 :
+	if experienceLevel % 5 == 0 or experienceLevel == 1 or experienceLevel == 5:
 		emit_signal("firstLevel", experienceLevel)
 		shipMovingSound.volume_db = -100
+		boostSound.stop()
 		toggleFire = false
 		skillTree.visible = true
 		get_tree().paused = true
-		
+	elif experienceLevel % 5 != 0:
+		statUpgrade.visible = true
+		shipMovingSound.volume_db = -100
+		boostSound.stop()
+		get_tree().paused = true
+	calculateExperience(0)
 
 func upgradePlayer():
-#	var optionChildren = upgradeOptions.get_children()
-#	for i in optionChildren:
-#		i.queue_free()
+	statUpgrade.visible = false
 	skillTree.visible = false
 	get_tree().paused = false
 	calculateExperience(0)
@@ -316,7 +323,14 @@ func updatePlayerSkills(target, category):
 	elif target == 'explosiveBullet':
 		explosiveBulletUnlocked = true
 
-
+func setStats():
+	speed = Global.playerMovementSpeed
+	healthBar.max_value = Global.playerHealth
+	boostCapacity = Global.boostCapacity
+	boostValue = Global.boostValue
+	boostBar.max_value = Global.boostValue
+	fireRate = Global.fireRate
+	bulletSpeed = Global.bulletSpeed
 
 
 
@@ -392,7 +406,6 @@ func autoAim():
 				yield(get_tree().create_timer(0.2), "timeout")
 				burstTimer = true
 				counter += 1
-				
 			
 			yield(get_tree().create_timer(fireRate), "timeout")
 			autoBulletWaitTimer = false

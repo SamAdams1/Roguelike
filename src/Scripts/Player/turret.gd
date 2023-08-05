@@ -5,8 +5,8 @@ onready var bigBullet = preload("res://Scenes/bigBullet.tscn")
 onready var sound = $turretShootSound
 var waitToFire = false
 var toggleFire = false
-var fireRate =  0.5
-var bulletSpeed = 600
+var fireRate =  Global.fireRate
+var bulletSpeed = Global.bulletSpeed
 var currentTurret = null
 
 
@@ -47,7 +47,7 @@ func _input(event): #shooting has to be in here so only one input is taken per m
 	if event.is_action_pressed("attack"):
 		toggleFire = !toggleFire
 		
-	while toggleFire and !waitToFire and currentTurret != null:
+	while toggleFire and !waitToFire and currentTurret != null and get_tree().paused == false:
 		waitToFire = true
 		sound.play()
 		turretFireProcess()
@@ -95,3 +95,7 @@ func turretFireProcess():
 		
 		else:
 			fire(spawnPoint, 1, bullet)
+
+func setStats():
+	fireRate =  Global.fireRate
+	bulletSpeed = Global.bulletSpeed

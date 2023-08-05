@@ -200,7 +200,7 @@ func _ready():
 	if str(get_tree().current_scene).get_slice(":", 0) == 'Main':
 		player.connect('firstLevel', self, 'hideOther')
 	
-	Global.skillUnlockPoints += 10
+#	Global.skillUnlockPoints += 10
 	points = Global.skillUnlockPoints
 	pointLabel.text = 'x' + str(points)
 	
@@ -225,7 +225,7 @@ func _on_selectSkillButton_pressed():
 				for cant in SKILLS[target]["nonrequiste"]:
 					list.append(cant != skill)
 		
-		if checkAllTrue(list) and SKILLS[target]["totalCost"] <= points:
+		if checkAllTrue(list):
 			if prereq:
 				unlockSkill(target)
 			elif !prereq:
@@ -298,7 +298,7 @@ func _on_exitAndSaveButton_pressed():
 func _on_confirmButton_pressed():
 	cancelOrConfirmButtons.visible = false
 	if str(get_tree().current_scene).get_slice(":", 0) == 'Main':
-		player.upgradePlayer()
+		self.visible = false
 	elif str(get_tree().current_scene).get_slice(":", 0) == 'SkillTree':
 		get_tree().quit()
 
@@ -307,6 +307,7 @@ func _on_cancelButton_pressed():
 
 
 var other = ['treeLines/look', 'treeLines/tracerBullet', 'treeLines/boost', 'treeLines/explosiveBullet', 'Other']
+
 func hideOther(playerLevel):
 	level = playerLevel
 	for i in other:
@@ -317,6 +318,9 @@ func hideOther(playerLevel):
 			headerLabel.text = "Level Up !" 
 			levelLabel.text = 'Level: ' + str(playerLevel)
 			get_node(i).visible = true
+
+
+
 
 
 

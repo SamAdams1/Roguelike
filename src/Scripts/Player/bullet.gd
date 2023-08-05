@@ -8,7 +8,12 @@ onready var sprite = $Sprite
 onready var hitBox = $HitBox/CollisionShape2D
 onready var collision = $CollisionShape2D
 
-onready var bulletHealth = 0
+onready var statUpgrade = preload("res://Scenes/Utility/StatUpgrade.tscn")
+
+var bulletHealth = Global.bulletHealth
+onready var bulletDamageMultiplier = Global.bulletDamageMultiplier
+
+
 var target = null
 var direction = Vector2.RIGHT
 onready var speed = 400
@@ -16,8 +21,9 @@ var homingBulletUnlocked = false
 var explosiveBulletUnlocked = false
 
 func _ready():
+	$HitBox.damage += bulletDamageMultiplier
 	var player = get_tree().current_scene.get_node('Player')
-#	player.connect("upgradeBullet", self, 'upgradeBullets')
+
 	homingBulletUnlocked = player.homingBulletUnlocked
 	explosiveBulletUnlocked = player.explosiveBulletUnlocked
 	if homingBulletUnlocked:
@@ -74,5 +80,3 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_bulletHitSound_finished():
 	queue_free()
-
-

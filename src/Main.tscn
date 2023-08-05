@@ -93,20 +93,24 @@ movementSpeed = 0.0
 [node name="enemy_base5" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1614, 558 )
 movementSpeed = 0.0
+experienceDroppedValue = 10
 
 [node name="enemy_base6" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1738, 637 )
 movementSpeed = 0.0
+experienceDroppedValue = 10
 
 [node name="enemy_asteroid_3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1131, 344 )
 movementSpeed = 0.0
-health = 50
+health = 5
+experienceDroppedValue = 10
 
 [node name="enemy_asteroid_4" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1129, 187 )
 movementSpeed = 0.0
-health = 50
+health = 5
+experienceDroppedValue = 10
 
 [node name="planet_loot_spawner" type="Timer" parent="."]
 wait_time = 30.0

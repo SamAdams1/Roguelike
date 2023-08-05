@@ -2,6 +2,7 @@ extends Node
 
 var node_creation_parent = null
 var trackingMissleTarget = null
+var homingBulletUnlocked = false
 var closeEnemies = []
 var nearestEnemy = null
 
@@ -9,17 +10,26 @@ var nearestEnemy = null
 var points = 0
 
 # upgradable stats
-var fireRate = 1
-var bulletSpeed = 200
-var bulletHealth = 1
-var bulletDamageMultiplier
+var fireRate = .1
+var bulletSpeed = 500
+var bulletHealth = 0
+var bulletDamageMultiplier = 0
+var knockback = 0
 
-var playerMovementSpeed = 500
+var playerMovementSpeed = 300
 var playerHealth = 15
 var boostCapacity = 2
-var boostMultiplier = 100
+var boostValue = 100
 
-
+#	'speed':  25,
+#	'boostValue': 25,
+#	'boostCapacity': 1,
+#	'maxHealth': 2,
+#	'fireRate': 0.15,
+#	'knockback': 5,
+#	'bulletPenetration': 1,
+#	'bulletDamage': 1,
+#	'bulletSpeed': 100,
 
 
 
