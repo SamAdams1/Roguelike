@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Scenes/Utility/HurtBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Fonts/ArcadeFont.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Audio/new_ship_movement.mp3" type="AudioStream" id=6]
 [ext_resource path="res://Scripts/Score.gd" type="Script" id=7]
 [ext_resource path="res://Scenes/Utility/StatUpgrade.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Menus/PauseMenu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Sprites/Utility/greenBar.png" type="Texture" id=10]
 [ext_resource path="res://Sprites/Utility/barBorder.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/Player/newShip.png" type="Texture" id=12]
@@ -257,6 +258,13 @@ margin_left = -4.0
 margin_top = -1.0
 margin_right = -4.0
 margin_bottom = -1.0
+
+[node name="Control" parent="GUILayer/GUI" instance=ExtResource( 9 )]
+visible = false
+margin_left = -4.0
+margin_top = -5.0
+margin_right = -1027.0
+margin_bottom = -605.0
 
 [node name="autoAimArea" type="Area2D" parent="."]
 visible = false
