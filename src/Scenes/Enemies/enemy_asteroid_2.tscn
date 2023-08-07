@@ -25,7 +25,5 @@ visible = true
 [node name="HitBox" parent="." index="3"]
 visible = true
 
-[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
-
 [editable path="HurtBox"]
 [editable path="HitBox"]

@@ -73,7 +73,6 @@ shape = SubResource( 2 )
 [node name="BulletCollisionArea" parent="." index="7"]
 visible = false
 
-[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="area_entered" from="AvoidBox" to="." method="_on_AvoidBox_area_entered"]
 [connection signal="area_exited" from="AvoidBox" to="." method="_on_AvoidBox_area_exited"]
 [connection signal="area_entered" from="retreat_box" to="." method="_on_retreat_box_area_entered"]

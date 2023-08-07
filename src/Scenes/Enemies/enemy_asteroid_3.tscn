@@ -62,7 +62,5 @@ visible = false
 [node name="BulletCollisionArea" parent="." index="6"]
 visible = false
 
-[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
-
 [editable path="HurtBox"]
 [editable path="HitBox"]
