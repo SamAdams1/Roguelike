@@ -226,7 +226,7 @@ func _on_selectSkillButton_pressed():
 				for cant in SKILLS[target]["nonrequiste"]:
 					list.append(cant != skill)
 		
-		if checkAllTrue(list):
+		if checkAllTrue(list) and SKILLS[target]["cost"] <= points:
 			if prereq:
 				unlockSkill(target)
 				stopStatUpgrades(target)
@@ -323,7 +323,7 @@ func hideOther(playerLevel):
 			get_node(i).visible = true
 
 func checkTotalCost():
-	var cost = 0
+	var cost = SKILLS[target]["cost"]
 	for prereq in SKILLS[target]["prerequiste"]:
 		for skill in Global.unlockedSkills:
 			if prereq == skill:
@@ -332,14 +332,3 @@ func checkTotalCost():
 
 func stopStatUpgrades(target):
 	statUpgrade.tracerBulletandBoost(target)
-
-
-
-
-
-
-
-
-
-
-

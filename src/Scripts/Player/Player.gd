@@ -304,6 +304,7 @@ func upgradePlayer():
 	statUpgrade.visible = false
 	get_tree().paused = false
 	calculateExperience(0)
+	
 
 
 func updatePlayerSkills(target, category):
@@ -406,7 +407,7 @@ func autoAim():
 						bullet_instance.apply_impulse(Vector2(), direction * bulletSpeed)
 						get_parent().add_child(bullet_instance)
 					burstTimer = false
-				yield(get_tree().create_timer(0.2), "timeout")
+				yield(get_tree().create_timer(0.1), "timeout")
 				burstTimer = true
 				counter += 1
 			

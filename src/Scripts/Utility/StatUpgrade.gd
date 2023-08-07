@@ -1,6 +1,6 @@
 extends ColorRect
 
-onready var statPoints = 10
+onready var statPoints = 0
 onready var tracerBulletUnlocked = false
 onready var boostUnlocked = false
 onready var pointsLabel = $points
@@ -22,7 +22,7 @@ const VALUES = {
 	'fireRate': 0.1,
 	'knockback': 5,
 	'bulletHealth': 1,
-	'bulletDamage': 1,
+	'bulletDamage': .5,
 	'bulletSpeed': 100,
 }
 func _ready():

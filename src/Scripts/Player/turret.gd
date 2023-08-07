@@ -39,8 +39,8 @@ func _ready():
 
 func _physics_process(_delta):
 	look_at(get_global_mouse_position())
-	if get_tree().paused == true:
-		toggleFire = false
+#	if get_tree().paused == true:
+#		toggleFire = false
 	
 
 func _input(event): #shooting has to be in here so only one input is taken per mouse click
@@ -99,3 +99,4 @@ func turretFireProcess():
 func setStats():
 	fireRate =  Global.fireRate
 	bulletSpeed = Global.bulletSpeed
+

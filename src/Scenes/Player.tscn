@@ -244,6 +244,7 @@ custom_fonts/font = SubResource( 34 )
 text = "Space = Boost | F = shipfire | leftmouse = turret attack | shift + wasd/alt = ship look around"
 
 [node name="StatUpgrade" parent="GUILayer/GUI" instance=ExtResource( 8 )]
+visible = false
 anchor_top = 0.0
 anchor_bottom = 0.0
 margin_left = -743.0

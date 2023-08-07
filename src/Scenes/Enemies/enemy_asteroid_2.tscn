@@ -14,23 +14,11 @@ healthDroppedValue = 2
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 2 )
 
-[node name="PlayerCollision" parent="." index="1"]
-visible = false
-
-[node name="HurtBox" parent="." index="2"]
-visible = false
-
-[node name="HitBox" parent="." index="3"]
-visible = false
-
 [node name="BulletCollision" parent="." index="4"]
 visible = false
 
 [node name="BulletCollisionArea" parent="." index="5"]
 visible = false
-
-[node name="DeathExplosionSound" parent="." index="5"]
-bus = "SFX"
 
 [editable path="HurtBox"]
 [editable path="HitBox"]

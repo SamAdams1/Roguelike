@@ -17,18 +17,6 @@ healthDroppedValue = 3
 [node name="Sprite" parent="." index="0"]
 modulate = Color( 0, 0.858824, 1, 1 )
 
-[node name="PlayerCollision" parent="." index="1"]
-visible = false
-
-[node name="HurtBox" parent="." index="2"]
-visible = false
-
-[node name="CollisionShape2D" parent="HurtBox" index="0"]
-visible = false
-
-[node name="HitBox" parent="." index="3"]
-visible = false
-
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 visible = false
 
