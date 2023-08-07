@@ -6,6 +6,7 @@ var xpGem = preload("res://Scenes/Objects/experienceGem.tscn")
 var coin = preload("res://Scenes/Objects/coin.tscn")
 var healthDrop = preload("res://Scenes/Objects/healthDropped.tscn")
 
+
 onready var player = get_tree().current_scene.get_node('Player')
 onready var playerCollision = $PlayerCollision
 onready var bulletCollision = $BulletCollision/CollisionShape2D
@@ -23,12 +24,14 @@ export var health = 2
 export var experienceDroppedValue = 1
 export var coinDroppedValue = 1
 export var healthDroppedValue = 5
+export var knockback = 4
 
 
 func basic_movement_towards_player(_delta):
 	var direction = global_position.direction_to(player.global_position)
 	velocity = direction * movementSpeed
 	move_and_slide(velocity)
+
 
 func _on_HurtBox_hurt(damage):
 	health -= damage
@@ -48,6 +51,7 @@ func _on_HurtBox_hurt(damage):
 			get_tree().get_root().add_child(explosion_instance)
 			
 			createLoot()
+			
 
 
 func disableEnemyOnDead():

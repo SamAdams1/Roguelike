@@ -1,5 +1,6 @@
 extends "res://Scripts/EnemyScripts/enemy_core.gd"
 
+
 var stun = false
 
 func _process(delta):
@@ -11,14 +12,13 @@ func _process(delta):
 		move_and_slide(velocity)
 
 
-
 func _on_AudioStreamPlayer_finished():
 	queue_free()
-	
 
 func _on_stun_timer_timeout():
 	stun = false
-	
+
+
 func _on_HurtBox_area_entered(area):
 	if area.is_in_group("attack"):
 		velocity = -velocity * knockback

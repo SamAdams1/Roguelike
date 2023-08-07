@@ -11,11 +11,9 @@ func _process(delta):
 		move_and_slide(velocity)
 
 
-
 func _on_AudioStreamPlayer_finished():
 	queue_free()
 	
-
 func _on_stun_timer_timeout():
 	stun = false
 	
