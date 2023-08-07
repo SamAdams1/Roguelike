@@ -67,7 +67,7 @@ extents = Vector2( 342.069, 229.468 )
 pause_mode = 2
 scale = Vector2( 1.35645, 1.52091 )
 collision_layer = 3
-collision_mask = 0
+collision_mask = 2
 script = ExtResource( 5 )
 
 [node name="turret" parent="." instance=ExtResource( 28 )]
@@ -105,7 +105,6 @@ position = Vector2( 71.5101, 32.2176 )
 position = Vector2( 18.4304, 61.8051 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 5.96046e-08 )
 scale = Vector2( 0.488949, 0.731644 )
 shape = SubResource( 24 )
@@ -115,7 +114,6 @@ current = true
 zoom = Vector2( 2, 2 )
 
 [node name="HurtBox" parent="." groups=["player"] instance=ExtResource( 1 )]
-visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -211,7 +209,7 @@ position = Vector2( -22, 13 )
 scale = Vector2( 0.0653061, 0.0453752 )
 texture = ExtResource( 3 )
 
-[node name="Score" type="Label" parent="GUILayer/GUI"]
+[node name="enemiesKilled" type="Label" parent="GUILayer/GUI"]
 margin_left = 37.0
 margin_top = 35.0
 margin_right = 77.0
@@ -220,7 +218,7 @@ custom_fonts/font = SubResource( 31 )
 text = "0"
 script = ExtResource( 7 )
 
-[node name="skull" type="Sprite" parent="GUILayer/GUI/Score"]
+[node name="skull" type="Sprite" parent="GUILayer/GUI/enemiesKilled"]
 position = Vector2( -22, 12 )
 scale = Vector2( 0.0664062, 0.0625 )
 texture = ExtResource( 16 )

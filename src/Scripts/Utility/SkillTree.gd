@@ -32,7 +32,6 @@ const SKILLS = {
 		'prerequiste': ['first'],
 		'nonrequiste': [''],
 		'cost': 1,
-		'totalCost': 1,
 	},
 	'barrel2': {
 		'category': 'turret',
@@ -41,7 +40,6 @@ const SKILLS = {
 		'prerequiste': ['turret',],
 		'nonrequiste': ['bigBullet', '2direction'],
 		'cost': 1,
-		'totalCost': 2,
 	},
 	'barrel3':{
 		'category': 'turret',
@@ -50,7 +48,6 @@ const SKILLS = {
 		'prerequiste': ['turret', 'barrel2'],
 		'nonrequiste': ['bigBullet', '2direction'],
 		'cost': 2,
-		'totalCost': 4,
 	},
 	'barrel4': {
 		'category': 'turret',
@@ -59,7 +56,6 @@ const SKILLS = {
 		'prerequiste': ['turret', 'barrel2', 'barrel3'],
 		'nonrequiste': ['bigBullet', '2direction'],
 		'cost': 3,
-		'totalCost': 7,
 	},
 	'bigBullet': {
 		'category': 'turret',
@@ -68,7 +64,6 @@ const SKILLS = {
 		'prerequiste': ['turret'],
 		'nonrequiste': ['barrel2', '2direction'],
 		'cost': 1,
-		'totalCost': 2,
 	},
 	'bigBullet2Barrel': {
 		'category': 'turret',
@@ -77,7 +72,6 @@ const SKILLS = {
 		'prerequiste': ['turret', 'bigBullet'],
 		'nonrequiste': ['barrel2', '2direction'],
 		'cost': 2,
-		'totalCost': 4,
 	},
 	'bigBullet2Direction': {
 		'category': 'turret',
@@ -86,7 +80,6 @@ const SKILLS = {
 		'prerequiste': ['turret', 'bigBullet'],
 		'nonrequiste': ['barrel2', '2direction'],
 		'cost': 2,
-		'totalCost': 4,
 	},
 	'2direction': {
 		'category': 'turret',
@@ -95,7 +88,6 @@ const SKILLS = {
 		'prerequiste': ['turret'],
 		'nonrequiste': ['barrel2', 'bigBullet'],
 		'cost': 1,
-		'totalCost': 2,
 	},
 	'3direction': {
 		'category': 'turret',
@@ -104,7 +96,6 @@ const SKILLS = {
 		'prerequiste': ['turret','2direction'],
 		'nonrequiste': ['barrel2', 'bigBullet'],
 		'cost': 2,
-		'totalCost': 4,
 	},
 	'4direction': {
 		'category': 'turret',
@@ -113,7 +104,6 @@ const SKILLS = {
 		'prerequiste': ['turret','2direction', '3direction'],
 		'nonrequiste': ['barrel2', 'bigBullet'],
 		'cost': 3,
-		'totalCost': 7,
 	},
 	'autoAim1': {
 		'category': 'autoaim',
@@ -121,7 +111,6 @@ const SKILLS = {
 		'desc': "Shoots at the nearest enemy.",
 		'prerequiste': ['first'],
 		'cost': 1,
-		'totalCost': 1,
 	},
 	'autoAim2': {
 		'category': 'autoaim',
@@ -129,7 +118,6 @@ const SKILLS = {
 		'desc': "Shoots 2 bullets at the nearest enemy in rapid succesion.",
 		'prerequiste': ['autoAim1'],
 		'cost': 2,
-		'totalCost': 3,
 	},
 	'autoAim3': {
 		'category': 'autoaim',
@@ -137,7 +125,6 @@ const SKILLS = {
 		'desc': "Shoots 3 bullets at the nearest enemy in rapid succesion.",
 		'prerequiste': ['autoAim1', 'autoAim2'],
 		'cost': 3,
-		'totalCost': 6,
 	},
 	'directional1': {
 		'category': 'directional',
@@ -145,7 +132,6 @@ const SKILLS = {
 		'desc': "Shoots a bullet in the direction your ship is facing.",
 		'prerequiste': ['first'],
 		'cost': 1,
-		'totalCost': 1,
 	},
 	'directional2': {
 		'category': 'directional',
@@ -153,7 +139,6 @@ const SKILLS = {
 		'desc': "Shoots 2 bullets in the direction your ship is facing.",
 		'prerequiste': ['directional1'],
 		'cost': 2,
-		'totalCost': 3,
 	},
 	'directional3': {
 		'category': 'directional',
@@ -161,7 +146,6 @@ const SKILLS = {
 		'desc': "Shoots 3 bullets in the direction your ship is facing.",
 		'prerequiste': ['directional1', 'directional2'],
 		'cost': 3,
-		'totalCost': 6,
 	},
 	'tracerBullet': {
 		'category': 'other',
@@ -169,7 +153,6 @@ const SKILLS = {
 		'desc': "Bullets will lock on to an enemy in front of it. Refunds points spent on bullet penetration.",
 		'prerequiste': ['first'],
 		'cost': 1,
-		'totalCost': 1,
 	},
 	'look': {
 		'category': 'other',
@@ -177,15 +160,13 @@ const SKILLS = {
 		'desc': "Press alt/shift with WASD to turn your ship with out moving.",
 		'prerequiste': ['first'],
 		'cost': 1,
-		'totalCost': 1,
 	},
 	'explosiveBullet': {
 		'category': 'other',
 		'title': 'Explosive Bullets',
 		'desc': "Bullets explode on impact, dealing a wider range of damage.",
 		'prerequiste': ['first'],
-		'cost': 2,
-		'totalCost': 1,
+		'cost': 3,
 	},
 	'boost': {
 		'category': 'other',
@@ -193,13 +174,18 @@ const SKILLS = {
 		'desc': "Press space to go into hyperdrive.",
 		'prerequiste': ['first'],
 		'cost': 1,
-		'totalCost': 1,
 	},
 }
+func _physics_process(delta):
+	if self.visible == true and points > 1:
+		exitLabel.text  = 'Exit and Save Points'
+	
 
 func _ready():
 	if str(get_tree().current_scene).get_slice(":", 0) == 'Main':
 		player.connect('firstLevel', self, 'hideOther')
+	if points > 1:
+		exitLabel.text  = 'Exit and Save Points'
 	
 #	Global.skillUnlockPoints += 10
 	points = Global.skillUnlockPoints

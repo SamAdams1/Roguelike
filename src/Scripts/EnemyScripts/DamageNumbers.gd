@@ -9,7 +9,7 @@ var velocity = Vector2.ZERO
 func _ready():
 	var randNum = RandomNumberGenerator.new()
 	randNum.randomize()
-	label.set_text(str(amount * randNum.randi_range(9, 13)))
+	label.set_text(str(int(amount * randNum.randi_range(9, 13) + 0.5 / 1)))
 	
 	var numSideMovement = randNum.randi_range(-40, 40) * 5
 	velocity = Vector2(numSideMovement, 30)

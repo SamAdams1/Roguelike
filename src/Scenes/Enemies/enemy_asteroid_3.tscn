@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Enemies/enemy_asteroid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Enemies/black_enemy.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Enemies/greenAlien.png" type="Texture" id=3]
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
@@ -35,23 +36,32 @@ experienceDroppedValue = 2
 coinDroppedValue = 5
 
 [node name="Sprite" parent="." index="0"]
-modulate = Color( 1, 1, 0.196078, 1 )
-position = Vector2( -11, 33 )
-scale = Vector2( 0.75, 0.75 )
-texture = null
+position = Vector2( -3.55271e-15, -4 )
+scale = Vector2( 0.244, 0.264 )
+texture = ExtResource( 3 )
 
-[node name="BulletCollision" parent="." index="4"]
+[node name="PlayerCollision" parent="." index="1"]
+visible = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
 visible = false
-
-[node name="BulletCollisionArea" parent="." index="5"]
-visible = false
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="7"]
 position = Vector2( -16, 51 )
 scale = Vector2( 0.75, 0.745 )
 frames = SubResource( 4 )
-frame = 3
+frame = 1
 playing = true
+
+[node name="HitBox" parent="." index="4"]
+visible = true
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2( -0.25, -0.5 )
+
+[node name="BulletCollision" parent="." index="5"]
+visible = false
+
+[node name="BulletCollisionArea" parent="." index="6"]
+visible = false
 
 [editable path="HurtBox"]
 [editable path="HitBox"]

@@ -7,13 +7,13 @@
 [ext_resource path="res://Audio/SFX/ArcadeExplosion.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 32, 48 )
+extents = Vector2( 57.5, 53.5 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 79, 79 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 32, 48 )
+extents = Vector2( 57.5, 53.5 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 79, 79 )

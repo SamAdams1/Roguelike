@@ -4,7 +4,6 @@
 [ext_resource path="res://Sprites/Enemies/enemy-spacecraft.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/EnemyScripts/enemy_shooter.gd" type="Script" id=3]
 
-
 [sub_resource type="CircleShape2D" id=1]
 radius = 519.91
 
@@ -17,15 +16,6 @@ fireRate = 3.0
 rotation = 1.5708
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 2 )
-
-[node name="PlayerCollision" parent="." index="1"]
-visible = false
-
-[node name="HurtBox" parent="." index="2"]
-visible = false
-
-[node name="HitBox" parent="." index="3"]
-visible = false
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 rotation = 1.5708

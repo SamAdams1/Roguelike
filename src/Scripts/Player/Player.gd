@@ -288,7 +288,7 @@ func _on_levelUpSound_finished():
 	skillTree.updatePoints()
 	toggleFire = false
 	
-	if experienceLevel % 5 == 0 or experienceLevel == 1:
+	if experienceLevel % 2 != 0 or experienceLevel == 1:
 		emit_signal("firstLevel", experienceLevel)
 		skillTree.visible = true
 	
