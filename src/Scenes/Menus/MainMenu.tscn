@@ -139,7 +139,6 @@ volume_db = -10.0
 bus = "Music"
 
 [node name="OptionsMenu" parent="." instance=ExtResource( 5 )]
-visible = false
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/OptionsButton" to="." method="_on_OptionsButton_pressed"]
