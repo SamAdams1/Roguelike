@@ -3,7 +3,6 @@ extends Area2D
 enum{Cooldown, HitOnce, DisableHitbox}
 export var HurtBoxType = 0
 
-onready var planet_collision = $CollisionShape2D2
 onready var collision = $CollisionShape2D
 onready var disableTimer = $DisableTimer
 
@@ -30,20 +29,3 @@ func _on_HurtBox_area_entered(area):
 
 func _on_DisableTimer_timeout():
 	collision.call_deferred("set", "disabled", false)
-
-
-
-func _on_PlanetHurtBox_area_entered(area):
-	if area.is_in_group("attack"):
-		if not area.get("damage") == null:
-			match HurtBoxType:
-				0: #cooldown
-					planet_collision.call_deferred("set", "disabled", true)
-					disableTimer.start()
-				1: #HitOnce
-					pass
-				2: #DisableHitBox
-					if area.has_method("tempDisable"):
-						area.tempDisable()
-			var damage = area.damage
-			emit_signal("hurt", damage)

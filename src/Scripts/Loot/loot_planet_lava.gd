@@ -14,9 +14,7 @@ var explosion_instance = explosion.instance()
 onready var player = get_tree().current_scene.get_node('Player')
 onready var lootBase = get_tree().current_scene.get_node('lootBase')
 onready var hurtBox = $HurtBox/CollisionShape2D
-onready var planet_hurtBox = $HurtBox/CollisionShape2D2
 onready var hitBox = $HitBox/CollisionShape2D
-onready var planet_hitbox = $HitBox/CollisionShape2D2
 onready var sprite = $AnimatedSprite
 onready var sound = $DeathExplosionSound
 onready var playerCollision = $collision_shape
@@ -55,7 +53,6 @@ func _on_HurtBox_hurt(damage):
 			sound.play()
 			Global.points += 1
 			#explosion animation
-			var explosion_instance = explosion.instance()
 			explosion_instance.position = get_global_position()
 			get_tree().get_root().add_child(explosion_instance)
 			createLoot()
@@ -64,7 +61,6 @@ func disableEnemyOnDead():
 	playerCollision.call_deferred("set", "disabled", true)
 	bulletCollision.call_deferred("set", "disabled", true)
 	hitBox.call_deferred("set", "disabled", true)
-	planet_hitbox.call_deferred("set", "disabled", true)
 	movementSpeed = 0
 	sprite.visible = false
 	queue_free()

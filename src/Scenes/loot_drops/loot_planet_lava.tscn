@@ -65,8 +65,8 @@
 [ext_resource path="res://Scripts/Loot/loot_planet_lava.gd" type="Script" id=63]
 [ext_resource path="res://Audio/SFX/ArcadeExplosion.wav" type="AudioStream" id=64]
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 27.6687
+[sub_resource type="CircleShape2D" id=7]
+radius = 27.3
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -76,8 +76,8 @@ animations = [ {
 "speed": 20.0
 } ]
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 26.0192
+[sub_resource type="CircleShape2D" id=8]
+radius = 27.3
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 26.0192
@@ -95,19 +95,18 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource( 63 )
 
-[node name="PlanetHurtBox" parent="." instance=ExtResource( 61 )]
+[node name="HurtBox" parent="." instance=ExtResource( 61 )]
 visible = false
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="PlanetHurtBox"]
-visible = false
-shape = SubResource( 2 )
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource( 7 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 modulate = Color( 1.64, 28.48, 0, 1 )
 frames = SubResource( 1 )
-frame = 33
+frame = 10
 playing = true
 
 [node name="HitBox" parent="." instance=ExtResource( 62 )]
@@ -115,8 +114,8 @@ visible = false
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource( 3 )
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource( 8 )
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]
 visible = false
@@ -146,5 +145,7 @@ stream = ExtResource( 64 )
 volume_db = -15.0
 bus = "SFX"
 
-[connection signal="area_entered" from="PlanetHurtBox" to="PlanetHurtBox" method="_on_PlanetHurtBox_area_entered"]
-[connection signal="hurt" from="PlanetHurtBox" to="." method="_on_HurtBox_hurt"]
+[connection signal="hurt" from="HurtBox" to="." method="_on_HurtBox_hurt"]
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

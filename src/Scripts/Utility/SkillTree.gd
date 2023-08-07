@@ -176,7 +176,7 @@ const SKILLS = {
 		'cost': 1,
 	},
 }
-func _physics_process(delta):
+func _physics_process(_delta):
 	if self.visible == true and points > 1:
 		exitLabel.text  = 'Exit and Save Points'
 	

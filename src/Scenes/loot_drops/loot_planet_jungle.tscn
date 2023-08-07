@@ -134,10 +134,13 @@ animations = [ {
 
 [node name="AnimatedSprite" parent="." index="1"]
 visible = false
-frame = 46
+frame = 56
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="." index="7"]
 modulate = Color( 1, 18.54, 22.04, 1 )
 frames = SubResource( 1 )
-frame = 30
+frame = 40
 playing = true
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

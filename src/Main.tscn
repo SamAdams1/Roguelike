@@ -75,7 +75,6 @@ bus = "Music"
 autostart = true
 
 [node name="planet_loot_spawner" type="Timer" parent="."]
-wait_time = 30.0
 autostart = true
 
 [node name="enemy_asteroid_2" parent="." instance=ExtResource( 9 )]
