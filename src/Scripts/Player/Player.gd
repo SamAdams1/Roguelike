@@ -96,7 +96,7 @@ func _ready():
 	
 	
 	skillTree.connect("upgradePlayer", self, 'updatePlayerSkills')
-	statUpgrade.connect('upgradeStats', self, 'upgradePlayerStats')
+#	statUpgrade.connect('upgradeStats', self, 'upgradePlayerStats')
 
 
 func _physics_process(delta):
@@ -150,7 +150,7 @@ func shipLookDirectionMoving(delta):
 		shipSprite.rotation_degrees = -45
 	if Input.is_action_pressed("right") and Input.is_action_pressed("down"):# and velocity.x > 1:
 		shipSprite.rotation_degrees = 45
-		
+	
 	if !takingDamage:
 		shipMovingSprite.visible = isShipMoving()
 		if boostUnlocked:

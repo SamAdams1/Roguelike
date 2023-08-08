@@ -215,7 +215,7 @@ func _on_selectSkillButton_pressed():
 		if checkAllTrue(list) and SKILLS[target]["cost"] <= points:
 			if prereq:
 				unlockSkill(target)
-				stopStatUpgrades(target)
+				stopStatUpgrades()
 			elif !prereq:
 				if checkTotalCost() <= points:
 					for requisite in SKILLS[target]["prerequiste"]:
@@ -316,5 +316,5 @@ func checkTotalCost():
 				cost += SKILLS[prereq]["cost"]
 	return cost
 
-func stopStatUpgrades(target):
+func stopStatUpgrades():
 	statUpgrade.tracerBulletandBoost(target)

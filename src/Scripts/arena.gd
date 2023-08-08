@@ -13,7 +13,7 @@ func _ready():
 	randomize()
 	Global.points = 0
 	$enemy_spawn_timer.wait_time = difficulty
-	
+
 
 func _on_enemy_spawn_timer_timeout():
 	var rng = RandomNumberGenerator.new()

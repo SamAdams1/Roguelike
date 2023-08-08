@@ -10,10 +10,11 @@
 radius = 515.009
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 432.019
+radius = 317.057
 
 [node name="enemy_asteroid_4" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+movementSpeed = 225.0
 healthDroppedValue = 3
 knockback = 1
 
@@ -49,7 +50,6 @@ visible = true
 position = Vector2( 1.5, 7.5 )
 
 [node name="AvoidBox" type="Area2D" parent="." index="4"]
-visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -64,7 +64,6 @@ visible = false
 visible = false
 
 [node name="retreat_box" type="Area2D" parent="." index="6"]
-visible = false
 collision_layer = 2
 collision_mask = 2
 
