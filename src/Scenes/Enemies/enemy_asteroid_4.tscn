@@ -15,6 +15,7 @@ radius = 432.019
 [node name="enemy_asteroid_4" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 healthDroppedValue = 3
+knockback = 1
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 1, 24 )

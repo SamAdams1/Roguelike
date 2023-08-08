@@ -56,7 +56,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="difficulty_timer" type="Timer" parent="."]
-wait_time = 60.0
+wait_time = 5.0
 autostart = true
 
 [node name="lootBase" type="Node2D" parent="." groups=["loot"]]
