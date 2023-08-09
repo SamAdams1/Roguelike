@@ -56,8 +56,8 @@ scale = Vector2( 6.6994, 6.30444 )
 wait_time = 5.0
 autostart = true
 
-[node name="difficulty_timer" type="Timer" parent="."]
-wait_time = 60.0
+[node name="spawn_scale_timer" type="Timer" parent="."]
+wait_time = 5.0
 autostart = true
 
 [node name="lootBase" type="Node2D" parent="." groups=["loot"]]
@@ -79,16 +79,10 @@ autostart = true
 wait_time = 30.0
 autostart = true
 
-[node name="enemy_asteroid_2" parent="." instance=ExtResource( 9 )]
-position = Vector2( -105, 569 )
-
-[node name="enemy_asteroid_3" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1707, 888 )
-
 [node name="enemy_asteroid_4" parent="." instance=ExtResource( 10 )]
-position = Vector2( 754, 604 )
+position = Vector2( 930, 711 )
 
 [connection signal="timeout" from="enemy_spawn_timer" to="." method="_on_enemy_spawn_timer_timeout"]
-[connection signal="timeout" from="difficulty_timer" to="." method="_on_difficulty_timer_timeout"]
+[connection signal="timeout" from="spawn_scale_timer" to="." method="_on_spawn_scale_timer_timeout"]
 [connection signal="timeout" from="enemy_increase" to="." method="_on_enemy_increase_timeout"]
 [connection signal="timeout" from="planet_loot_spawner" to="." method="_on_planet_loot_spawner_timeout"]

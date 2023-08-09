@@ -6,6 +6,7 @@ var xpGem = preload("res://Scenes/Objects/experienceGem.tscn")
 var coin = preload("res://Scenes/Objects/coin.tscn")
 var healthDrop = preload("res://Scenes/Objects/healthDropped.tscn")
 
+
 onready var player = get_tree().current_scene.get_node('Player')
 onready var playerCollision = $PlayerCollision
 onready var bulletCollision = $BulletCollision/CollisionShape2D
@@ -16,6 +17,8 @@ onready var sound = $DeathExplosionSound
 onready var lootBase = get_tree().current_scene.get_node('lootBase')
 var notDead = true
 
+onready var statUpgrade = get_tree().get_root().find_node('StatUpgrade', true, false)
+
 var velocity = Vector2.ZERO
 #enemy stats you can change in inspector
 export var movementSpeed = 100.0
@@ -23,12 +26,17 @@ export var health = 2
 export var experienceDroppedValue = 1
 export var coinDroppedValue = 1
 export var healthDroppedValue = 5
+var knockback = Global.knockback
+var knockbackUnlocked = Global.knockbackUnlocked
 
+func _ready():
+	statUpgrade.connect('setKnockBack', self, 'setEnemyKnockback')
 
 func basic_movement_towards_player(_delta):
 	var direction = global_position.direction_to(player.global_position)
 	velocity = direction * movementSpeed
 	move_and_slide(velocity)
+
 
 func _on_HurtBox_hurt(damage):
 	health -= damage
@@ -48,6 +56,7 @@ func _on_HurtBox_hurt(damage):
 			get_tree().get_root().add_child(explosion_instance)
 			
 			createLoot()
+			
 
 
 func disableEnemyOnDead():
@@ -79,3 +88,12 @@ func createLoot():
 		newCoin.coinValue = coinDroppedValue
 		newCoin.global_position = global_position
 		lootBase.call_deferred("add_child", newCoin)
+		
+func _on_difficulty_scale_timeout():
+	health += 1
+	movementSpeed += 10
+
+func setEnemyKnockback():
+	knockback = Global.knockback
+	knockbackUnlocked = true
+	Global.knockbackUnlocked = true

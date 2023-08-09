@@ -10,6 +10,9 @@ var value = null
 
 onready var player = get_tree().current_scene.get_node('Player')
 onready var turret = get_tree().get_root().find_node('turret', true, false)
+onready var skillTree = get_tree().get_root().find_node('SkillTree', true, false)
+
+signal setKnockBack
 
 
 #signal upgradeStats
@@ -20,7 +23,7 @@ const VALUES = {
 	'boostCapacity': 0.9,
 	'maxHealth': 2,
 	'fireRate': 0.1,
-	'knockback': 5,
+	'knockback': 1,
 	'bulletHealth': 1,
 	'bulletDamage': .5,
 	'bulletSpeed': 100,
@@ -28,7 +31,7 @@ const VALUES = {
 func _ready():
 	pointsLabel.text = 'x' + str(statPoints)
 	warningLabel.visible = false
-	
+
 
 
 func _physics_process(_delta):
@@ -36,22 +39,23 @@ func _physics_process(_delta):
 		updatePoints()
 
 func _on_button_pressed():
-	target = str(get_focus_owner()).get_slice(":", 0)
-	value = VALUES[target]
-	if target == 'bulletHealth' and tracerBulletUnlocked:
-		warningLabel.visible = true
-		warningLabel.text = 'Cannot upgrade with Tracer Bullet Unlocked'
-		return
-	if (target == 'boostCapacity' or target == 'boostValue') and !boostUnlocked:
-		warningLabel.visible = true
-		warningLabel.text = 'Unlock Boost Skill'
-		return
-	warningLabel.visible = false
-	increaseBar()
-	upgradeStat()
-	if statPoints == 0:
-		yield(get_tree().create_timer(0.25), "timeout")
-		player.upgradePlayer()
+	if skillTree.visible == false:
+		target = str(get_focus_owner()).get_slice(":", 0)
+		value = VALUES[target]
+		if target == 'bulletHealth' and tracerBulletUnlocked:
+			warningLabel.visible = true
+			warningLabel.text = 'Cannot upgrade with Tracer Bullet Unlocked'
+			return
+		if (target == 'boostCapacity' or target == 'boostValue') and !boostUnlocked:
+			warningLabel.visible = true
+			warningLabel.text = 'Unlock Boost Skill'
+			return
+		warningLabel.visible = false
+		increaseBar()
+		upgradeStat()
+		if statPoints == 0:
+			yield(get_tree().create_timer(0.25), "timeout")
+			player.upgradePlayer()
 
 func increaseBar():
 	var progressBar = get_node(get_focus_owner().get_parent().name + '/' +  'TextureProgress')
@@ -72,6 +76,7 @@ func upgradeStat():
 		
 	elif target == 'knockback':
 		Global.knockback += value
+		emit_signal("setKnockBack")
 		
 	elif target == 'fireRate':
 		Global.fireRate -= value
