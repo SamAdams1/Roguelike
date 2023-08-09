@@ -9,7 +9,7 @@ func _process(delta):
 	elif stun:
 		var direction = global_position.direction_to(player.global_position)
 		velocity = -(direction * movementSpeed)
-		move_and_slide(velocity)
+		move_and_slide(velocity * knockback)
 
 
 func _on_AudioStreamPlayer_finished():

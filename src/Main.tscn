@@ -55,7 +55,7 @@ scale = Vector2( 6.6994, 6.30444 )
 wait_time = 5.0
 autostart = true
 
-[node name="difficulty_timer" type="Timer" parent="."]
+[node name="spawn_scale_timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
 
@@ -88,6 +88,6 @@ position = Vector2( 1707, 888 )
 position = Vector2( 754, 604 )
 
 [connection signal="timeout" from="enemy_spawn_timer" to="." method="_on_enemy_spawn_timer_timeout"]
-[connection signal="timeout" from="difficulty_timer" to="." method="_on_difficulty_timer_timeout"]
+[connection signal="timeout" from="spawn_scale_timer" to="." method="_on_spawn_scale_timer_timeout"]
 [connection signal="timeout" from="enemy_increase" to="." method="_on_enemy_increase_timeout"]
 [connection signal="timeout" from="planet_loot_spawner" to="." method="_on_planet_loot_spawner_timeout"]

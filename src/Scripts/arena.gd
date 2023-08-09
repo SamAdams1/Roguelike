@@ -26,11 +26,11 @@ func _on_enemy_spawn_timer_timeout():
 	instance.global_position = $Player/Path2D/PathFollow2D/Position2D.global_position
 	add_child(instance)
 	
-func _on_difficulty_timer_timeout():
+func _on_spawn_scale_timer_timeout():
 #	print($difficulty_timer.wait_time, "difficulty")
 	if $enemy_spawn_timer.wait_time > 0.2:
 #		print($enemy_spawn_timer.wait_time, "spawn")
-		$enemy_spawn_timer.wait_time = (difficulty - .1)
+		$enemy_spawn_timer.wait_time -= .1
 	else:
 		pass
 	

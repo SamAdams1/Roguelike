@@ -8,7 +8,7 @@ func _process(delta):
 	elif stun:
 		var direction = global_position.direction_to(player.global_position)
 		velocity = -(direction * movementSpeed)
-		move_and_slide(velocity)
+		move_and_slide(velocity * knockback)
 
 
 
@@ -24,3 +24,6 @@ func _on_HurtBox_area_entered(area):
 		velocity = -velocity * knockback
 		stun = true
 		$stun_timer.start()
+
+func _on_dificulty_scale_timeout():
+	health += 1

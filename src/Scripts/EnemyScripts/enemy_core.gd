@@ -24,7 +24,7 @@ export var health = 2
 export var experienceDroppedValue = 1
 export var coinDroppedValue = 1
 export var healthDroppedValue = 5
-export var knockback = 4
+export var knockback = 0
 
 
 func basic_movement_towards_player(_delta):
@@ -83,3 +83,7 @@ func createLoot():
 		newCoin.coinValue = coinDroppedValue
 		newCoin.global_position = global_position
 		lootBase.call_deferred("add_child", newCoin)
+		
+func _on_difficulty_scale_timeout():
+	health += 1
+	movementSpeed += 10
