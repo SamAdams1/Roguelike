@@ -39,6 +39,7 @@ func createLoot():
 		newCoin.coinValue = coinDroppedValue
 		newCoin.global_position = global_position
 		lootBase.call_deferred("add_child", newCoin)
+		
 func _on_HurtBox_hurt(damage):
 	print("hurt")
 	health -= damage

@@ -2,7 +2,7 @@ extends Node
 
 var node_creation_parent = null
 
-
+#autoAim
 var closeEnemies = []
 var nearestEnemy = null
 
@@ -22,17 +22,17 @@ var playerHealth = 10
 var boostCapacity = 2
 var boostValue = 100
 
-#Skill Tree
-#onready var turretIdentifiers = ['turret', 'barrel2', 'barrel3', 'barrel4', 'bigBullet', 'bigBullet2Direction', 
-#'bigBullet2Barrel', '2direction', '3direction', '4direction']
-
+#skills
 var unlockedSkills = ['first', ]
 #var unlockedSkills = ['first',  'turret', 'bigBullet', 'bigBullet2Direction']
 #var unlockedSkills = ['first',  'turret', 'barrel2', 'barrel3', 'barrel4']
 #var unlockedSkills = ['first',  'turret', '2direction', '3direction', '4direction']
 
 var selectedButton = null
-var skillUnlockPoints = 0
+#var skillUnlockPoints = 0
+
+#store
+var store = null
 
 func instance_node(node, location, parent):
 	var node_instance = node.instance()

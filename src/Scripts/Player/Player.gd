@@ -72,6 +72,7 @@ var autoAimLevel = 0
 #loot
 onready var moneyLabel = $GUILayer/GUI/moneyLabel
 var money = 0
+onready var storeShopScreen = $GUILayer/GUI/StoreShopScreen
 
 
 func _ready():
@@ -84,6 +85,7 @@ func _ready():
 	$GUILayer.visible = true
 	boostFlames.visible = false
 	boostBar.visible = false
+	storeShopScreen.visible = false
 	
 	shipMovingSound.play()
 	
@@ -337,6 +339,16 @@ func setStats():
 	bulletSpeed = Global.bulletSpeed
 
 
+func changeShipColor(number):
+	if number == 1:
+			shipSprite.modulate = Color(0.921569, 0.035294, 0.035294)
+	elif number == 2:
+			shipSprite.modulate = Color(0.022736, 0.582031, 0.123234)
+	else:
+			shipSprite.modulate = Color(0.022736, 0.149451, 0.582031)
+
+
+
 
 #ShipShooting
 func directionalFire():
@@ -424,9 +436,9 @@ func _on_autoAimArea_body_exited(body):
 #	print(Global.closeEnemies)
 	nearestDistance = 100_000
 	Global.closeEnemies.erase(body)
-	
-	
-	
+
+
+
 
 
 
