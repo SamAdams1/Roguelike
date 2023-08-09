@@ -15,6 +15,8 @@
 [ext_resource path="res://Scenes/loot_drops/loot_planet_ice.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scenes/loot_drops/loot_planet_jungle.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/Enemies/enemy_shooter.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/loot_drops/Store.tscn" type="PackedScene" id=15]
+
 
 [sub_resource type="Curve2D" id=2]
 _data = {
@@ -81,6 +83,10 @@ autostart = true
 
 [node name="enemy_asteroid_4" parent="." instance=ExtResource( 10 )]
 position = Vector2( 930, 711 )
+
+[node name="GasStation" parent="." instance=ExtResource( 15 )]
+position = Vector2( 1592, 662 )
+z_index = -1
 
 [connection signal="timeout" from="enemy_spawn_timer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="spawn_scale_timer" to="." method="_on_spawn_scale_timer_timeout"]

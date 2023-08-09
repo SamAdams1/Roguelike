@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Scenes/Utility/HurtBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Fonts/ArcadeFont.ttf" type="DynamicFontData" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://Sprites/Utility/grayBar.png" type="Texture" id=26]
 [ext_resource path="res://Scenes/Utility/SkillTree.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Scenes/turret.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Scenes/loot_drops/StoreShopScreen.tscn" type="PackedScene" id=29]
 
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 25.6321, 29.6559 )
@@ -263,6 +264,13 @@ visible = false
 margin_left = -4.0
 margin_top = -5.0
 margin_right = -1027.0
+margin_bottom = -605.0
+
+[node name="StoreShopScreen" parent="GUILayer/GUI" instance=ExtResource( 29 )]
+visible = false
+margin_left = -4.0
+margin_top = -5.0
+margin_right = -1028.0
 margin_bottom = -605.0
 
 [node name="autoAimArea" type="Area2D" parent="."]
