@@ -48,7 +48,7 @@ visible = false
 position = Vector2( -16, 51 )
 scale = Vector2( 0.75, 0.745 )
 frames = SubResource( 4 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="HitBox" parent="." index="4"]

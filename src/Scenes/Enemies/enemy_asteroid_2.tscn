@@ -10,19 +10,19 @@ health = 3
 experienceDroppedValue = 2
 healthDroppedValue = 2
 
-[node name="PlayerCollision" parent="." index="0"]
-visible = true
-
-[node name="HurtBox" parent="." index="1"]
-visible = true
-
-[node name="HitBox" parent="." index="2"]
-visible = true
-
-[node name="Sprite" parent="." index="6"]
+[node name="Sprite" parent="." index="0"]
 position = Vector2( 1, -11 )
 scale = Vector2( 0.252, 0.268 )
 texture = ExtResource( 2 )
+
+[node name="PlayerCollision" parent="." index="1"]
+visible = true
+
+[node name="HurtBox" parent="." index="2"]
+visible = true
+
+[node name="HitBox" parent="." index="3"]
+visible = true
 
 [editable path="HurtBox"]
 [editable path="HitBox"]
