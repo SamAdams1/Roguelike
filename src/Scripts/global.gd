@@ -15,6 +15,7 @@ var bulletSpeed = 500
 var bulletHealth = 1
 var bulletDamageMultiplier = 0
 var knockback = 0
+var knockbackUnlocked = false
 
 var playerMovementSpeed = 300
 var playerHealth = 10

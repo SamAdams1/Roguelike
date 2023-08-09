@@ -17,6 +17,8 @@ onready var sound = $DeathExplosionSound
 onready var lootBase = get_tree().current_scene.get_node('lootBase')
 var notDead = true
 
+onready var statUpgrade = get_tree().get_root().find_node('StatUpgrade', true, false)
+
 var velocity = Vector2.ZERO
 #enemy stats you can change in inspector
 export var movementSpeed = 100.0
@@ -24,8 +26,11 @@ export var health = 2
 export var experienceDroppedValue = 1
 export var coinDroppedValue = 1
 export var healthDroppedValue = 5
-export var knockback = 0
+var knockback = Global.knockback
+var knockbackUnlocked = Global.knockbackUnlocked
 
+func _ready():
+	statUpgrade.connect('setKnockBack', self, 'setEnemyKnockback')
 
 func basic_movement_towards_player(_delta):
 	var direction = global_position.direction_to(player.global_position)
@@ -87,3 +92,8 @@ func createLoot():
 func _on_difficulty_scale_timeout():
 	health += 1
 	movementSpeed += 10
+
+func setEnemyKnockback():
+	knockback = Global.knockback
+	knockbackUnlocked = true
+	Global.knockbackUnlocked = true
