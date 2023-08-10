@@ -4,10 +4,10 @@ var explosion = preload("res://Scenes/Explosion.tscn")
 var xpGem = preload("res://Scenes/Objects/experienceGem.tscn")
 var coin = preload("res://Scenes/Objects/coin.tscn")
 var healthDrop = preload("res://Scenes/Objects/healthDropped.tscn")
-export var health = 1
+export var health = 2
 export var experienceDroppedValue = 1
-export var coinDroppedValue = 1
-export var healthDroppedValue = 5
+export var coinDroppedValue = 10
+export var healthDroppedValue = 10
 export var movementSpeed = 0
 var notDead = true
 var explosion_instance = explosion.instance()
@@ -22,26 +22,19 @@ onready var bulletCollision = $BulletCollision/CollisionShape2D
 func createLoot():
 	var spawnChance = round(rand_range(0, 10))
 	
-	if int(spawnChance) == 0 and player.playerHealth < player.healthBar.max_value / 2:
+	if spawnChance <= 4and player.playerHealth < player.healthBar.max_value / 2:
 		var healing = healthDrop.instance()
 		healing.healthDropped = healthDroppedValue
 		healing.global_position = global_position
 		lootBase.call_deferred("add_child", healing)
 		
-	elif spawnChance > 5:
-		var newXPGem = xpGem.instance()
-		newXPGem.experience = experienceDroppedValue
-		newXPGem.global_position = global_position
-		lootBase.call_deferred("add_child", newXPGem)
-		
-	elif int(spawnChance) % 2 == 0:
+	else:
 		var newCoin = coin.instance()
 		newCoin.coinValue = coinDroppedValue
 		newCoin.global_position = global_position
 		lootBase.call_deferred("add_child", newCoin)
 		
 func _on_HurtBox_hurt(damage):
-	print("hurt")
 	health -= damage
 	if notDead:
 		var text = damageNumbers.instance()
