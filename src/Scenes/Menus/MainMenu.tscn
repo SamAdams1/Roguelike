@@ -33,7 +33,8 @@ script = ExtResource( 3 )
 mainGameScene = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 1024.0
+margin_left = -1.0
+margin_right = 1023.0
 margin_bottom = 600.0
 color = Color( 0.294118, 0.0352941, 0.423529, 1 )
 

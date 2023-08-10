@@ -106,6 +106,7 @@ position = Vector2( 71.5101, 32.2176 )
 position = Vector2( 18.4304, 61.8051 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 5.96046e-08 )
 scale = Vector2( 0.488949, 0.731644 )
 shape = SubResource( 24 )
@@ -115,6 +116,7 @@ current = true
 zoom = Vector2( 2, 2 )
 
 [node name="HurtBox" parent="." groups=["player"] instance=ExtResource( 1 )]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -139,6 +141,7 @@ collision_mask = 8
 shape = SubResource( 27 )
 
 [node name="GUILayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="GUI" type="Control" parent="GUILayer"]
 margin_left = 4.0

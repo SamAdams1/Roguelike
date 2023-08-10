@@ -341,11 +341,11 @@ func setStats():
 
 func changeShipColor(number):
 	if number == 1:
-			shipSprite.modulate = Color(0.921569, 0.035294, 0.035294)
-	elif number == 2:
-			shipSprite.modulate = Color(0.022736, 0.582031, 0.123234)
-	else:
-			shipSprite.modulate = Color(0.022736, 0.149451, 0.582031)
+			shipSprite.texture = load("res://Sprites/Player/greennewShip.png")
+	elif number == 2: 
+			shipSprite.texture = load("res://Sprites/Player/bluenewShip.png")
+	else: 
+			shipSprite.texture = load("res://Sprites/Player/newShip.png")
 
 
 

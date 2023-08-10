@@ -19,16 +19,20 @@ const ITEMS ={
 	},
 	'color1':{
 		'cost': 25,
-		'desc': "I'll paint your ship a beautiful green.",
+		'desc': "I'll paint your ship figgleslorp green.",
 	},
 	'color2':{
 		'cost': 25,
-		'desc': "Ah that one will ",
+		'desc': "Supposedly that is the color of the oceans, I wouldn't know. I've never seen an ocean!",
 	},
 	'color3':{
 		'cost': 25,
-		'desc': "Ah that one will ",
+		'desc': "I'll change your ship back to its original blazing red!",
 	},
+	'colorPurchased':{
+		'cost':50,
+		'desc': "Sorry partner, I don't have enough paint for them turrets on the bottom. I'll give you a discount to make up for it!"
+	}
 }
 
 onready var player = get_tree().current_scene.get_node('Player')
@@ -60,7 +64,11 @@ func _on_purchaseButton_pressed():
 	if target != null and itemCost <= playerMoney:
 		playerMoney -= itemCost 
 		applyPurchases()
-
+#		if target == 'color1' or target == 'color2' or target == 'color3':
+#			target = null
+#			costLabel.text = 'Cost: ' + str(ITEMS['colorPurchased']['cost'])
+#			desc.text = str(ITEMS['colorPurchased']['desc'])
+			
 func applyPurchases():
 	if target == 'statPointButton':
 		player.statUpgrade.statPoints += 1
