@@ -16,7 +16,7 @@ onready var costLabel = $selection/cost
 onready var player = get_tree().current_scene.get_node('Player')
 onready var statUpgrade = get_tree().get_root().find_node('StatUpgrade', true, false)
 var target = null
-var points = 1
+var points = 0
 var skillCost = 1
 var level = 0
 
@@ -186,9 +186,7 @@ func _ready():
 		player.connect('firstLevel', self, 'hideOther')
 	if points > 1:
 		exitLabel.text  = 'Exit and Save Points'
-	
-#	Global.skillUnlockPoints += 10
-	points = Global.skillUnlockPoints
+
 	pointLabel.text = 'x' + str(points)
 	
 	selectionDetails.visible = true
@@ -203,7 +201,7 @@ func _on_Button_pressed():
 	changeLabels()
 
 func _on_selectSkillButton_pressed():
-	if points >= 1 and target != null and targetNotUnlocked():
+	if target != null and targetNotUnlocked():
 		var list = [true]
 		var prereq = checkPrereqs()
 		
@@ -212,20 +210,31 @@ func _on_selectSkillButton_pressed():
 				for cant in SKILLS[target]["nonrequiste"]:
 					list.append(cant != skill)
 		
-		if checkAllTrue(list) and SKILLS[target]["cost"] <= points:
+		if checkAllTrue(list) and checkTotalCost():
 			if prereq:
 				unlockSkill(target)
 				stopStatUpgrades()
+				exitButton.visible = true
 			elif !prereq:
-				if checkTotalCost() <= points:
-					for requisite in SKILLS[target]["prerequiste"]:
-						if Global.unlockedSkills.count(requisite) == 0:
-							unlockSkill(requisite)
-					unlockSkill(target)
-		exitButton.visible = true
-		
+				for requisite in SKILLS[target]["prerequiste"]:
+					if Global.unlockedSkills.count(requisite) == 0:
+						unlockSkill(requisite)
+				unlockSkill(target)
+				exitButton.visible = true
+			else:
+				pointLabelBlink()
+		else:
+			pointLabelBlink()
 	else:
-		pass #add labels that tell why they cant buy the upgrade
+		pointLabelBlink()
+
+
+func pointLabelBlink():
+	for i in range(0,2):
+			pointLabel.self_modulate = Color(0.984314, 0.043137, 0.043137)
+			yield(get_tree().create_timer(0.3), "timeout")
+			pointLabel.self_modulate = Color(1, 1, 1)
+			yield(get_tree().create_timer(0.3), "timeout")
 
 func targetNotUnlocked():
 	for skill in Global.unlockedSkills:
@@ -311,10 +320,10 @@ func hideOther(playerLevel):
 func checkTotalCost():
 	var cost = SKILLS[target]["cost"]
 	for prereq in SKILLS[target]["prerequiste"]:
-		for skill in Global.unlockedSkills:
-			if prereq == skill:
-				cost += SKILLS[prereq]["cost"]
-	return cost
+		if !Global.unlockedSkills.has(prereq):
+			cost += SKILLS[prereq]["cost"]
+	print(cost)
+	return cost <= points
 
 func stopStatUpgrades():
 	statUpgrade.tracerBulletandBoost(target)

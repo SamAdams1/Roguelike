@@ -72,19 +72,19 @@ func disableEnemyOnDead():
 func createLoot():
 	var spawnChance = round(rand_range(0, 10))
 	
-	if int(spawnChance) == 0 and player.playerHealth < player.healthBar.max_value / 2:
-		var healing = healthDrop.instance()
-		healing.healthDropped = healthDroppedValue
-		healing.global_position = global_position
-		lootBase.call_deferred("add_child", healing)
+#	if int(spawnChance) == 0 and player.playerHealth < player.healthBar.max_value / 2:
+#		var healing = healthDrop.instance()
+#		healing.healthDropped = healthDroppedValue
+#		healing.global_position = global_position
+#		lootBase.call_deferred("add_child", healing)
 		
-	elif spawnChance > 5:
+	if spawnChance > 5:
 		var newXPGem = xpGem.instance()
 		newXPGem.experience = experienceDroppedValue
 		newXPGem.global_position = global_position
 		lootBase.call_deferred("add_child", newXPGem)
 		
-	elif int(spawnChance) % 2 == 0:
+	elif spawnChance < 4:
 		var newCoin = coin.instance()
 		newCoin.coinValue = coinDroppedValue
 		newCoin.global_position = global_position
