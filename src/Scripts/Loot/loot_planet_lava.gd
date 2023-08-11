@@ -20,19 +20,10 @@ onready var sound = $DeathExplosionSound
 onready var playerCollision = $collision_shape
 onready var bulletCollision = $BulletCollision/CollisionShape2D
 func createLoot():
-	var spawnChance = round(rand_range(0, 10))
-	
-	if spawnChance <= 4and player.playerHealth < player.healthBar.max_value / 2:
-		var healing = healthDrop.instance()
-		healing.healthDropped = healthDroppedValue
-		healing.global_position = global_position
-		lootBase.call_deferred("add_child", healing)
-		
-	else:
-		var newCoin = coin.instance()
-		newCoin.coinValue = coinDroppedValue
-		newCoin.global_position = global_position
-		lootBase.call_deferred("add_child", newCoin)
+	var healing = healthDrop.instance()
+	healing.healthDropped = healthDroppedValue
+	healing.global_position = global_position
+	lootBase.call_deferred("add_child", healing)
 		
 func _on_HurtBox_hurt(damage):
 	health -= damage
