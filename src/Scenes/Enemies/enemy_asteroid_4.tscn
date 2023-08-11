@@ -16,7 +16,6 @@ radius = 317.057
 script = ExtResource( 2 )
 movementSpeed = 225.0
 healthDroppedValue = 3
-knockback = 1
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 1, 24 )

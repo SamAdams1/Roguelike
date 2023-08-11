@@ -80,6 +80,7 @@ autostart = true
 
 [node name="enemy_asteroid_4" parent="." instance=ExtResource( 10 )]
 position = Vector2( 930, 711 )
+health = 2
 
 [connection signal="timeout" from="enemy_spawn_timer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="spawn_scale_timer" to="." method="_on_spawn_scale_timer_timeout"]

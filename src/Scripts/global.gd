@@ -21,6 +21,7 @@ var playerMovementSpeed = 300
 var playerHealth = 10
 var boostCapacity = 2
 var boostValue = 100
+var enemyHealth = 0
 
 #Skill Tree
 #onready var turretIdentifiers = ['turret', 'barrel2', 'barrel3', 'barrel4', 'bigBullet', 'bigBullet2Direction', 

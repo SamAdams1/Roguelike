@@ -64,3 +64,4 @@ func setInvisible(boo):
 	$HurtBox.set_collision_layer_bit(2, boo)
 	$BulletCollision.set_collision_mask_bit(2, boo)
 	$BulletCollision.set_collision_layer_bit(2, boo)
+

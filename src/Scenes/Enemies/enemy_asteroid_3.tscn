@@ -34,7 +34,6 @@ physics_interpolation_mode = 1
 script = ExtResource( 4 )
 movementSpeed = 100.0
 healthDroppedValue = 5
-knockback = 6
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( -3.55271e-15, -4 )

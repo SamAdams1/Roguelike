@@ -30,6 +30,7 @@ var knockback = Global.knockback
 var knockbackUnlocked = Global.knockbackUnlocked
 
 func _ready():
+	health += Global.enemyHealth
 	statUpgrade.connect('setKnockBack', self, 'setEnemyKnockback')
 
 func basic_movement_towards_player(_delta):
@@ -89,11 +90,11 @@ func createLoot():
 		newCoin.global_position = global_position
 		lootBase.call_deferred("add_child", newCoin)
 		
-func _on_difficulty_scale_timeout():
-	health += 1
-	movementSpeed += 10
 
 func setEnemyKnockback():
 	knockback = Global.knockback
 	knockbackUnlocked = true
 	Global.knockbackUnlocked = true
+
+func _on_diff_scale_timeout():
+	Global.enemyHealth += 1

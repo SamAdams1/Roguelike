@@ -11,7 +11,6 @@ func _process(delta):
 #		velocity = -(direction * movementSpeed)
 #		move_and_slide(velocity)
 
-
 func _on_AudioStreamPlayer_finished():
 	queue_free()
 
