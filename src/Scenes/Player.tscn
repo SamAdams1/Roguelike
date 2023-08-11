@@ -1,68 +1,17 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scenes/Utility/HurtBox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://godot icon.png" type="Texture" id=1]
 [ext_resource path="res://Fonts/ArcadeFont.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Sprites/Loot/coin pixel art.png" type="Texture" id=3]
-[ext_resource path="res://Scripts/Player/timerLabel.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=5]
 [ext_resource path="res://Audio/new_ship_movement.mp3" type="AudioStream" id=6]
 [ext_resource path="res://Scripts/Score.gd" type="Script" id=7]
-[ext_resource path="res://Scenes/Utility/StatUpgrade.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Menus/PauseMenu.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Sprites/Utility/greenBar.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Utility/barBorder.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/Player/newShip.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Utility/red bar.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/Utility/white bar.png" type="Texture" id=14]
-[ext_resource path="res://Audio/SFX/autoFireSound.wav" type="AudioStream" id=15]
-[ext_resource path="res://Sprites/skull.png" type="Texture" id=16]
-[ext_resource path="res://Sprites/Player/newShipMoving.png" type="Texture" id=17]
-[ext_resource path="res://Audio/SFX/level up.wav" type="AudioStream" id=18]
-[ext_resource path="res://Sprites/Utility/blackBar.png" type="Texture" id=19]
-[ext_resource path="res://Sprites/Utility/blueBar.png" type="Texture" id=20]
-[ext_resource path="res://Audio/SFX/game-whip-shot-1512.wav" type="AudioStream" id=21]
-[ext_resource path="res://Audio/SFX/deathSound.mp3" type="AudioStream" id=22]
-[ext_resource path="res://Audio/pagani-huayra.wav" type="AudioStream" id=23]
-[ext_resource path="res://Sprites/Player/shipBoostFlames.png" type="Texture" id=24]
-[ext_resource path="res://Audio/batmobile no engine.mp3" type="AudioStream" id=25]
-[ext_resource path="res://Sprites/Utility/grayBar.png" type="Texture" id=26]
-[ext_resource path="res://Scenes/Utility/SkillTree.tscn" type="PackedScene" id=27]
-[ext_resource path="res://Scenes/turret.tscn" type="PackedScene" id=28]
-[ext_resource path="res://Scenes/loot_drops/StoreShopScreen.tscn" type="PackedScene" id=29]
 
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 25.6321, 29.6559 )
 
-[sub_resource type="RectangleShape2D" id=25]
-extents = Vector2( 13.27, 22.355 )
-
-[sub_resource type="CircleShape2D" id=29]
-radius = 95.8407
-
-[sub_resource type="CircleShape2D" id=27]
-radius = 15.0
-
-[sub_resource type="DynamicFont" id=28]
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=30]
-size = 24
-font_data = ExtResource( 2 )
-
 [sub_resource type="DynamicFont" id=31]
 size = 24
 font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=32]
-size = 24
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=34]
-size = 10
-font_data = ExtResource( 2 )
-
-[sub_resource type="RectangleShape2D" id=33]
-extents = Vector2( 342.069, 229.468 )
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 pause_mode = 2
@@ -71,39 +20,14 @@ collision_layer = 3
 collision_mask = 2
 script = ExtResource( 5 )
 
-[node name="turret" parent="." instance=ExtResource( 28 )]
-
 [node name="ship" type="Sprite" parent="."]
-position = Vector2( -1.90735e-06, 5.96046e-08 )
-scale = Vector2( 0.209936, 0.191052 )
-texture = ExtResource( 12 )
+position = Vector2( -5.89775, 0 )
+scale = Vector2( 0.0763069, 0.0587055 )
+texture = ExtResource( 1 )
 offset = Vector2( 90, 0 )
 __meta__ = {
 "_edit_group_": true
 }
-
-[node name="shipMovingFlames" type="Sprite" parent="ship"]
-position = Vector2( 42.1396, -6.88295 )
-texture = ExtResource( 17 )
-offset = Vector2( -51.5, -180.5 )
-
-[node name="shipBoostFlames" type="Sprite" parent="ship"]
-position = Vector2( -129.93, -6.88296 )
-texture = ExtResource( 24 )
-offset = Vector2( 0.5, 3 )
-
-[node name="bulletSpawnPoints" type="Node2D" parent="ship"]
-position = Vector2( -52.6745, -172.074 )
-scale = Vector2( 4.76336, 5.23418 )
-
-[node name="directional1" type="Position2D" parent="ship/bulletSpawnPoints"]
-position = Vector2( 19.9049, 0.657532 )
-
-[node name="directional2" type="Position2D" parent="ship/bulletSpawnPoints"]
-position = Vector2( 71.5101, 32.2176 )
-
-[node name="directional3" type="Position2D" parent="ship/bulletSpawnPoints"]
-position = Vector2( 18.4304, 61.8051 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -115,33 +39,7 @@ shape = SubResource( 24 )
 current = true
 zoom = Vector2( 2, 2 )
 
-[node name="HurtBox" parent="." groups=["player"] instance=ExtResource( 1 )]
-visible = false
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2( 4.17233e-07, 0 )
-shape = SubResource( 25 )
-
-[node name="GrabArea" type="Area2D" parent="."]
-visible = false
-collision_layer = 0
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
-shape = SubResource( 29 )
-
-[node name="CollectArea" type="Area2D" parent="."]
-visible = false
-collision_layer = 0
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
-shape = SubResource( 27 )
-
 [node name="GUILayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="GUI" type="Control" parent="GUILayer"]
 margin_left = 4.0
@@ -150,68 +48,6 @@ margin_right = 2052.0
 margin_bottom = 1205.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="healthBarUnder" type="TextureProgress" parent="GUILayer/GUI"]
-unique_name_in_owner = true
-margin_left = -4.0
-margin_top = 15.0
-margin_right = 696.0
-margin_bottom = 55.0
-rect_scale = Vector2( 1.46512, 0.687169 )
-value = 35.0
-texture_under = ExtResource( 26 )
-texture_progress = ExtResource( 13 )
-
-[node name="Tween" type="Tween" parent="GUILayer/GUI/healthBarUnder"]
-
-[node name="healthBar" type="TextureProgress" parent="GUILayer/GUI"]
-unique_name_in_owner = true
-margin_left = -4.0
-margin_top = 15.0
-margin_right = 696.0
-margin_bottom = 55.0
-rect_scale = Vector2( 1.46577, 0.686723 )
-value = 25.0
-texture_over = ExtResource( 11 )
-texture_progress = ExtResource( 10 )
-
-[node name="ExperienceBar" type="TextureProgress" parent="GUILayer/GUI"]
-unique_name_in_owner = true
-margin_left = -4.0
-margin_top = -5.0
-margin_right = 696.0
-margin_bottom = 20.0
-rect_scale = Vector2( 1.46426, 0.826829 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-value = 75.0
-texture_under = ExtResource( 26 )
-texture_over = ExtResource( 11 )
-texture_progress = ExtResource( 20 )
-
-[node name="labelLevel" type="Label" parent="GUILayer/GUI"]
-unique_name_in_owner = true
-margin_top = -8.0
-margin_right = 128.0
-margin_bottom = 17.0
-custom_fonts/font = SubResource( 28 )
-text = "Level: 1"
-align = 1
-valign = 1
-uppercase = true
-
-[node name="moneyLabel" type="Label" parent="GUILayer/GUI"]
-margin_left = 37.0
-margin_top = 64.0
-margin_right = 69.0
-margin_bottom = 96.0
-custom_fonts/font = SubResource( 30 )
-text = "0"
-
-[node name="coin" type="Sprite" parent="GUILayer/GUI/moneyLabel"]
-position = Vector2( -22, 13 )
-scale = Vector2( 0.0653061, 0.0453752 )
-texture = ExtResource( 3 )
 
 [node name="enemiesKilled" type="Label" parent="GUILayer/GUI"]
 margin_left = 37.0
@@ -222,127 +58,12 @@ custom_fonts/font = SubResource( 31 )
 text = "0"
 script = ExtResource( 7 )
 
-[node name="skull" type="Sprite" parent="GUILayer/GUI/enemiesKilled"]
-position = Vector2( -22, 12 )
-scale = Vector2( 0.0664062, 0.0625 )
-texture = ExtResource( 16 )
-
-[node name="timerLabel" type="Label" parent="GUILayer/GUI"]
-pause_mode = 1
-margin_left = 439.0
-margin_top = 36.0
-margin_right = 503.0
-margin_bottom = 68.0
-custom_fonts/font = SubResource( 32 )
-text = "15:00"
-script = ExtResource( 4 )
-
-[node name="controls" type="Label" parent="GUILayer/GUI"]
-visible = false
-margin_left = -3.0
-margin_top = 579.0
-margin_right = 189.0
-margin_bottom = 595.0
-custom_fonts/font = SubResource( 34 )
-text = "Space = Boost | F = shipfire | leftmouse = turret attack | shift + wasd/alt = ship look around"
-
-[node name="StatUpgrade" parent="GUILayer/GUI" instance=ExtResource( 8 )]
-visible = false
-anchor_top = 0.0
-anchor_bottom = 0.0
-margin_left = -743.0
-margin_top = 43.0
-margin_right = -293.0
-margin_bottom = 564.0
-
-[node name="SkillTree" parent="GUILayer/GUI" instance=ExtResource( 27 )]
-visible = false
-margin_left = -4.0
-margin_top = -1.0
-margin_right = -4.0
-margin_bottom = -1.0
-
-[node name="Control" parent="GUILayer/GUI" instance=ExtResource( 9 )]
-visible = false
-margin_left = -4.0
-margin_top = -5.0
-margin_right = -1027.0
-margin_bottom = -605.0
-
-[node name="StoreShopScreen" parent="GUILayer/GUI" instance=ExtResource( 29 )]
-visible = false
-margin_left = -4.0
-margin_top = -5.0
-margin_right = -1028.0
-margin_bottom = -605.0
-
-[node name="autoAimArea" type="Area2D" parent="."]
-visible = false
-collision_layer = 6
-collision_mask = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="autoAimArea"]
-shape = SubResource( 33 )
-
 [node name="sounds" type="Node2D" parent="."]
 position = Vector2( 0, -2.35894e-07 )
 rotation = -3.14159
 scale = Vector2( 0.37071, 0.3176 )
 
-[node name="deathSound" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource( 22 )
-volume_db = -10.0
-bus = "SFX"
-
-[node name="shipMovingSound" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource( 23 )
-volume_db = -20.0
-pitch_scale = 0.7
-bus = "SFX"
-
-[node name="directionalShootSound" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource( 21 )
-volume_db = -20.0
-bus = "SFX"
-
-[node name="autoFireSound" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource( 15 )
-volume_db = -10.0
-bus = "SFX"
-
-[node name="levelUpSound" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource( 18 )
-volume_db = -25.0
-bus = "SFX"
-
-[node name="boostSound" type="AudioStreamPlayer" parent="sounds"]
-stream = ExtResource( 25 )
-volume_db = -10.0
-bus = "SFX"
-
 [node name="new_ship_sound" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource( 6 )
 volume_db = -25.0
 bus = "SFX"
-
-[node name="boostBar" type="TextureProgress" parent="."]
-modulate = Color( 1, 1, 1, 0.807843 )
-margin_left = -81.094
-margin_top = 64.4351
-margin_right = 618.906
-margin_bottom = 92.4351
-rect_scale = Vector2( 0.231427, 0.572325 )
-value = 50.0
-texture_under = ExtResource( 19 )
-texture_progress = ExtResource( 14 )
-tint_progress = Color( 0.0313726, 0.772549, 1, 1 )
-
-[connection signal="hurt" from="HurtBox" to="." method="_on_HurtBox_hurt"]
-[connection signal="area_entered" from="GrabArea" to="." method="_on_GrabArea_area_entered"]
-[connection signal="area_entered" from="CollectArea" to="." method="_on_CollectArea_area_entered"]
-[connection signal="body_entered" from="autoAimArea" to="." method="_on_autoAimArea_body_entered"]
-[connection signal="body_exited" from="autoAimArea" to="." method="_on_autoAimArea_body_exited"]
-[connection signal="finished" from="sounds/deathSound" to="." method="_on_deathSound_finished"]
-[connection signal="finished" from="sounds/levelUpSound" to="." method="_on_levelUpSound_finished"]
-
-[editable path="HurtBox"]

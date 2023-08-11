@@ -9,7 +9,7 @@ var difficulty = 2
 export(Array, PackedScene) var planets
 
 func _ready():
-#	music.play()
+	music.play()
 	randomize()
 	Global.points = 0
 	$enemy_spawn_timer.wait_time = difficulty

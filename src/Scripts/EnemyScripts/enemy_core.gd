@@ -31,7 +31,7 @@ var knockbackUnlocked = Global.knockbackUnlocked
 
 func _ready():
 	health += Global.enemyHealth
-	statUpgrade.connect('setKnockBack', self, 'setEnemyKnockback')
+#	statUpgrade.connect('setKnockBack', self, 'setEnemyKnockback')
 
 func basic_movement_towards_player(_delta):
 	var direction = global_position.direction_to(player.global_position)
